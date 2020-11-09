@@ -10,7 +10,8 @@ function stripSpacesTelugu($log_chars) {
 	$build = array();
 	$build_i = 0;
 	for($i=0; $i < count($code_points); $i++) {
-		if(strcmp($log_chars[$i], " ") == 0) continue;
+		if(strcmp($log_chars[$i], " ") == 0) 
+		    continue;
 		else {
 			$build[$build_i++] = $log_chars[$i];
 			if(isHalant(end($code_points[$i]) && $i + 1 < count($code_points))) {
@@ -131,26 +132,32 @@ function explode_telugu($to_explode) {
 	return $exploded;
 }
 
+// returns whether a character is a consonant or not
 function isConsonant($ch) {
 	return ( $ch >= 0x0c15 && $ch <= 0x0c39 );
 }
 
+// returns whether a character is a dependent vowel
 function isDependentVowel($ch) {
 	return ( $ch >= 0x0c3e && $ch <= 0x0c4c );
 }
 
+// returns whether a character is a depdendent character
 function isDependent($ch) {
 	return ( ($ch == 0x0c01) || ($ch == 0x0c02) || ($ch == 0x0c03) );
 }
 
+// returns whether a character is a vowel or not
 function isVowel($ch) {
 	return ($ch >= 0x0c05 && $ch <= 0x0c14);
 }
 
+// returns whether a character is a Halant (special character)
 function isHalant($ch) {
 	return $ch == 0x0c4d;
 }
 
+// returns whether a character is a Telugu number
 function isTeluguNumber($ch) {
 	return ($ch >= 0x0c66 && $ch <= 0x0c6f);
 }

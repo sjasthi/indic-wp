@@ -370,5 +370,12 @@ class wordProcessor {
 
 		return $weight;
 	}
+
+	// Level is always subjective and requires user/admin intervention
+	// For now, Level = Strength
+	function getWordLevel($language) {
+		return $this->getWordStrength($language);
+	}
+
 }
 ?>

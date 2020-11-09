@@ -1,9 +1,6 @@
 ﻿<?php
 require("word_processor.php");
 
-// if(count($_POST["to_parse"] > 0)) {
-// 	analyze_essay($_POST["to_parse"], $_POST["to_language"]);
-// }
 
 if($_POST["to_parse"]) {
 	analyze_essay($_POST["to_parse"], $_POST["to_language"]);
@@ -34,12 +31,14 @@ function analyze_essay($essay, $language) {
 		else {
 			$newline = false;
 		}//end else
+
+
 		if( is_word_separator($chr) ) {
 			if(strlen($wordbuff) > 0) {
 				$parsed[] = new wordProcessor($wordbuff, $language);
 				$wordbuff = "";
-			}//end if
-		}//end if
+			}
+		}
 		else if( !is_ignored($chr) ) {
 			$wordbuff .= $essay[$i];
 		}
@@ -50,11 +49,14 @@ function analyze_essay($essay, $language) {
 		$parsed[] = new wordProcessor($wordbuff, $language);
 		$tot_lines++;
 	}
+
 	$tot_words = count($parsed);
 	if( $tot_words == 0 ) {
 		echo "0|0|0|0|0|0|0";
 		return;
 	}
+
+	
 	foreach($parsed as $word) {
 		$tot_letters += $word->getLength();
 		$tot_str += $word->getWordStrength($language);
