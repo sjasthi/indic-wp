@@ -27,9 +27,6 @@
 	<div id="mainchild">
 		<div id="numeric" class="results">
 			<br><p style="text-align:center">Copy and paste your input below</p>
-			<!--<p style="text-align:center">మీ తెలుగు వ్యాసాన్ని ఇక్కడ కాపీ / పేస్ట్ చేయండి</p>-->
-
-
 
 			<div><center><p>Select a language<select id="language" onchange="dropdown_update()">
 				<option value="Telugu">Telugu</option>
@@ -41,26 +38,28 @@
 			</div>
 
 			<textarea rows="10" cols="85" id="inputarea" oninput="process_update()">
-				మీ తెలుగు వ్యాసాన్ని ఇక్కడ కాపీ / పేస్ట్ చేయండి
-				I Love Metropolitan State University
-				तुम्हारा नाम क्या है
-				તમે કેમ છો
-				മൈ നെയിം ഈസ്‌ അസ്ലം
+				అరక
 			</textarea>
 			<table id="stats">
-				<tr><td>Total Words: <span id="tot_words" class="statbox">..</span></td>
+				<tr>
+					<td>Total Words: <span id="tot_words" class="statbox">..</span></td>
 					<td>Total Strength: <span id="tot_strength" class="statbox">..</span></td>
 					<td>Average Strength: <span id="avg_strength" class="statbox">..</span></td>
 				</tr>
-				<tr><td>Total Letters: <span id="tot_letters" class="statbox">..</span></td>
+
+				<tr>
+					<td>Total Letters: <span id="tot_letters" class="statbox">..</span></td>
 					<td>Total Weight: <span id="tot_weight" class="statbox">..</span></td>
 					<td>Average Weight: <span id="avg_weight" class="statbox">..</span></td>
 				</tr>
-				<tr><td>Total Lines: <span id="tot_lines" class="statbox">..</span></td>
+				
+				<tr>
+					<td>Total Lines: <span id="tot_lines" class="statbox">..</span></td>
 					<td style="text-align:right"><span id="status"></span></td>
 					<td align="right"><input type="button" id="analyze" value="Analyze" onclick="analyze_this()"></td>
 				</tr>
 			</table>
+
 		</div>
 		<div id="analysis" class="results">
 		</div>
@@ -76,10 +75,13 @@
 			$('#status').text("text is empty");
 			return;
 		}
+
 		xmlhttp = new XMLHttpRequest();
 		xmlhttp.onreadystatechange = function() {
+			// 4 = request has been completed
+			// 200 = 200 - server response OK
 			if( xmlhttp.readyState == 4 && xmlhttp.status == 200 ) {
-				var retdata = xmlhttp.responseText.split("|");
+				var retdata = xmlhttp.responseText.split("|"); // comes from analyze.php lines 85-88
 				$('#tot_words').text( retdata[0] );
 				$('#tot_letters').text( retdata[1] );
 				$('#tot_lines').text( retdata[2] );
@@ -87,10 +89,14 @@
 				$('#tot_weight').text( retdata[4] );
 				$('#avg_strength').text( parseFloat(retdata[5]).toPrecision(2) );
 				$('#avg_weight').text( parseFloat(retdata[6]).toPrecision(2) );
+				
+				
 				var analtable = "<br><table id='analysis_table'><tr><th>No.</th><th>Word</th><th>Length</th><th>Frequency<th></tr>";
 				var rownum = 0;
+
 				for(var i=7; i < retdata.length; i++) {
 					var analdata = retdata[i].split(',');
+					// x += y is shorthand for x = x + y
 					analtable += "<tr class='analrow" + (rownum++ % 2) + "'><td class='analno'>" + analdata[0];
 					analtable += "</td><td class='analword'>" + analdata[1] + "</td>";
 					analtable += "<td class='anallen'>" + analdata[2] + "</td>"
@@ -100,7 +106,10 @@
 				$('#status').text("done");
 			}
 		}
+
+		// Send the request off to a PHP file (analyze.php) on the server
 		xmlhttp.open("POST", "analyze.php");
+		//To POST data like an HTML form, add an HTTP header with setRequestHeader()
 		xmlhttp.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
 		// adding a newline to the submission, since analyze.php counts lines wrong
 		// if the essay ends with punctuation and no newline. This is a terrible
@@ -110,6 +119,8 @@
 		var e = document.getElementById("language");
 		var strUser = e.options[e.selectedIndex].value;
 		var  the_data = 'to_parse='+$('#inputarea').val()+'&to_language='+strUser.toString();
+		
+		//Specify the data you want to send in the send() method
 		xmlhttp.send( the_data );
 
 		$('#status').text("processing...");
@@ -120,15 +131,17 @@
 		auto_anal = setTimeout(analyze_this, 2000);
 		$('.statbox').text("..");
 		$('#status').text("text is unprocessed");
-	}
+	} // end dropdown_update
 
 	function process_update() {
+		// prevent analyze_this from executing until user is done typing
 		clearTimeout(auto_anal);
 		auto_anal = setTimeout(analyze_this, 2000);
 		$('.statbox').text("..");
 		$('#status').text("text is unprocessed");
 	} // end process_update
 
+	// +/- CSS for tabs
 	$(document).ready(function() {
 		$('.tabs a').click(function() {
 			var $this = $(this);

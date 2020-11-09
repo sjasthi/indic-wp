@@ -36,7 +36,7 @@ class wordProcessor {
 	protected $code_points = array();
 
 	// constructor
-	function wordProcessor($word, $language) {
+	function __construct($word, $language) {
 		if(is_string($word)) return $this->setWord($word, $language);
 	}
 
