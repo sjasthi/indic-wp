@@ -1,5 +1,3 @@
-<img src="icon.png" align="right" />
-
 # Indic Word Processor
 > Word Processors for Indic Languages
 
