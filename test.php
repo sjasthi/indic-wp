@@ -3,10 +3,10 @@
 require("word_processor.php");
 
 $language = "Telugu";
-//$words = array('అమ్మ', 'అరక', 'స్త్రీ', 'ఆస్ట్రేలియా', 'ఆనందమకరందము');
+$words = array('అమ్మ', 'అరక', 'స్త్రీ', 'ఆస్ట్రేలియా', 'ఆనందమకరందము');
 
 // $language = "English";
-$words = array('mother', 'tool', 'cow', 'australia', 'happiness');
+//$words = array('mother', 'tool', 'cow', 'australia', 'happiness');
 
 
 foreach($words as $x) {
