@@ -1,4 +1,4 @@
-﻿<?php
+<?php
 
 
 // gujarati_parser.php primarily deals with splitting an input string
@@ -118,7 +118,7 @@ function explode_hindi($to_explode) {
         }
         if(strcmp($to_explode[$pos], "\\") == 0) { // if the the character in question is a slash...
             if(strcmp($to_explode[$pos + 1], "u") == 0) { // ...followed by a u...
-                $char = 0 + ("0x" . substr($to_explode, $pos + 2, 4)); // convert to a number
+                $char = intval(substr($to_explode, $pos + 2, 4), 16); // convert to a number
                 if(isHindi($char)) {
                     // if it matches, add it as a character, bump the counter up by six, and continue
                     $exploded[$e_pos++] = $char;
