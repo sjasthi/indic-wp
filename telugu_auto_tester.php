@@ -23,7 +23,7 @@
 -->
 
 <?PHP
-require("indic-wp/word_processor.php");
+require("word_processor.php");
 
 	$unique_tests = array();
 	$unique_good = array();
