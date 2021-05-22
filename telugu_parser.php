@@ -7,11 +7,12 @@
 
 function stripSpacesTelugu($log_chars) {
 	$code_points = parseToCodePoints(implode($log_chars));
+
 	$build = array();
 	$build_i = 0;
 	for($i=0; $i < count($code_points); $i++) {
-		if(strcmp($log_chars[$i], " ") == 0) 
-		    continue;
+		if(strcmp($log_chars[$i], " ") == 0) continue;
+
 		else {
 			$build[$build_i++] = $log_chars[$i];
 			if(isHalant(end($code_points[$i]) && $i + 1 < count($code_points))) {
@@ -53,7 +54,7 @@ function parseToCodePoints($word) {
 					continue;
 				}
 				$ch_buffer[count($ch_buffer)] = $current_ch;
-			} 
+			}
 			$logical_chars[count($logical_chars)] = $ch_buffer;
 			$ch_buffer = array();
 			continue;
@@ -79,6 +80,7 @@ function parseToCodePoints($word) {
 		$logical_chars[count($logical_chars)] = $ch_buffer;
 		$ch_buffer = array();
 	}
+
 	return $logical_chars;
 }
 
@@ -89,7 +91,6 @@ function parseToLogicalCharacters($word) {
 			$word[$i] = parseToCharacter($word[$i]);
 		return $word;
 	}
-
 	else return parseToLogicalCharacters(parseToCodePoints($word));
 }
 
@@ -103,7 +104,6 @@ function parseToCharacter($logical_char) {
 }
 
 function explode_telugu($to_explode) {
-	// POS //
 	$pos=0;
 	$e_pos=0;
 	$exploded = array();
@@ -114,11 +114,7 @@ function explode_telugu($to_explode) {
 		}
 		if(strcmp($to_explode[$pos], "\\") == 0) { // if the the character in question is a slash...
 			if(strcmp($to_explode[$pos + 1], "u") == 0) { // ...followed by a u...
-
-				// PHP7 no longer convert 0x strings to numbers automatically
-				//$char = 0 + ("0x" . substr($to_explode, $pos + 2, 4)); // worked in old version of php
 				$char = intval(substr($to_explode, $pos + 2, 4), 16); // convert to a number
-				
 				if(isTelugu($char)) {
 					// if it matches, add it as a character, bump the counter up by six, and continue
 					$exploded[$e_pos++] = $char;
@@ -129,35 +125,36 @@ function explode_telugu($to_explode) {
 		}
 		$exploded[$e_pos++] = ord($to_explode[$pos++]);
 	}
+
+	// remove hidden char space 8204
+	if (($key = array_search('8204', $exploded)) !== false) {
+		unset($exploded[$key]);
+	}
+	$exploded = array_values(array_filter($exploded));
+	
 	return $exploded;
 }
 
-// returns whether a character is a consonant or not
 function isConsonant($ch) {
 	return ( $ch >= 0x0c15 && $ch <= 0x0c39 );
 }
 
-// returns whether a character is a dependent vowel
 function isDependentVowel($ch) {
 	return ( $ch >= 0x0c3e && $ch <= 0x0c4c );
 }
 
-// returns whether a character is a depdendent character
 function isDependent($ch) {
 	return ( ($ch == 0x0c01) || ($ch == 0x0c02) || ($ch == 0x0c03) );
 }
 
-// returns whether a character is a vowel or not
 function isVowel($ch) {
 	return ($ch >= 0x0c05 && $ch <= 0x0c14);
 }
 
-// returns whether a character is a Halant (special character)
 function isHalant($ch) {
 	return $ch == 0x0c4d;
 }
 
-// returns whether a character is a Telugu number
 function isTeluguNumber($ch) {
 	return ($ch >= 0x0c66 && $ch <= 0x0c6f);
 }
@@ -167,7 +164,16 @@ function isTeluguNumber($ch) {
 // intentionally feeding this function bad data, there's no practical way to get
 // that false positive, and nothing harmful would happen if you did
 function isTelugu($ch) {
-	return ( $ch >= 0x0c01 && $ch <= 0x0c6f ) || ( $ch == 0x200c );
+	return ( $ch >= 0x0c00 && $ch <= 0x0c7f ) || ( $ch == 0x200c );
+}
+
+function is_blank_Telugu($hexVal){
+	$is_blank = false;
+	$blankArray = array("c00","c01","c02","c03","c0d","c11","c29","c34");
+	if(in_array($hexVal, $blankArray)){
+		return true;
+	}
+	return $is_blank;
 }
 
 

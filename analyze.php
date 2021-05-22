@@ -2,7 +2,7 @@
 require("word_processor.php");
 
 
-if($_POST["to_parse"]) {
+if(isset($_POST["to_parse"])) {
 	analyze_essay($_POST["to_parse"], $_POST["to_language"]);
 }
 
