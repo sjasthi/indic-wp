@@ -1,6 +1,4 @@
 <?php
-
-
 // gujarati_parser.php primarily deals with splitting an input string
 // into a series of logical characters
 // contact Siva.Jasthi@metrostate.edu  or (Aslam) zi5379yx@metrostate.edu for any clarifications on
@@ -164,4 +162,3 @@ function isHindi($ch) {
     return ( $ch >= 0x0900 && $ch <= 0x097f ) || ( $ch == 0x200c );
 }
 //}
-?>
