@@ -1,5 +1,4 @@
 <?php
-
 /* IMPORTANT : Note on using Google translator for Malayalam
 WHILE USING GOOGLE TRANSLATOR MAKE SURE THAT YOU SELECT MALAYALAM FROM LEFT DROPDOWN LIST (NEXT TO DETECT LANGUAGE)
 AND THEN TYPE YOUR INPUT AND COPY IT.
@@ -7,9 +6,6 @@ AND THEN TYPE YOUR INPUT AND COPY IT.
 EVERYTHING SHOULD WORK FINE. IF THERE IS STILL A PROBLEM IN PARSING, PLEASE CHECK AT THE BOTTOM OF LEFT SIDE WINDOW THERE IS
 ANOTHER DROPDOWN LIST. THE VERY FIRST OPTION IN THIS WINDOW WHICH IS (namaskar -> നമസ്കാർ) SHOULD BE CHECKED.
 */
-
-
-
 
 // malayalam_parser.php primarily deals with splitting an input string
 // into a series of logical characters
@@ -191,5 +187,3 @@ function is_blank_Malayalam($hexVal){
         return $is_blank;
     }
 }
-
-?>

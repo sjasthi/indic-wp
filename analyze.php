@@ -1,15 +1,13 @@
 ﻿<?php
 require("word_processor.php");
 
-
-if($_POST["to_parse"]) {
+if(isset($_POST["to_parse"])) {
 	analyze_essay($_POST["to_parse"], $_POST["to_language"]);
 }
 
 // We are intentionally not sterilizing the $essay input, since the parsing
 // peforms that task quite effectively
 function analyze_essay($essay, $language) {
-
 	$parsed = array();
 	$wordbuff = "";
 	$tot_lines = 0;
@@ -56,7 +54,6 @@ function analyze_essay($essay, $language) {
 		return;
 	}
 
-	
 	foreach($parsed as $word) {
 		$tot_letters += $word->getLength();
 		$tot_str += $word->getWordStrength($language);
@@ -113,4 +110,3 @@ function len_lex_sort($word1, $word2) {
 	if( $word1->getLength() == $word2->getLength() ) return strcasecmp($word1->getWord(), $word2->getWord());
 	else return $word1->getLength() > $word2->getLength();
 }
-?>

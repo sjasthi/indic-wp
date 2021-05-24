@@ -1,7 +1,6 @@
 ﻿<?php
 //require("telugu_parser.php");
 
-
 /*
  * This is PHP version of Telugu WordProcessor.java
  * The function names and arguments are identical.
@@ -16,14 +15,12 @@
  * 
  *   The logic of splitting an "input string" to a set of logical characters
  *   would be different for each Language
- *   For example, "telugu_parser.php" focusses on Telugu parser
+ *   For example, "telugu_parser.php" focuses on Telugu parser
  */
-
-
 class wordProcessor {
-
 	// since all three of these properties are reliant on the others being in exact sync,
 	// we only allow them to be accessed via mutators and accessors
+
 	// the basic word, dispayable as UTF-8
 	protected $word = "";
 
@@ -35,19 +32,20 @@ class wordProcessor {
 	// That may work for English, but not for other multi-byte languages
 	protected $code_points = array();
 
+	protected $language;
+
 	// constructor
-	function __construct($word, $language) {
-		if(is_string($word)) return $this->setWord($word, $language);
-	}
+    function __construct($word, $language) {
+		$this->language = $language;
+        if(is_string($word)) return $this->setWord($word);
+    }
 
 	// setter for the word 
 	// this also parses the word to logical characters 
-	function setWord($a_word, $a_language) {
+	function setWord($a_word) {
 		if( !is_string($a_word) ) return;
 		$this->word = $a_word;
-		$language = $a_language;
-		//$language = $_GET["language"];
-		return $this->parseToLogicalChars($this->word, $language);
+		return $this->parseToLogicalChars($this->word);
 	}
 
 	/*// all mutators need to call this, since it keeps all three properties in sync
@@ -57,26 +55,26 @@ class wordProcessor {
 		return $this->getLogicalChars();
 	}*/
 
-	function parseToLogicalChars($word, $language) {
-		if ($language == "Hindi"){
+	// all mutators need to call this, since it keeps all three properties in sync
+	function parseToLogicalChars($word) {
+		if ($this->language == "Hindi") {
 			include_once 'hindi_parser.php';
 			$this->code_points = parseToCodePoints($word);
 			$this->logical_chars = parseToLogicalCharacters($this->getCodePoints());
 			return $this->getLogicalChars();
-
-		}elseif ($language == "Gujarati") {
+		} elseif ($this->language == "Gujarati") {
 			include_once 'gujarati_parser.php';
 			$this->code_points = parseToCodePoints($word);
 			$this->logical_chars = parseToLogicalCharacters($this->getCodePoints());
 			return $this->getLogicalChars();
-		}elseif ($language == "Malayalam") {
+		} elseif ($this->language == "Malayalam") {
 			include_once 'malayalam_parser.php';
 			$this->code_points = parseToCodePoints($word);
 			$this->logical_chars = parseToLogicalCharacters($this->getCodePoints());
 			return $this->getLogicalChars();
-		}else{
+		} else {
 			include_once 'telugu_parser.php';
-			$this->code_points = parseToCodePoints($word);
+			$this->code_points = parseToCodePoints($this->getWord());
 			$this->logical_chars = parseToLogicalCharacters($this->getCodePoints());
 			return $this->getLogicalChars();
 		}
@@ -149,7 +147,6 @@ class wordProcessor {
 		}
 		return true;
 	}
-
 
 	function containsAllLogicalChars($to_find) {
 		return $this->containsLogicalChars($to_find);
@@ -343,26 +340,24 @@ class wordProcessor {
 		return $this->reverse() == $word_2;
 	}
 
-	function getWordStrength($language)
-	{
+	function getWordStrength() {
 		$len = $this->getLength();
 
-		if ($language == "English")
-			return $len;
+		// non-Telugu word, return the length as strength
+        if(!isTelugu($this->getCodePoints()[0][0])) return $len;
 
 		$strength = 1;
 		foreach ($this->getCodePoints() as $char)
 			$strength = ($strength > count($char) ? $strength : count($char));
 
 		return $strength;
-
 	}
 
-	function getWordWeight($language) {
+	function getWordWeight() {
 		$len = $this->getLength();
 
-		if ($language == "English")
-			return $len;
+		// non-Telugu
+        if(!isTelugu($this->getCodePoints()[0][0])) return $len;
 
 		$weight = 0;
 		foreach($this->getCodePoints() as $char)
@@ -371,11 +366,461 @@ class wordProcessor {
 		return $weight;
 	}
 
-	// Level is always subjective and requires user/admin intervention
-	// For now, Level = Strength
-	function getWordLevel($language) {
-		return $this->getWordStrength($language);
+	function isCharConsonant($hexcode){
+		$retVal = false;
+		$englishVowels = array("041","045","049","04f","055");
+	
+		$TeluguVstart = hexdec("0x0C05");
+		$TeluguVend = hexdec("0x0C14");
+	
+		$HindiVstart = hexdec("0x0904");
+		$HindiVend = hexdec("0x0914");
+	
+		$GujaratiVstart = hexdec("0x0A85");
+		$GujaratiVend = hexdec("0x0A94");
+	
+		$MalayalamVstart = hexdec("0x0D05");
+		$MalayalamVend = hexdec("0x0D14");
+	
+	
+		switch($this->language){
+	
+			case "English":
+				if(!in_array($hexcode,$englishVowels)){
+					$retVal = true;
+				}
+				break;
+	
+			case "Telugu":
+				$TeluguChar = hexdec($hexcode);
+				if($TeluguChar < $TeluguVstart && $TeluguChar > $TeluguVend){
+					$retVal = true;
+				}
+				break;
+	
+			case "Hindi":
+				$HindiChar = hexdec($hexcode);
+				if($HindiChar < $HindiVstart && $HindiChar > $HindiVend){
+					$retVal = true;
+				}
+				break;
+	
+			case "Gujarati":
+				$GujaratiChar = hexdec($hexcode);
+				if($GujaratiChar < $GujaratiVstart && $GujaratiChar > $GujaratiVend){
+					$retVal = true;
+				}
+			break;
+			case "Malayalam":
+				$MalayalamChar = hexdec($hexcode);
+				if($MalayalamChar < $MalayalamVstart && $MalayalamChar > $MalayalamVend){
+					$retVal = true;
+				}
+			break;
+	
+	
+		}
+		return $retVal;
 	}
 
+	function isCharVowel($hexcode){
+		$retVal = false;
+		$englishVowels = array("041","045","049","04f","055");
+	
+		$TeluguVstart = hexdec("0x0C05");
+		$TeluguVend = hexdec("0x0C14");
+	
+		$HindiVstart = hexdec("0x0904");
+		$HindiVend = hexdec("0x0914");
+	
+		$GujaratiVstart = hexdec("0x0A85");
+		$GujaratiVend = hexdec("0x0A94");
+	
+		$MalayalamVstart = hexdec("0x0D05");
+		$MalayalamVend = hexdec("0x0D14");
+	
+		switch($this->language){
+			case "English":
+				if(in_array($hexcode,$englishVowels)){
+					$retVal = true;
+				}
+				break;
+	
+			case "Telugu":
+				$TeluguChar = hexdec($hexcode);
+				if($TeluguChar >= $TeluguVstart && $TeluguChar <= $TeluguVend){
+					$retVal = true;
+				}
+				break;
+			case "Hindi":
+				$HindiChar = hexdec($hexcode);
+				if($HindiChar >= $HindiVstart && $HindiChar <= $HindiVend){
+					$retVal = true;
+				}
+				break;
+			case "Gujarati":
+				$GujaratiChar = hexdec($hexcode);
+				if($GujaratiChar >= $GujaratiVstart && $GujaratiChar <= $GujaratiVend){
+					$retVal = true;
+				}
+				break;
+			case "Malayalam":
+				$MalayalamChar = hexdec($hexcode);
+				if($MalayalamChar >= $MalayalamVstart && $MalayalamChar <= $MalayalamVend){
+					$retVal = true;
+				}
+				break;
+		}
+		return $retVal;
+	}
+
+	function parseList($data) {
+		//gets word list, creates array of words from it
+		//or return false if impossible
+		$data['generate_board'] = TRUE;
+		//Check to see if word will fit
+		foreach($data['char_bank'] as $wordIndexArray) {
+			echo "\n";
+			$processor = new wordProcessor($wordIndexArray, $this->language);
+			$wordIndex = $processor->parseToLogicalChars($wordIndexArray, $this->language);
+		}
+		
+		return $data;
+	} // end parseList
+
+	// add extra letters to wordFind board //
+	function addFoils($data){
+
+		// filler character types
+		$fillerChars = $data['filler_char_types'];
+		$any = [];
+		$vowels = [];
+		$constants = [];
+		$vowelMixers = [];
+		$singleConstantBlends = [];
+		$doubleConstantBlends = [];
+		$tripleConstantBlends = [];
+		$constantBlendsAndVowels = [];
+		
+		// remove double instances of letters
+		$inputLetters =  call_user_func_array('array_merge', $data['char_bank']);
+		$rawInputLetters = [];
+		foreach($inputLetters as $letter){
+			if(!in_array($letter, $rawInputLetters)){
+				array_push($rawInputLetters, $letter);
+			}
+		}
+		$inputLetters = $rawInputLetters;
+
+		//add random dummy characters to board
+		$language = $data['language'];
+		global $board;
+
+		// live version, uncomment for live site
+		//$myfile = fopen("/home2/icsbinco/public_html/indic-wp/telugu_seed.txt", "r") or die("Unable to open file!");
+		// local version, comment out for live site
+		$myfile = fopen("indic-wp/telugu_seed.txt", "r") or die("Unable to open file!");
+
+		$lines = [];
+		$word = [];
+		while (!feof($myfile)){
+			$line = fgets($myfile);
+			$lines[] = $line;
+		}
+
+		foreach($lines as $w){
+			$word = explode(" ",trim($w));
+			if(in_array("CONSONANTS", $word)){
+				array_push($constants, $word[1]);
+			} elseif(in_array("VOWELS", $word)){
+				array_push($vowels, $word[1]);
+			} elseif(in_array("VOWELMIXERS", $word)){
+				array_push($vowelMixers, $word[1]);
+			} elseif(in_array("SINGLECONSONANTBLENDS", $word)){
+				array_push($singleConstantBlends, $word[1]);
+			} elseif(in_array("DOUBLECONSONANTBLENDS", $word)){
+				array_push($doubleConstantBlends, $word[1]);
+			} elseif(in_array("TRIPLECONSONANTBLENDS", $word)){
+				array_push($tripleConstantBlends, $word[1]);
+			} elseif(in_array("CONSONANTBLENDSANDVOWELS", $word)){
+				array_push($constantBlendsAndVowels, $word[1]);
+			}
+		}
+
+		// get N random chars back from each fillerCharType
+		$n = 15;
+		shuffle($constants);
+		shuffle($vowels);
+		shuffle($vowelMixers);
+		shuffle($singleConstantBlends);
+		shuffle($doubleConstantBlends);
+		shuffle($tripleConstantBlends);
+		shuffle($constantBlendsAndVowels);
+		$any = array_merge(array_slice($constants, 0, $n),
+			array_slice($vowels, 0, $n), 
+			array_slice($vowelMixers, 0, $n), 
+			array_slice($singleConstantBlends, 0, $n), 
+			array_slice($doubleConstantBlends, 0, $n), 
+			array_slice($tripleConstantBlends, 0, $n), 
+			array_slice($constantBlendsAndVowels, 0, $n)
+		);
+
+		fclose($myfile);
+
+		switch($language){
+			case "English":
+				for($row = 0; $row < $data["height"]; $row++){
+					for($col = 0; $col < $data["width"]; $col++){
+						if($board[$row][$col] == "."){
+							$validChar = false;
+							while(!$validChar){
+								$english_char = "";
+								$startHex = "0x0041";
+								$endHex = "0x005A";
+								$num = rand(hexdec($startHex), hexdec($endHex));
+								$hexcode = dechex($num);
+								if($hexcode == 0x004F){
+									continue;
+								}
+								
+								if($fillerChars == "Consonants"){
+									if(isCharVowel($hexcode, $language)){
+										continue;
+									}
+									$english_char .= sprintf("\\u%'04s", dechex($num));
+									if(json_decode('"' . $english_char . '"') == "O"){
+										continue;
+									}
+									$board[$row][$col] = json_decode('"' . $english_char . '"');
+									$validChar = true;
+								} elseif($fillerChars == "Vowels"){
+									if(isCharConsonant($hexcode,$language)){
+										continue;
+									}
+									$english_char .= sprintf("\\u%'04s", dechex($num));
+									$board[$row][$col] = json_decode('"' . $english_char . '"');
+									$validChar = true;
+								} elseif($fillerChars == "LFIW"){
+									$k = array_rand($inputLetters);
+									$english_char .= $inputLetters[$k];
+									$board[$row][$col] = $english_char;
+									$validChar = true;
+								} else {
+									$english_char .= sprintf("\\u%'04s", dechex($num));
+									$board[$row][$col] = json_decode('"' . $english_char . '"');
+									$validChar = true;
+								}
+							}
+						} // end if
+					} // end col for loop
+				} // end row for loop
+				break;
+
+			case "Telugu":
+				for($row = 0; $row < $data["height"]; $row++){
+					for($col = 0; $col < $data["width"]; $col++){
+						if($board[$row][$col] == "."){
+							//Make sure the character is valid
+							$validChar = false;
+							while(!$validChar){
+								$telugu_char = "";
+								$startHex = "0x0c05";
+								$endHex = "0x0c39";
+								$num = rand(hexdec($startHex), hexdec($endHex));
+								$hexcode = dechex($num);
+
+								if(is_blank_Telugu($hexcode)){
+									continue;
+								} elseif($fillerChars == "Consonants"){
+									$k = array_rand($constants);
+									$telugu_char .= $constants[$k];
+									$board[$row][$col] = $telugu_char;
+									$validChar = true;
+								} elseif($fillerChars == "Vowels"){
+									$k = array_rand($vowels);
+									$telugu_char .= $vowels[$k];
+									$board[$row][$col] = $telugu_char;
+									$validChar = true;
+								} elseif($fillerChars == "SCB"){
+									$k = array_rand($singleConstantBlends);
+									$telugu_char .= $singleConstantBlends[$k];
+									$board[$row][$col] = "  " . $telugu_char . "  ";
+									$validChar = true;
+								} elseif($fillerChars == "DCB"){
+									$k = array_rand($doubleConstantBlends);
+									$telugu_char .= $doubleConstantBlends[$k];
+									$board[$row][$col] = "  " . $telugu_char . "  ";
+									$validChar = true;
+								} elseif($fillerChars == "TCB"){
+									$k = array_rand($tripleConstantBlends);
+									$telugu_char .= $tripleConstantBlends[$k];
+									$board[$row][$col] = "  " . $telugu_char . "  ";
+									$validChar = true;
+								} elseif($fillerChars == "CDV"){
+									$k = array_rand($constantBlendsAndVowels);
+									$telugu_char .= $constantBlendsAndVowels[$k];
+									$board[$row][$col] = "  " . $telugu_char . "  ";
+									$validChar = true;
+								} elseif($fillerChars == "LFIW"){
+									$k = array_rand($inputLetters);
+									$telugu_char .= $inputLetters[$k];
+									$board[$row][$col] = $telugu_char;
+									$validChar = true;
+								} else {
+									$k = array_rand($any);
+									$telugu_char .= $any[$k];
+									$board[$row][$col] = "  " . $telugu_char . "  ";
+									$validChar = true;
+								}
+							}
+						} // end if
+					} // end col for loop
+				} // end row for loop
+				break;
+
+			case "Hindi":
+				for ($row = 0; $row < $data["height"]; $row++){
+					for ($col = 0; $col < $data["width"]; $col++){
+						if ($board[$row][$col] == "."){
+							//Make sure the character is valid
+							$validChar = false;
+							while(!$validChar){
+								$hindi_char = "";
+								$startHex = "0x0904";
+								$endHex = "0x0939";
+								$num = rand(hexdec($startHex), hexdec($endHex));
+								$hexcode = dechex($num);
+
+								if($fillerChars == "Consonants"){
+									if(isCharVowel($hexcode,$language)){
+										continue;
+									}
+									$hindi_char .= sprintf("\\u%'04s", dechex($num));
+									$board[$row][$col] = json_decode('"' . $hindi_char . '"');
+									$validChar = true;
+								} elseif($fillerChars == "Vowels"){
+									if(isCharConsonant($hexcode,$language)){
+										continue;
+									}
+									$hindi_char .= sprintf("\\u%'04s", dechex($num));
+									$board[$row][$col] = json_decode('"' . $hindi_char . '"');
+									$validChar = true;
+								} elseif($fillerChars == "LFIW"){
+									$k = array_rand($inputLetters);
+									$hindi_char .= $inputLetters[$k];
+									$board[$row][$col] = $hindi_char;
+									$validChar = true;
+								} else {
+									$hindi_char .= sprintf("\\u%'04s", dechex($num));
+									$board[$row][$col] = json_decode('"' . $hindi_char . '"');
+									$validChar = true;
+								}
+							}
+						} // end if
+					} // end col for loop
+				} // end row for loop
+				break;
+
+			case "Gujarati":
+				for ($row = 0; $row < $data["height"]; $row++){
+					for ($col = 0; $col < $data["width"]; $col++){
+						if ($board[$row][$col] == "."){
+							$validChar = false;
+							while(!$validChar){
+								$gujarati_char = "";
+								$startHex = "0x0a81";
+								$endHex = "0x0acc";
+								$num = rand(hexdec($startHex), hexdec($endHex));
+								$hexcode = dechex($num);
+								$number = (20 * $row) + $col;
+								if(is_blank_Gujarati($hexcode)){
+									continue;
+								} elseif($fillerChars == "Consonants"){
+									if(isCharVowel($hexcode,$language)){
+										continue;
+									}
+									$gujarati_char  .= sprintf("\\u%'04s", dechex($num));
+									$board[$row][$col] = json_decode('"' . $gujarati_char  . '"');
+									$validChar = true;
+								} elseif($fillerChars == "Vowels"){
+									if(isCharConsonant($hexcode,$language)){
+										continue;
+									}
+									$gujarati_char  .= sprintf("\\u%'04s", dechex($num));
+									$board[$row][$col] = json_decode('"' . $gujarati_char  . '"');
+									$validChar = true;
+								} elseif($fillerChars == "LFIW"){
+									$k = array_rand($inputLetters);
+									$gujarati_char .= $inputLetters[$k];
+									$board[$row][$col] = $gujarati_char;
+									$validChar = true;
+								} else {
+									$gujarati_char  .= sprintf("\\u%'04s", dechex($num));
+								$board[$row][$col] = json_decode('"' . $gujarati_char  . '"');
+								$validChar = true;
+								}
+							}
+						} // end if
+					} // end col for loop
+				} // end row for loop
+				break;
+
+			case "Malayalam":
+				for ($row = 0; $row < $data["height"]; $row++){
+					for($col = 0; $col < $data["width"]; $col++){
+						if($board[$row][$col] == "."){
+							$validChar = false;
+							while(!$validChar){
+								$malay_char = "";
+								$startHex = "0x0d01";
+								$endHex = "0x0d3a";
+								$num = rand(hexdec($startHex), hexdec($endHex));
+								$hexcode = dechex($num);
+								if(is_blank_Malayalam($hexcode)){
+									continue;
+								} elseif($fillerChars == "Consonants"){
+									if(isCharVowel($hexcode,$language)){
+										continue;
+									}
+									$malay_char .= sprintf("\\u%'04s", dechex($num));
+									$board[$row][$col] = json_decode('"' . $malay_char. '"');
+									$validChar = true;
+								} elseif($fillerChars == "Vowels"){
+									if(isCharConsonant($hexcode,$language)){
+										continue;
+									}
+									$malay_char .= sprintf("\\u%'04s", dechex($num));
+									$board[$row][$col] = json_decode('"' . $malay_char. '"');
+									$validChar = true;
+								} elseif($fillerChars == "LFIW"){
+									$k = array_rand($inputLetters);
+									$malay_char .= $inputLetters[$k];
+									$board[$row][$col] = $malay_char;
+									$validChar = true;
+								} else {
+									$malay_char .= sprintf("\\u%'04s", dechex($num));
+									$board[$row][$col] = json_decode('"' . $malay_char. '"');
+									$validChar = true;
+								}
+							}
+						} // end if
+					} // end col for loop
+				} // end row for loop
+				break;
+		}
+	} // end addFoils
+
+	// Level is always subjective and requires user/admin intervention
+	// For now, Level = Strength
+	function getWordLevel() {
+		return $this->getWordStrength($this->language);
+	}
+
+	function getLengthNoSpaces($word) {
+		return count($this->getLogicalChars()) - substr_count($word, ' ');
+	}
+
+	function getLengthNoSpacesNoCommas($word) {
+		return count($this->getLogicalChars()) - substr_count($word, ' ') - substr_count($word, ',');
+	}
 }
-?>
