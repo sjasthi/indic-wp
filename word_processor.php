@@ -32,14 +32,11 @@ class wordProcessor {
 	// That may work for English, but not for other multi-byte languages
 	protected $code_points = array();
 
-	// constructor
-    function wordProcessor($word) {
-        if(is_string($word)) return $this->setWord($word);
-    }
+	protected $language;
 
-	// old style constructor is deprecated starting PHP 7.0
-	// So, going with explicit construct function
-    function __construct($word) {
+	// constructor
+    function __construct($word, $language) {
+		$this->language = $language;
         if(is_string($word)) return $this->setWord($word);
     }
 
@@ -48,7 +45,7 @@ class wordProcessor {
 	function setWord($a_word) {
 		if( !is_string($a_word) ) return;
 		$this->word = $a_word;
-		return $this->word;
+		return $this->parseToLogicalChars($this->word);
 	}
 
 	/*// all mutators need to call this, since it keeps all three properties in sync
@@ -59,18 +56,18 @@ class wordProcessor {
 	}*/
 
 	// all mutators need to call this, since it keeps all three properties in sync
-	function parseToLogicalChars($word, $language) {
-		if ($language == "Hindi"){
+	function parseToLogicalChars($word) {
+		if ($this->language == "Hindi") {
 			include_once 'hindi_parser.php';
 			$this->code_points = parseToCodePoints($word);
 			$this->logical_chars = parseToLogicalCharacters($this->getCodePoints());
 			return $this->getLogicalChars();
-		} elseif ($language == "Gujarati") {
+		} elseif ($this->language == "Gujarati") {
 			include_once 'gujarati_parser.php';
 			$this->code_points = parseToCodePoints($word);
 			$this->logical_chars = parseToLogicalCharacters($this->getCodePoints());
 			return $this->getLogicalChars();
-		} elseif ($language == "Malayalam") {
+		} elseif ($this->language == "Malayalam") {
 			include_once 'malayalam_parser.php';
 			$this->code_points = parseToCodePoints($word);
 			$this->logical_chars = parseToLogicalCharacters($this->getCodePoints());
@@ -343,7 +340,7 @@ class wordProcessor {
 		return $this->reverse() == $word_2;
 	}
 
-	function getWordStrength($language) {
+	function getWordStrength() {
 		$len = $this->getLength();
 
 		// non-Telugu word, return the length as strength
@@ -369,7 +366,7 @@ class wordProcessor {
 		return $weight;
 	}
 
-	function isCharConsonant($hexcode, $language){
+	function isCharConsonant($hexcode){
 		$retVal = false;
 		$englishVowels = array("041","045","049","04f","055");
 	
@@ -386,7 +383,7 @@ class wordProcessor {
 		$MalayalamVend = hexdec("0x0D14");
 	
 	
-		switch($language){
+		switch($this->language){
 	
 			case "English":
 				if(!in_array($hexcode,$englishVowels)){
@@ -426,7 +423,7 @@ class wordProcessor {
 		return $retVal;
 	}
 
-	function isCharVowel($hexcode, $language){
+	function isCharVowel($hexcode){
 		$retVal = false;
 		$englishVowels = array("041","045","049","04f","055");
 	
@@ -442,7 +439,7 @@ class wordProcessor {
 		$MalayalamVstart = hexdec("0x0D05");
 		$MalayalamVend = hexdec("0x0D14");
 	
-		switch($language){
+		switch($this->language){
 			case "English":
 				if(in_array($hexcode,$englishVowels)){
 					$retVal = true;
@@ -477,15 +474,15 @@ class wordProcessor {
 		return $retVal;
 	}
 
-	function parseList($data){
+	function parseList($data) {
 		//gets word list, creates array of words from it
 		//or return false if impossible
 		$data['generate_board'] = TRUE;
 		//Check to see if word will fit
 		foreach($data['char_bank'] as $wordIndexArray) {
 			echo "\n";
-			$processor = new wordProcessor($wordIndexArray);
-			$wordIndex = $processor->parseToLogicalChars($wordIndexArray,$data['language']);
+			$processor = new wordProcessor($wordIndexArray, $this->language);
+			$wordIndex = $processor->parseToLogicalChars($wordIndexArray, $this->language);
 		}
 		
 		return $data;
@@ -518,6 +515,10 @@ class wordProcessor {
 		//add random dummy characters to board
 		$language = $data['language'];
 		global $board;
+
+		// live version, uncomment for live site
+		//$myfile = fopen("/home2/icsbinco/public_html/indic-wp/telugu_seed.txt", "r") or die("Unable to open file!");
+		// local version, comment out for live site
 		$myfile = fopen("indic-wp/telugu_seed.txt", "r") or die("Unable to open file!");
 
 		$lines = [];
@@ -811,7 +812,15 @@ class wordProcessor {
 
 	// Level is always subjective and requires user/admin intervention
 	// For now, Level = Strength
-	function getWordLevel($language) {
-		return $this->getWordStrength($language);
+	function getWordLevel() {
+		return $this->getWordStrength($this->language);
+	}
+
+	function getLengthNoSpaces($word) {
+		return count($this->getLogicalChars()) - substr_count($word, ' ');
+	}
+
+	function getLengthNoSpacesNoCommas($word) {
+		return count($this->getLogicalChars()) - substr_count($word, ' ') - substr_count($word, ',');
 	}
 }
