@@ -1,15 +1,15 @@
-<?php 
+<?php
 
 require("word_processor.php");
 
 $language = "Telugu";
 $words = array('అమ్మ', 'అరక', 'స్త్రీ', 'ఆస్ట్రేలియా', 'ఆనందమకరందము');
 
-// $language = "English";
+//$language = "English";
 //$words = array('mother', 'tool', 'cow', 'australia', 'happiness');
 
 
-foreach($words as $x) {
+foreach ($words as $x) {
 
     // create a word processor
     $x_wp = new wordProcessor($x, $language);
@@ -19,7 +19,7 @@ foreach($words as $x) {
     echo "<br> given word = ", $x;
     echo "<br> logical length = ", $x_wp->getLength();
     echo "<br> code point length = ", $x_wp->getCodePointLength();
-    
+
     echo "<br> word weight = ", $x_wp->getWordWeight($language);
     echo "<br> word strength = ", $x_wp->getWordStrength($language);
     echo "<br> word level = ", $x_wp->getWordLevel($language);
@@ -28,8 +28,4 @@ foreach($words as $x) {
     print_r($x_wp->getLogicalChars());
     echo "<br> code points = ";
     print_r($x_wp->getCodePoints());
-    
 }
-
-
-?>
