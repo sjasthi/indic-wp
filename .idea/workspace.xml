@@ -2,8 +2,6 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="5a9dd8c9-7cef-4875-a252-998de026ca65" name="Default" comment="">
-      <change afterPath="$PROJECT_DIR$/.idea/vcs.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -135,7 +133,8 @@
       <updated>1461125393685</updated>
       <workItem from="1461125395595" duration="11832000" />
       <workItem from="1461174551763" duration="6516000" />
-      <workItem from="1623181200820" duration="2488000" />
+      <workItem from="1623181200820" duration="3366000" />
+      <workItem from="1623187656824" duration="127000" />
     </task>
     <servers />
   </component>
@@ -179,6 +178,7 @@
         </entry>
       </map>
     </option>
+    <option name="oldMeFiltersMigrated" value="true" />
   </component>
   <component name="Vcs.Log.UiProperties">
     <option name="RECENTLY_FILTERED_USER_GROUPS">
