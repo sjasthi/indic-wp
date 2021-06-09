@@ -1,4 +1,7 @@
 /.idea/
 docs/~$indic-wp_enhancements.pptx
-/restClient/
-/rest/
+restClient/
+rest/
+api/getlength.php
+restClient/index.php
+restClient/submit.php
