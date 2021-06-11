@@ -13,7 +13,7 @@ if (!empty($string) && !empty($language)) {
     //convert string to an array (randomize() only takes arrays).
     $stringArray = str_split($string);
     $randomizedString = $processor->randomize($stringArray);
-    response(200, "Length Calculated", $string, $language, $randomizedString);
+    response(200, "String Randomized", $string, $language, $randomizedString);
 }
 else if (isset($string) && empty($string)) {
     response(400, "Invalid or Empty Word", NULL, NULL, NULL);

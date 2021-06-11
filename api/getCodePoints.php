@@ -1,30 +1,30 @@
-<?php
+<?php 
 
 require("../word_processor.php");
 
-if (isset($_GET['string']) && isset($_GET['language'])) {
+if(isset($_GET['string']) && isset($_GET['language'])) {
     $string = $_GET['string'];
     $language = $_GET['language'];
 }
 
-if (!empty($string) && !empty($language)) {
+if(!empty($string) && !empty($language)) {
     header('Content-type:application/json;charset=utf-8');
     $processor = new wordProcessor($string, $language);
-    $palindromeBool = $processor->isPalindrome();
-    response(200, "Palindrome Assessed", $string, $language, $palindromeBool);
+    $codePoints = $processor->getCodePoints();
+
+    response(200, "Code Points Calculated", $string, $language, $codePoints);
 }
-else if (isset($string) && empty($string)) {
+else if(isset($string) && empty($string)){
     response(400, "Invalid or Empty Word", NULL, NULL, NULL);
 }
-else if (isset($language) && empty($language)) {
+else if(isset($language) && empty($language)){
     response(400, "Invalid or Empty Language", NULL, NULL, NULL);
 }
 else {
     response(400, "Invalid Request", NULL, NULL, NULL);
 }
 
-function response($responseCode, $message, $string, $language, $data)
-{
+function response($responseCode, $message, $string, $language, $data) {
     http_response_code($responseCode);
     $response = array("response_code" => $responseCode, "message" => $message, "string" => $string, "language" => $language, "data" => $data);
     $json = json_encode($response);

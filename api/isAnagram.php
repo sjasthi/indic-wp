@@ -13,7 +13,7 @@ if (!empty($string) && !empty($language)) {
     header('Content-type:application/json;charset=utf-8');
     $processor = new wordProcessor($string, $language);
     $anagrams = $processor->isAnagram($string);
-    response(200, "Length Calculated", $string, $language, $anagrams);
+    response(200, "Anagram Assessed", $string, $language, $anagrams);
 }
 else if (isset($string) && empty($string)) {
     response(400, "Invalid or Empty Word", NULL, NULL, NULL);

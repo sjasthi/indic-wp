@@ -11,7 +11,7 @@ if (!empty($string) && !empty($language)) {
     header('Content-type:application/json;charset=utf-8');
     $processor = new wordProcessor($string, $language);
     $reversedString = $processor->reverse();
-    response(200, "Length Calculated", $string, $language, $reversedString);
+    response(200, "String Reversed", $string, $language, $reversedString);
 }
 else if (isset($string) && empty($string)) {
     response(400, "Invalid or Empty Word", NULL, NULL, NULL);

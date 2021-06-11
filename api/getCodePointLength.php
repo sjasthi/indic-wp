@@ -11,7 +11,7 @@ if (!empty($string) && !empty($language)) {
     header('Content-type:application/json;charset=utf-8');
     $processor = new wordProcessor($string, $language);
     $codePoints = $processor->getCodePointLength();
-    response(200, "Length Calculated", $string, $language, $codePoints);
+    response(200, "Code Point Length Calculated", $string, $language, $codePoints);
 }
 else if (isset($string) && empty($string)) {
     response(400, "Invalid or Empty Word", NULL, NULL, NULL);
