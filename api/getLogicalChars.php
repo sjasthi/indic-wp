@@ -8,7 +8,6 @@ if(isset($_GET['string']) && isset($_GET['language'])) {
 }
 
 if(!empty($string) && !empty($language)) {
-    header('Content-type:application/json;charset=utf-8');
     $processor = new wordProcessor($string, $language);
     $logicalChars = $processor->getLogicalChars();
 
@@ -25,6 +24,12 @@ else {
 }
 
 function response($responseCode, $message, $string, $language, $data) {
+    // Locally cache results for two hours
+    header('Cache-Control: max-age=7200');
+
+    // JSON Header
+    header('Content-type:application/json;charset=utf-8');
+
     http_response_code($responseCode);
     $response = array("response_code" => $responseCode, "message" => $message, "string" => $string, "language" => $language, "data" => $data);
     $json = json_encode($response);
