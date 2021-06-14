@@ -11,10 +11,11 @@
 <body>
     <?php
     if (isset($_POST['submit'])) {
-        $name = $_POST['name'];
+        $word = $_POST['word'];
+        $language = $_POST['language'];
 
         //Resourse Address        
-        $url = "https://www.nguyenanthony.com/rest/$name";
+        $url = "http://localhost/indic-wp/api/isPalindrome.php?string=$word&language=$language";
 
         //Send request to Resourse        
         $client = curl_init($url);
@@ -27,11 +28,14 @@
         //echo $response;
 
         //decode        
-        $result = json_decode($response);
+        $result = json_decode(preg_replace('/[\x00-\x1F\x80-\xFF]/', '', $response), true);
+        // var_dump($result);
 
-        $data = $result->data;
+        $data = $result['data'] ? 'true' : 'false';
+        //$data = implode($result['data']);
 
-        echo "The price of the book " . $name . " is " . $data;
+        echo "The word is " . $word;
+        echo "<br>Is the word a palindrome? " . $data;
     }
     ?>
 </body>

@@ -5,3 +5,4 @@ rest/
 api/getlength.php
 restClient/index.php
 restClient/submit.php
+js/runTests.js
