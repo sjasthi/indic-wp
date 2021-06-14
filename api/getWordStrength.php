@@ -1,21 +1,22 @@
-<?php
+<?php 
 
 require("../word_processor.php");
 
-if (isset($_GET['string']) && isset($_GET['language'])) {
+if(isset($_GET['string']) && isset($_GET['language'])) {
     $string = $_GET['string'];
     $language = $_GET['language'];
 }
 
-if (!empty($string) && !empty($language)) {
+if(!empty($string) && !empty($language)) {
     $processor = new wordProcessor($string, $language);
-    $codePoints = $processor->getCodePointLength();
-    response(200, "Code Point Length Calculated", $string, $language, $codePoints);
+    $wordStrength = $processor->getWordStrength();
+
+    response(200, "Word Strength Calculated", $string, $language, $wordStrength);
 }
-else if (isset($string) && empty($string)) {
+else if(isset($string) && empty($string)){
     response(400, "Invalid or Empty Word", NULL, NULL, NULL);
 }
-else if (isset($language) && empty($language)) {
+else if(isset($language) && empty($language)){
     response(400, "Invalid or Empty Language", NULL, NULL, NULL);
 }
 else {

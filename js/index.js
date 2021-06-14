@@ -52,6 +52,54 @@ function updateInputs() {
 }
 
 
+//Grabs all method names in the table
+var methods = document.querySelectorAll("th.methodCell");
+//Grabs the form
+const form = document.querySelector("#form");
+
+//Adds event listener on form submit
+form.addEventListener("submit", async (e) => {
+    e.preventDefault();
+    runTests();
+
+})
+
+/*Async function to run the tests*/
+async function runTests() {
+    //Grabs the name of each method in the table and does callAPI function
+    methods.forEach(function (method) {
+        const methodName = method.innerHTML;
+        callAPI(methodName);
+    });
+}
+
+/*Takes methodName as argument and does API call to retrieve the appropriate */
+async function callAPI(methodName) {
+    var universalInput = document.getElementById('universalInput').value;
+    var languageInput = document.getElementById("languageInput").value;
+    var expectedResult = document.getElementById(methodName + "Expected").innerHTML;
+    await fetch('http://localhost/indic-wp/api/' + methodName + '.php?string=' + universalInput + '&language=' + languageInput)
+        .then(response => response.text())
+        .then(data => result = data);
+    newResult = remove_non_ascii(result);
+    const jsonObj = JSON.parse(newResult);
+
+    var jsonElement = document.getElementById(methodName + "JSON");
+    var actualCell = document.getElementById(methodName + "Actual");
+    var passFail = document.getElementById(methodName + "PassFail");
+    jsonElement.innerHTML = result;
+    actualCell.innerHTML = jsonObj.data;
+    if (expectedResult == jsonObj.data) {
+        passFail.innerHTML = "PASS";
+    }
+    else {
+        passFail.innerHTML = "FAIL";
+    }
+
+}
+
+
+
 
 function setChangeListener(td, listener) {
 
@@ -61,6 +109,16 @@ function setChangeListener(td, listener) {
     td.addEventListener("copy", listener);
     td.addEventListener("cut", listener);
 
+}
+
+function remove_non_ascii(str) {
+
+    if ((str === null) || (str === ''))
+        return false;
+    else
+        str = str.toString();
+
+    return str.replace(/[^\x20-\x7E]/g, '');
 }
 
 var tds = document.querySelectorAll("td.inputCell");

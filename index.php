@@ -11,9 +11,21 @@
     <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js" integrity="sha384-9/reFTGAW83EW2RDu2S0VKaIzap3H66lZH81PoYlFhbGU+6BZp6G7niu735Sk7lN" crossorigin="anonymous"></script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.0/dist/js/bootstrap.min.js" integrity="sha384-+YQ4JLhjyBLPDQt//I+STsc9iw4uQqACwlvpslubQzn4u2UU2UFM80nGisd026JF" crossorigin="anonymous"></script>
     <link rel="stylesheet" href="css/style.css">
-    <script src="js/index.js"></script>
+    <!-- <script src="js/index.js"></script> -->
 
 </head>
+
+<?php
+
+
+
+
+// $wordLength = 'This';
+// $someJson = '';
+// if(isset($_GET['expectedLength'])) {
+//     $someJson = 'SOMEJOSN';
+// }
+?>
 <nav id="navigation" class="navbar navbar-expand-lg navbar-dark bg-dark">
     <a class="navbar-brand" href="index.php">Home</a>
     <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
@@ -46,115 +58,165 @@
 </nav>
 
 <body>
-    <div class="row" style="padding: 15px;">
-        <div class="col text-center">
-            <label for="universalInput">Universal Input: </label>
-            <input type="text" class="m-1" name="universalInput" id="universalInput">
-            <input type="button" class="btn-secondary m-1" value="Update Inputs" onclick="updateInputs()">
-            <input type="submit" class="btn btn-primary btn-lg btn-block" value="Run Tests">
+    <form name="form" id="form">
+        <div class="row" style="padding: 15px;">
+            <div class="col text-center">
+                <label for="universalInput">Universal Input: </label>
+                <input type="text" class="m-1" name="word" id="universalInput">
+                <label for="universalInput">language: </label>
+                <input type="text" class="m-1" name="language" id="languageInput">
+                <input type="button" class="btn-secondary m-1" value="Update Inputs" onclick="updateInputs()">
+
+                <input name="submit" type="submit" class="btn btn-primary btn-lg btn-block" value="Run Tests">
+
+            </div>
         </div>
-    </div>
-    <div class="row" style="padding: 20px;">
-        <div class="col" style="padding: 15px;">
-            <table id="testSuite" class="table table-dark table-striped">
-                <thead>
-                    <tr>
-                        <th scope="col" class="methodHeader">Method</th>
-                        <th scope="col">Input</th>
-                        <th scope="col">Expected Result</th>
-                        <th scope="col">Actual Result</th>
-                        <th scope="col">Pass/Fail</th>
-                        <th scope="col" class="jsonHeader">JSON Output</th>
-                    </tr>
-                </thead>
-                <tbody>
-                    <tr>
-                        <th scope="row">getLength()</th>
-                        <td class="inputCell"></td>
-                        <td class="expectedCell"></td>
-                        <td class="actualCell"></td>
-                        <td class="passFail"></td>
-                        <td class="jsonCell"></td>
-                    </tr>
-                    <tr>
-                        <th scope="row">getWordStrength()/getWordLevel()</th>
-                        <td class="inputCell"></td>
-                        <td class="expectedCell"></td>
-                        <td class="actualCell"></td>
-                        <td class="passFail"></td>
-                        <td class="jsonCell"></td>
-                    </tr>
-                    <tr>
-                        <th scope="row">getWordWeight()</th>
-                        <td class="inputCell"></td>
-                        <td class="expectedCell"></td>
-                        <td class="actualCell"></td>
-                        <td class="passFail"></td>
-                        <td class="jsonCell"></td>
-                    </tr>
-                    <tr>
-                        <th scope="row">getCodePoints()</th>
-                        <td class="inputCell"></td>
-                        <td class="expectedCell"></td>
-                        <td class="actualCell"></td>
-                        <td class="passFail"></td>
-                        <td class="jsonCell"></td>
-                    </tr>
-                    <tr>
-                        <th scope="row">getLogicalChars()</th>
-                        <td class="inputCell"></td>
-                        <td class="expectedCell"></td>
-                        <td class="actualCell"></td>
-                        <td class="passFail"></td>
-                        <td class="jsonCell"></td>
-                    </tr>
-                    <tr>
-                        <th scope="row">getCodePointLength()</th>
-                        <td class="inputCell"></td>
-                        <td class="expectedCell"></td>
-                        <td class="actualCell"></td>
-                        <td class="passFail"></td>
-                        <td class="jsonCell"></td>
-                    </tr>
-                    <tr>
-                        <th scope="row">isPalindrome()</th>
-                        <td class="inputCell"></td>
-                        <td class="expectedCell"></td>
-                        <td class="actualCell"></td>
-                        <td class="passFail"></td>
-                        <td class="jsonCell"></td>
-                    </tr>
-                    <tr>
-                        <th scope="row">reverse()</th>
-                        <td class="inputCell"></td>
-                        <td class="expectedCell"></td>
-                        <td class="actualCell"></td>
-                        <td class="passFail"></td>
-                        <td class="jsonCell"></td>
-                    </tr>
-                    <tr>
-                        <th scope="row">isAnagram()</th>
-                        <td class="inputCell"></td>
-                        <td class="expectedCell"></td>
-                        <td class="actualCell"></td>
-                        <td class="passFail"></td>
-                        <td class="jsonCell"></td>
-                    </tr>
-                    <tr>
-                        <th scope="row">randomize()</th>
-                        <td class="inputCell"></td>
-                        <td class="expectedCell"></td>
-                        <td class="actualCell"></td>
-                        <td class="passFail"></td>
-                        <td class="jsonCell"></td>
-                    </tr>
-                </tbody>
-            </table>
-        </div>
-    </div>
+        <div class="row" style="padding: 20px;">
+            <div class="col" style="padding: 15px;">
+                <table id="testSuite" class="table table-dark table-striped">
+                    <thead>
+                        <tr>
+                            <th scope="col" class="methodHeader">Method</th>
+                            <th scope="col">Input</th>
+                            <th scope="col">Expected Result</th>
+                            <th scope="col">Actual Result</th>
+                            <th scope="col">Pass/Fail</th>
+                            <th scope="col" class="jsonHeader">JSON Output</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <th scope="row" class="methodCell">getLength</th>
+                            <td class="inputCell" id="getLengthInput"></td>
+                            <td class="expectedCell" id="getLengthExpected"></td>
+                            <td class="actualCell" id="getLengthActual"></td>
+                            <td class="passFail" id="getLengthPassFail"></td>
+                            <td class="jsonCell" id="getLengthJSON"> </td>
 
 
+
+                        </tr>
+                        <tr>
+                            <th scope="row" class="methodCell">getWordStrength</th>
+                            <td class="inputCell" id="getWordStrengthInput"></td>
+                            <td class="expectedCell" id="getWordStrengthExpected"></td>
+                            <td class="actualCell" id="getWordStrengthActual"></td>
+                            <td class="passFail" id="getWordStrengthPassFail"></td>
+                            <td class="jsonCell" id="getWordStrengthJSON"></td>
+                        </tr>
+                        <tr>
+                            <th scope="row" class="methodCell">getWordWeight</th>
+                            <td class="inputCell" id="getWordWeightInput"></td>
+                            <td class="expectedCell" id="getWordWeightExpected"></td>
+                            <td class="actualCell" id="getWordWeightActual"></td>
+                            <td class="passFail" id="getWordWeightPassFail"></td>
+                            <td class=" jsonCell" id="getWordWeightJSON"></td>
+                        </tr>
+                        <tr>
+                            <th scope="row" class="methodCell">getCodePoints</th>
+                            <td class="inputCell" id="getCodePointsInput"></td>
+                            <td class="expectedCell" id="getCodePointsExpected"></td>
+                            <td class="actualCell" id="getCodePointsActual"></td>
+                            <td class="passFail" id="getCodePointsPassFail"></td>
+                            <td class=" jsonCell" id="getCodePointsJSON"></td>
+                        </tr>
+                        <tr>
+                            <th scope="row" class="methodCell">getLogicalChars</th>
+                            <td class="inputCell" id="getLogicalCharsInput"></td>
+                            <td class="expectedCell" id="getLogicalCharsExpected"></td>
+                            <td class="actualCell" id="getLogicalCharsActual"></td>
+                            <td class="passFail" id="getLogicalCharsPassFail"></td>
+                            <td class="jsonCell" id="getLogicalCharsJSON"></td>
+                        </tr>
+                        <tr>
+                            <th scope="row" class="methodCell">getCodePointLength</th>
+                            <td class="inputCell" id="getCodePointLengthInput"></td>
+                            <td class="expectedCell" id="getCodePointLengthExpected"></td>
+                            <td class="actualCell" id="getCodePointLengthActual"></td>
+                            <td class="passFail" id="getCodePointLengthPassFail"></td>
+                            <td class="jsonCell" id="getCodePointLengthJSON"></td>
+                        </tr>
+                        <tr>
+                            <th scope="row" class="methodCell">isPalindrome</th>
+                            <td class="inputCell" id="isPalindromeInput"></td>
+                            <td class="expectedCell" id="isPalindromeExpected"></td>
+                            <td class="actualCell" id="isPalindromeActual"></td>
+                            <td class="passFail" id="isPalindromePassFail"></td>
+                            <td class="jsonCell" id="isPalindromeJSON"></td>
+                        </tr>
+                        <tr>
+                            <th scope="row" class="methodCell">reverse</th>
+                            <td class="inputCell" id="reverseInput"></td>
+                            <td class="expectedCell" id="reverseExpected"></td>
+                            <td class="actualCell" id="reverseActual"></td>
+                            <td class="passFail" id="reversePassFail"></td>
+                            <td class="jsonCell" id="reverseJSON"></td>
+                        </tr>
+                        <tr>
+                            <th scope="row" class="methodCell">isAnagram</th>
+                            <td class="inputCell" id="isAnagramInput"></td>
+                            <td class="expectedCell" id="isAnagramExpected"></td>
+                            <td class="actualCell" id="isAnagramActual"></td>
+                            <td class="passFail" id="isAnagramPassFail"></td>
+                            <td class="jsonCell" id="isAnagramJSON"></td>
+                        </tr>
+                        <tr>
+                            <th scope="row" class="methodCell">randomize</th>
+                            <td class="inputCell" id="randomizeInput"></td>
+                            <td class="expectedCell" id="randomizeExpected"></td>
+                            <td class="actualCell" id="randomizeActual"></td>
+                            <td class="passFail" id="randomizePassFail"></td>
+                            <td class="jsonCell" id="randomizeJSON"></td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </form>
 </body>
+
+<?php
+
+
+// include("api/getlength.php");
+// $wordLength = $_POST['universalInput'] ?? "";
+// if(isset($_GET['expectedLength'])) {
+//     echo "is set";
+// }
+//     else
+//         echo 'NOT SET';
+
+// if(isset($_GET['expectedLength'])) {
+//     $someJson = 'this should be JSON';
+// }
+
+// $data = json_decode(file_get_contents('http://localhost/indic-wp/api/getLength.php?word=test&language=english'));
+
+// echo $data['word'], ' ' , $data['language'];
+
+// $wordLength = $_GET['expectedLength'] ?? "";
+// $universalWord = $_GET['universalInput'];
+// $testGetLength = new getlength();
+
+// $word = $_GET['universalInput'] ?? "";
+// $language = $_GET['language'] ?? "";
+
+// $ch = curl_init();
+// curl_setopt($ch, CURLOPT_URL,'http://localhost/indic-wp/api/getLength.php' );
+// curl_setopt($ch, CURLOPT_POST, 1);
+// curl_setopt($ch, CURLOPT_POSTFIELDS, 'word=test&language=english');
+// $result = curl_exec($ch);
+// echo $result;
+// curl_close($ch);
+
+// $response = file_get_contents('http://localhost/indic-wp/api/getlength.php?word=test&language=english');
+// $response = json_decode($response);
+// echo $response;
+// echo $wordLength;
+// echo $universalWord;
+// $tesWord = 'Hello';
+// echo $tesWord;
+?>
 
 <script>
     var docWidth = document.documentElement.offsetWidth;
@@ -167,6 +229,17 @@
             }
         }
     );
+
+    function updateInputs() {
+        var input = document.getElementById("universalInput").value;
+        var inputCells = document.getElementsByClassName("inputCell");
+        var i;
+        for (i = 0; i < inputCells.length; i++) {
+            inputCells[i].innerHTML = input;
+        }
+    }
 </script>
+<script src="js/index.js"></script>
+<!-- <script src="js/runTests.js"></script> -->
 
 </html>
