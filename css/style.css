@@ -1,0 +1,38 @@
+
+/*allows for the input cell to be written into*/
+.inputCell {
+    -webkit-user-modify: read-write;
+    -moz-user-modify: read-write;
+    user-modify: read-write;
+}
+
+table {
+    table-layout: fixed;
+} 
+
+tr,td{
+    line-height: 25px;
+    height: 20px;
+    min-height: 25px;
+}
+
+th.methodHeader {
+    width: 22%;
+}
+
+th {
+    width: 11%;
+}
+
+th.jsonHeader {
+    width: 30%;
+}
+
+.jsonCell {
+    overflow: auto; 
+    overflow-y: hidden;
+}
+
+.row {
+    margin: auto;
+}
