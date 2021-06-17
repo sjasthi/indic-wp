@@ -36,3 +36,11 @@ th.jsonHeader {
 .row {
     margin: auto;
 }
+
+.pass {
+    color: green;
+}
+
+.fail {
+    color: red;
+}
