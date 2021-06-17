@@ -12,7 +12,7 @@ if (isset($_GET['string']) && isset($_GET['language']) && isset($_GET['end'])) {
 if (!empty($string) && !empty($language) && !empty($start)) {
     $processor = new wordProcessor($string, $language);
     $startString = $processor->startsWith($start);
-    response(200, "String Reversed", $string, $language, $startString, $start);
+    response(200, "startsWith() Processed", $string, $language, $startString, $start);
 } else if (isset($string) && empty($string)) {
     response(400, "Invalid or Empty Word", NULL, NULL, NULL, NULL);
 } else if (isset($language) && empty($language)) {
