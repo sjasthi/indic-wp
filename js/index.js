@@ -51,9 +51,20 @@ function updateInputs() {
     }
 }
 
-
-//Grabs all method names in the table
 var methods = document.querySelectorAll("th.methodCell");
+
+$('#apiChoice').on('change', function (e) {
+    $('#apiTable .table-data').remove();
+    jQuery.get('getAPIs.php?apiChoice=' + $('#apiChoice').val()).done(function (data) {
+        $('#apiTable').append(data);
+        methods = document.querySelectorAll("th.methodCell");
+        if (document.getElementById("testForm").style.display == "none") {
+            document.getElementById("testForm").style.display = "block";
+            document.getElementById("testSuite").style.display = "table";
+        }
+    });
+});
+
 //Grabs the form
 const form = document.querySelector("#form");
 
@@ -75,10 +86,10 @@ async function runTests() {
 
 /*Takes methodName as argument and does API call to retrieve the appropriate */
 async function callAPI(methodName) {
-    var universalInput = document.getElementById('universalInput').value;
+    var cellInput = document.getElementById(methodName + 'Input').innerHTML;
     var languageInput = document.getElementById("languageInput").value;
     var expectedResult = document.getElementById(methodName + "Expected").innerHTML;
-    await fetch('http://localhost/indic-wp/api/' + methodName + '.php?string=' + universalInput + '&language=' + languageInput)
+    await fetch('http://localhost/indic-wp/api/' + methodName + '.php?string=' + cellInput + '&language=' + languageInput)
         .then(response => response.text())
         .then(data => result = data);
     newResult = remove_non_ascii(result);
@@ -130,3 +141,5 @@ tds.forEach(function (td) {
         console.log(event);
     });
 });
+
+

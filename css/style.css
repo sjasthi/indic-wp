@@ -1,6 +1,6 @@
 
 /*allows for the input cell to be written into*/
-.inputCell {
+.inputCell, .expectedCell {
     -webkit-user-modify: read-write;
     -moz-user-modify: read-write;
     user-modify: read-write;
@@ -14,6 +14,7 @@ tr,td{
     line-height: 25px;
     height: 20px;
     min-height: 25px;
+    word-wrap: break-word;
 }
 
 th.methodHeader {
