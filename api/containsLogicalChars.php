@@ -11,13 +11,13 @@ if (!empty($string) && !empty($language) && !empty($contains)) {
     $processor = new wordProcessor($string, $language);
     $array = str_split($contains);
     $result = $processor->containsLogicalChars($array);
-    response(200, "String Reversed", $string, $language, $result, $contains);
+    response(200, "containsLogicalChars() Processed", $string, $language, $result, $contains);
 } else if (isset($string) && empty($string)) {
     response(400, "Invalid or Empty Word", NULL, NULL, NULL, NULL);
 } else if (isset($language) && empty($language)) {
     response(400, "Invalid or Empty Language", NULL, NULL, NULL, NULL);
 } else if (empty($contains)) {
-    response(400, "Invalid or Empty End", NULL, NULL, NULL, NULL);
+    response(400, "Invalid or Empty Contains", NULL, NULL, NULL, NULL);
 } else {
     response(400, "Invalid Request", NULL, NULL, NULL, NULL);
 }
