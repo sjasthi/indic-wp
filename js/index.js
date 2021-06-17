@@ -91,9 +91,11 @@ async function callAPI(methodName) {
     actualCell.innerHTML = jsonObj.data;
     if (expectedResult == jsonObj.data) {
         passFail.innerHTML = "PASS";
+        passFail.classList.add("pass")
     }
     else {
         passFail.innerHTML = "FAIL";
+        passFail.classList.add("fail")
     }
 
 }
