@@ -5,3 +5,4 @@ rest/
 restClient/index.php
 restClient/submit.php
 js/runTests.js
+index_test.php
