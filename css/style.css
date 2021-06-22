@@ -1,6 +1,6 @@
 
 /*allows for the input cell to be written into*/
-.inputCell, .expectedCell {
+.inputCell, .expectedCell , .input2Cell, .input3Cell{
     -webkit-user-modify: read-write;
     -moz-user-modify: read-write;
     user-modify: read-write;
