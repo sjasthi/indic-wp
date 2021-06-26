@@ -62,7 +62,9 @@
                 <select name="apiChoice" class="m-1" id="apiChoice">
                     <option selected disabled hidden>Select an option</option>
                     <option value="single">Single Input</option>
-                    <option value="multi">Multiple Input</option>
+                    <option value="double">Two Input</option>
+                    <option value="triple">Three Input</option>
+                    <option value="getFillerCharacters">getFillerCharacters</option>
                 </select>
                 <br>
                 <div id="testForm" style="display: none">
@@ -74,7 +76,7 @@
                     <select name="languageInput" class="m-1" id="languageInput">
                         <option selected disabled hidden>Select an option</option>
                         <option value="English">English</option>
-                        <option value="Telegu">Telegu</option>
+                        <option value="Telugu">Telugu</option>
                     </select>
                     <br>
                     <input name="submit" type="submit" class="btn btn-primary btn-lg btn-block" value="Run Tests">
@@ -85,15 +87,15 @@
         <div class="row" style="padding: 20px;">
             <div class="col" style="padding: 15px;">
                 <table id="testSuite" class="table table-dark table-striped" style="display:none;">
-                    <thead>
-                        <tr>
+                    <thead id="apiHeader">
+                        <!-- <tr class="header-data">
                             <th scope=" col" class="methodHeader">Method</th>
                             <th scope="col">Input</th>
                             <th scope="col">Expected Result</th>
                             <th scope="col">Actual Result</th>
                             <th scope="col">Pass/Fail</th>
                             <th scope="col" class="jsonHeader">JSON Output</th>
-                        </tr>
+                        </tr> -->
                     </thead>
                     <tbody id="apiTable">
                     </tbody>

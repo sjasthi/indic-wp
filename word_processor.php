@@ -367,7 +367,7 @@ class wordProcessor {
 	}
 
 	function isCharConsonant($hexcode){
-		$retVal = false;
+		$retVal = true;
 		$englishVowels = array("041","045","049","04f","055");
 	
 		$TeluguVstart = hexdec("0x0C05");
@@ -387,34 +387,34 @@ class wordProcessor {
 	
 			case "English":
 				if(!in_array($hexcode,$englishVowels)){
-					$retVal = true;
+					$retVal = false;
 				}
 				break;
 	
 			case "Telugu":
 				$TeluguChar = hexdec($hexcode);
 				if($TeluguChar < $TeluguVstart && $TeluguChar > $TeluguVend){
-					$retVal = true;
+					$retVal = false;
 				}
 				break;
 	
 			case "Hindi":
 				$HindiChar = hexdec($hexcode);
 				if($HindiChar < $HindiVstart && $HindiChar > $HindiVend){
-					$retVal = true;
+					$retVal = false;
 				}
 				break;
 	
 			case "Gujarati":
 				$GujaratiChar = hexdec($hexcode);
 				if($GujaratiChar < $GujaratiVstart && $GujaratiChar > $GujaratiVend){
-					$retVal = true;
+					$retVal = false;
 				}
 			break;
 			case "Malayalam":
 				$MalayalamChar = hexdec($hexcode);
 				if($MalayalamChar < $MalayalamVstart && $MalayalamChar > $MalayalamVend){
-					$retVal = true;
+					$retVal = false;
 				}
 			break;
 	
@@ -487,6 +487,148 @@ class wordProcessor {
 		
 		return $data;
 	} // end parseList
+
+	/* getfillerCharacters()
+		Takes as input the amount of chars to generate and the
+		type of chars to be generated. Currently, the possible
+		types are vowels and consonants. Based on the type
+		a number of logicalCharCount characters will be generated.
+		If a type is not of the known variants, a pool from all
+		available types is automatically selected.
+		@return results - Array with logicalCharCount filler characters 
+	*/
+	function getFillerCharacters($logicalCharCount, $type) {
+
+		$language = $this->language;
+		$logicalCharCount = intval($logicalCharCount);
+		$type = strtolower($type);
+		$myfile = "";
+		$any = [];
+		$vowels = [];
+		$constants = [];
+		$vowelMixers = [];
+		$singleConstantBlends = [];
+		$doubleConstantBlends = [];
+		$tripleConstantBlends = [];
+		$constantBlendsAndVowels = [];
+		$result = [];
+
+		if($logicalCharCount <= 0) {
+			return ["Input not acceptable integer. Enter a number greater than 0."];
+		}
+
+		switch(strtolower($language)) {
+			case "english":
+				array_push($constants, "0x0042", "0x0043", "0x0044", "0x0046", "0x0047", "0x0048", "0x004A", 
+				"0x004B", "0x004C", "0x004D", "0x004E", "0x0050", "0x0051", "0x0052", 
+				"0x0053", "0x0054", "0x0056", "0x0057", "0x0058", "0x0059", "0x005A");
+				array_push($vowels, "0x0041","0x0045","0x0049","0x004f","0x0055");
+				break;
+			case "telugu":
+				// live version, uncomment for live site
+				//$myfile = fopen("/home2/icsbinco/public_html/indic-wp/telugu_seed.txt", "r") or die("Unable to open file!");
+				// local version, comment out for live site
+				$myfile = fopen("../telugu_seed.txt", "r") or die("Unable to open file!");
+
+				$lines = [];
+				$word = [];
+				while (!feof($myfile)){
+					$line = fgets($myfile);
+					$lines[] = $line;
+				}
+
+				foreach($lines as $w){
+					$word = explode(" ",trim($w));
+					if(in_array("CONSONANTS", $word)){
+						array_push($constants, $word[1]);
+					} elseif(in_array("VOWELS", $word)){
+						array_push($vowels, $word[1]);
+					} elseif(in_array("VOWELMIXERS", $word)){
+						array_push($vowelMixers, $word[1]);
+					} elseif(in_array("SINGLECONSONANTBLENDS", $word)){
+						array_push($singleConstantBlends, $word[1]);
+					} elseif(in_array("DOUBLECONSONANTBLENDS", $word)){
+						array_push($doubleConstantBlends, $word[1]);
+					} elseif(in_array("TRIPLECONSONANTBLENDS", $word)){
+						array_push($tripleConstantBlends, $word[1]);
+					} elseif(in_array("CONSONANTBLENDSANDVOWELS", $word)){
+						array_push($constantBlendsAndVowels, $word[1]);
+					}
+				}
+				fclose($myfile);
+				break;
+			default:
+				return ["Unsupported language"];
+		}
+
+		// get N random chars back from each fillerCharType
+		$n = $logicalCharCount;
+		shuffle($constants);
+		shuffle($vowels);
+		shuffle($vowelMixers);
+		shuffle($singleConstantBlends);
+		shuffle($doubleConstantBlends);
+		shuffle($tripleConstantBlends);
+		shuffle($constantBlendsAndVowels);
+		$any = array_merge(array_slice($constants, 0, $n),
+			array_slice($vowels, 0, $n), 
+			array_slice($vowelMixers, 0, $n), 
+			array_slice($singleConstantBlends, 0, $n), 
+			array_slice($doubleConstantBlends, 0, $n), 
+			array_slice($tripleConstantBlends, 0, $n), 
+			array_slice($constantBlendsAndVowels, 0, $n)
+		);
+
+		switch(strtolower($language)) {
+			case "english":
+				for($i = 0; $i < $logicalCharCount; $i++) {
+					$english_char = "";
+
+					if($type == "consonants") {
+						$hexcode = array_rand($constants);
+						$num = hexdec($hexcode);
+					}
+					else if($type == "vowels") {
+						$hexcode = $vowels[array_rand($vowels)];
+						$num = hexdec($hexcode);
+					}
+					else {
+						$hexcode = $any[array_rand($any)];
+						$num = hexdec($hexcode);
+					}
+
+					// Weird unicode and json encoding prompted this
+					$hexcode = dechex(hexdec($hexcode));
+					$english_char .= "\u00{$hexcode}";
+					$english_char = json_decode('"'.$english_char.'"');
+
+					array_push($result, $english_char);
+				}
+				break;
+			case "telugu":
+				for($i = 0; $i < $logicalCharCount; $i++) {
+					$telugu_char = "";
+
+					if($type == "consonants") {
+						$telugu_char = $constants[array_rand($constants)];
+					}
+					else if($type == "vowels") {
+						$telugu_char = $vowels[array_rand($vowels)];
+					}
+					else {
+						$telugu_char = $any[array_rand($any)];
+					}
+
+					array_push($result, $telugu_char);
+				}
+				break;
+			default:
+				return ["Unsupported language"];
+				break;
+		}
+
+		return $result;
+	}
 
 	// add extra letters to wordFind board //
 	function addFoils($data){
