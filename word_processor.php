@@ -584,17 +584,14 @@ class wordProcessor {
 				for($i = 0; $i < $logicalCharCount; $i++) {
 					$english_char = "";
 
-					if($type == "consonants") {
-						$hexcode = array_rand($constants);
-						$num = hexdec($hexcode);
+					if($type == "consonants" || $type == "consonant") {
+						$hexcode = $constants[array_rand($constants)];
 					}
-					else if($type == "vowels") {
+					else if($type == "vowels" || $type == "vowel") {
 						$hexcode = $vowels[array_rand($vowels)];
-						$num = hexdec($hexcode);
 					}
 					else {
 						$hexcode = $any[array_rand($any)];
-						$num = hexdec($hexcode);
 					}
 
 					// Weird unicode and json encoding prompted this
@@ -609,11 +606,23 @@ class wordProcessor {
 				for($i = 0; $i < $logicalCharCount; $i++) {
 					$telugu_char = "";
 
-					if($type == "consonants") {
+					if($type == "consonants" || $type == "consonant") {
 						$telugu_char = $constants[array_rand($constants)];
 					}
-					else if($type == "vowels") {
+					else if($type == "vowels" || $type == "vowel") {
 						$telugu_char = $vowels[array_rand($vowels)];
+					}
+					else if($type == "scb") {
+						$telugu_char = $singleConstantBlends[array_rand($singleConstantBlends)];
+					}
+					else if($type == "dcb") {
+						$telugu_char = $doubleConstantBlends[array_rand($doubleConstantBlends)];
+					}
+					else if ($type == "tcb") {
+						$telugu_char = $tripleConstantBlends[array_rand($tripleConstantBlends)];
+					}
+					else if ($type == "cdv") {
+						$telugu_char = $constantBlendsAndVowels[array_rand($constantBlendsAndVowels)];
 					}
 					else {
 						$telugu_char = $any[array_rand($any)];
