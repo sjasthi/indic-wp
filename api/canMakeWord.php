@@ -34,5 +34,3 @@ function response($responseCode, $message, $string, $language, $data, $word)
     $json = json_encode($response);
     echo $json;
 }
-?>
-

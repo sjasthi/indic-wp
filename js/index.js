@@ -38,32 +38,35 @@ function changeTheme(objButton) {
     }
 }
 
+window.onload = function () {
+    jQuery.get('getHeaders.php?apiChoice=all').done(function (data) {
+        $('#apiHeader').append(data);
+    });
+
+    jQuery.get('getAPIs.php?apiChoice=all').done(function (data) {
+        $('#apiTable').append(data);
+        methods = document.querySelectorAll("th.methodCell");
+        if (document.getElementById("testForm").style.display == "none") {
+            document.getElementById("testForm").style.display = "block";
+            document.getElementById("testSuite").style.display = "table";
+        }
+    });
+}
 
 /**
  * Function to update "Input" column of TestSuite table with universal input text field
  */
 function updateInputs() {
     var input = document.getElementById("universalInput").value;
-    var inputCells = document.getElementsByClassName("inputCell");
+    var inputCells = document.getElementsByClassName("inputText");
     var i;
     for (i = 0; i < inputCells.length; i++) {
-        inputCells[i].innerHTML = input;
+        inputCells[i].value = input;
     }
 }
 
-var methods = document.querySelectorAll("th.methodCell");
 
-// $('#apiChoice').on('change', function (e) {
-//     $('#apiTable .table-data').remove();
-//     jQuery.get('getAPIs.php?apiChoice=' + $('#apiChoice').val()).done(function (data) {
-//         $('#apiTable').append(data);
-//         methods = document.querySelectorAll("th.methodCell");
-//         if (document.getElementById("testForm").style.display == "none") {
-//             document.getElementById("testForm").style.display = "block";
-//             document.getElementById("testSuite").style.display = "table";
-//         }
-//     });
-// });
+var methods = document.querySelectorAll("th.methodCell");
 
 $('#apiChoice').on('change', function (e) {
     $('#apiHeader .header-data').remove();
@@ -105,10 +108,14 @@ async function runTests() {
 /*Takes methodName as argument and does API call to retrieve the appropriate */
 async function callAPI(methodName) {
 
+    const singleInput = ["getCodePointLength", "getCodePoints", "getLength", "getLogicalChars", "getWordStrength", "getWordWeight", "isPalindrome", "randomize", "reverse", "containsSpace", "getWordLevel", "getLengthNoSpaces", "getLengthNoSpacesNoCommas", "parseToLogicalChars", "parseToLogicalCharacters", "isAnagram"];
+    const doubleInput = ["startsWith", "endsWith", "containsString", "containsChar", "containsLogicalChars", "containsAllLogicalChars", "containsLogicalCharSequence", "canMakeWord", "canMakeAllWords", "addCharacterAtEnd", "isIntersecting", "getIntersectingRank", "getUniqueIntersectingRank", "compareTo", "compareToIgnoreCase", "splitWord", "equals", "reverseEquals", "logicalCharAt"];
+    const tripleInput = ["addCharacterAt", "replace"];
+
     if (methodName == "getFillerCharacters") {
-        var cellInput = document.getElementById(methodName + 'Input').innerHTML;
+        var cellInput = document.getElementById(methodName + 'InputText').value;
         var languageInput = document.getElementById("languageInput").value;
-        var type = document.getElementById(methodName + 'Type').innerHTML;
+        var type = document.getElementById(methodName + 'TypeText').value;
         await fetch('http://localhost/indic-wp/api/' + methodName + '.php?string=' + cellInput + '&language=' + languageInput + '&type=' + type)
             .then(response => response.text())
             .then(data => result = data);
@@ -121,18 +128,34 @@ async function callAPI(methodName) {
         jsonElement.innerHTML = result;
         actualCell.innerHTML = jsonObj.data;
     } else {
-        var cellInput = document.getElementById(methodName + 'Input').innerHTML;
         var languageInput = document.getElementById("languageInput").value;
         var expectedResult = document.getElementById(methodName + "Expected").innerHTML;
-        await fetch('http://localhost/indic-wp/api/' + methodName + '.php?string=' + cellInput + '&language=' + languageInput)
-            .then(response => response.text())
-            .then(data => result = data);
-        newResult = remove_non_ascii(result);
-        const jsonObj = JSON.parse(newResult);
-
         var jsonElement = document.getElementById(methodName + "JSON");
         var actualCell = document.getElementById(methodName + "Actual");
         var passFail = document.getElementById(methodName + "PassFail");
+
+        if (singleInput.includes(methodName)) {
+            var cellInput = document.getElementById(methodName + 'InputText').value;
+            await fetch('http://localhost/indic-wp/api/' + methodName + '.php?string=' + cellInput + '&language=' + languageInput)
+                .then(response => response.text())
+                .then(data => result = data);
+        } else if (doubleInput.includes(methodName)) {
+            var cellInput = document.getElementById(methodName + 'InputText').value;
+            var cellInput2 = document.getElementById(methodName + 'InputText2').value;
+            await fetch('http://localhost/indic-wp/api/' + methodName + '.php?string=' + cellInput + '&input2=' + cellInput2 + '&language=' + languageInput)
+                .then(response => response.text())
+                .then(data => result = data);
+        } else if (tripleInput.includes(methodName)) {
+            var cellInput = document.getElementById(methodName + 'InputText').value;
+            var cellInput2 = document.getElementById(methodName + 'InputText2').value;
+            var cellInput3 = document.getElementById(methodName + 'InputText3').value;
+            await fetch('http://localhost/indic-wp/api/' + methodName + '.php?string=' + cellInput + '&input2=' + cellInput2 + '&input3=' + cellInput3 + '&language=' + languageInput)
+                .then(response => response.text())
+                .then(data => result = data);
+        }
+        newResult = remove_non_ascii(result);
+        const jsonObj = JSON.parse(newResult);
+
         jsonElement.innerHTML = result;
         actualCell.innerHTML = jsonObj.data;
         if (expectedResult == jsonObj.data) {
@@ -177,5 +200,4 @@ tds.forEach(function (td) {
         console.log(event);
     });
 });
-
 

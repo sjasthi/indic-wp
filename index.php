@@ -60,10 +60,11 @@
             <div class="col text-center">
                 <label for="apiChoice">WS Type: </label>
                 <select name="apiChoice" class="m-1" id="apiChoice">
-                    <option selected disabled hidden>Select an option</option>
-                    <option value="single">Single Input</option>
+                    <!-- <option selected disabled hidden>Select an option</option> -->
+                    <!--<option value="single">Single Input</option>
                     <option value="double">Two Input</option>
-                    <option value="triple">Three Input</option>
+                    <option value="triple">Three Input</option> -->
+                    <option selected value="all">All WebServices</option>
                     <option value="getFillerCharacters">getFillerCharacters</option>
                 </select>
                 <br>
@@ -88,14 +89,16 @@
             <div class="col" style="padding: 15px;">
                 <table id="testSuite" class="table table-dark table-striped" style="display:none;">
                     <thead id="apiHeader">
-                        <!-- <tr class="header-data">
-                            <th scope=" col" class="methodHeader">Method</th>
-                            <th scope="col">Input</th>
+                        <tr class="header-data">
+                            <!-- <th scope="col" class="methodHeader">Method</th>
+                            <th scope="col">Input 1</th>
+                            <th scope="col">Input 2</th>
+                            <th scope="col">Input 3</th>
                             <th scope="col">Expected Result</th>
                             <th scope="col">Actual Result</th>
                             <th scope="col">Pass/Fail</th>
-                            <th scope="col" class="jsonHeader">JSON Output</th>
-                        </tr> -->
+                            <th scope="col" class="jsonHeader">JSON Output</th> -->
+                        </tr>
                     </thead>
                     <tbody id="apiTable">
                     </tbody>

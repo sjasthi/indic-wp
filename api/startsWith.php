@@ -3,7 +3,7 @@
 
 require("../word_processor.php");
 
-if (isset($_GET['string']) && isset($_GET['language']) && isset($_GET['end'])) {
+if (isset($_GET['string']) && isset($_GET['language']) && isset($_GET['start'])) {
     $string = $_GET['string'];
     $language = $_GET['language'];
     $start = $_GET['start'];
@@ -36,4 +36,3 @@ function response($responseCode, $message, $string, $language, $data, $start)
     $json = json_encode($response);
     echo $json;
 }
-?>
