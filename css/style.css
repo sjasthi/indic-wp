@@ -1,10 +1,10 @@
 
-/*allows for the input cell to be written into*/
-.inputCell {
+/* allows for the input cell to be written into*/
+/* .inputCell, .expectedCell , .input2Cell, .input3Cell{
     -webkit-user-modify: read-write;
     -moz-user-modify: read-write;
     user-modify: read-write;
-}
+}  */
 
 table {
     table-layout: fixed;
@@ -14,6 +14,7 @@ tr,td{
     line-height: 25px;
     height: 20px;
     min-height: 25px;
+    word-wrap: break-word;
 }
 
 th.methodHeader {
@@ -35,4 +36,12 @@ th.jsonHeader {
 
 .row {
     margin: auto;
+}
+
+.pass {
+    color: green;
+}
+
+.fail {
+    color: red;
 }
