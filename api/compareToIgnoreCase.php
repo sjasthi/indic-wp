@@ -7,7 +7,11 @@ if (isset($_GET['string']) && isset($_GET['language']) && isset($_GET['secondStr
     $language = $_GET['language'];
     $secondString = $_GET['secondString'];
 }
-
+else if(isset($_GET['input1']) && isset($_GET['input2']) && isset($_GET['input3'])) {
+    $string = $_GET['input1'];
+    $language = $_GET['input2'];
+    $secondString = $_GET['input3'];
+}
 
 if (!empty($string) && !empty($language) && !empty($secondString)) {
     $processor = new wordProcessor($string, $language);
@@ -15,16 +19,20 @@ if (!empty($string) && !empty($language) && !empty($secondString)) {
     response(200, "Words Compared", $string, $secondString, $language, $compareToResult);
 }
 else if (isset($string) && empty($string)) {
-    response(400, "Invalid or Empty Word", NULL, NULL, NULL, NULL);
+    invalidResponse("Invalid or Empty Word");
 }
 else if (isset($language) && empty($language)) {
-    response(400, "Invalid or Empty Language", NULL, NULL, NULL, NULL);
+    invalidResponse("Invalid or Empty Language");
 }
-else if  (isset($language) && isset($language) && empty($secondString)) {
-    response(400, "Invalid Column Number", NULL, NULL, NULL, NULL);
-}  
+else if (isset($language) && isset($string) && empty($secondString)) {
+    invalidResponse("Invalid Column Number");
+} 
 else {
-    response(400, "Invalid Request", NULL, NULL, NULL, NULL);
+    invalidResponse("Invalid Request");
+}
+
+function invalidResponse($message) {
+    response(400, $message, NULL, NULL, NULL, NULL);
 }
 
 function response($responseCode, $message, $string, $secondString, $language, $data) {

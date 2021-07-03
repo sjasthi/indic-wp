@@ -6,6 +6,11 @@ if (isset($_GET['string']) && isset($_GET['language']) && isset($_GET['contains'
     $language = $_GET['language'];
     $contains = $_GET['contains'];
 }
+else if(isset($_GET['input1']) && isset($_GET['input2']) && isset($_GET['input3'])) {
+    $string = $_GET['input1'];
+    $language = $_GET['input2'];
+    $contains = $_GET['input3'];
+}
 
 if (!empty($string) && !empty($language) && !empty($contains)) {
     $processor = new wordProcessor($string, $language);
@@ -13,13 +18,17 @@ if (!empty($string) && !empty($language) && !empty($contains)) {
     $result = $processor->containsLogicalChars($array);
     response(200, "containsLogicalChars() Processed", $string, $language, $result, $contains);
 } else if (isset($string) && empty($string)) {
-    response(400, "Invalid or Empty Word", NULL, NULL, NULL, NULL);
+    invalidResponse("Invalid or Empty Word");
 } else if (isset($language) && empty($language)) {
-    response(400, "Invalid or Empty Language", NULL, NULL, NULL, NULL);
+    invalidResponse("Invalid or Empty Language");
 } else if (empty($contains)) {
-    response(400, "Invalid or Empty Contains", NULL, NULL, NULL, NULL);
+    invalidResponse("Invalid or Empty Contains");
 } else {
-    response(400, "Invalid Request", NULL, NULL, NULL, NULL);
+    invalidResponse("Invalid Request");
+}
+
+function invalidResponse($message) {
+    response(400, $message, NULL, NULL, NULL, NULL);
 }
 
 function response($responseCode, $message, $string, $language, $data, $contains)

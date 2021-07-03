@@ -2,10 +2,15 @@
 
 require("../word_processor.php");
 
-if (isset($_GET['index']) && isset($_GET['language']) && isset($_GET['string'])) {
+if (isset($_GET['string']) && isset($_GET['language']) && isset($_GET['index'])) {
     $string = $_GET['string'];
-    $index = $_GET['index'];
     $language = $_GET['language'];
+    $index = $_GET['index'];
+}
+else if(isset($_GET['input1']) && isset($_GET['input2']) && isset($_GET['input3'])) {
+    $string = $_GET['input1'];
+    $language = $_GET['input2'];
+    $index = $_GET['input3'];
 }
 
 if (!empty($index) && !empty($language) && !empty($string)) {
@@ -16,16 +21,20 @@ if (!empty($index) && !empty($language) && !empty($string)) {
     response(200, "Logical Char at index", $string, $index, $language, $logicalCharAtIndex);
 }
 else if (isset($string) && empty($string)) {
-    response(400, "Invalid or Empty Word", NULL, NULL, NULL, NULL);
+    invalidResponse("Invalid or Empty Word");
 }
 else if (isset($language) && empty($language)) {
-    response(400, "Invalid or Empty Language", NULL, NULL, NULL, NULL);
+    invalidResponse("Invalid or Empty Language");
 }
 else if(isset($language) && isset($string) && isset($index)) {
-    response(400, "Invalid or Empty index", NULL, NULL, NULL, NULL);
+    invalidResponse("Invalid or Empty index");
 }
 else {
-    response(400, "Invalid Request", NULL, NULL, NULL, NULL);
+    invalidResponse("Invalid Request");
+}
+
+function invalidResponse($message) {
+    response(400, $message, NULL, NULL, NULL, NULL);
 }
 
 function response($responseCode, $message, $string, $index, $language, $data) {
