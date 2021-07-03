@@ -7,7 +7,11 @@ if (isset($_GET['string']) && isset($_GET['language']) && isset($_GET['list'])) 
     $language = $_GET['language'];
     $list = $_GET['list'];
 }
-
+else if(isset($_GET['input1']) && isset($_GET['input2']) && isset($_GET['input3'])) {
+    $string = $_GET['input1'];
+    $language = $_GET['input2'];
+    $list = $_GET['input3'];
+}
 
 if (!empty($string) && !empty($language) && !empty($list)) {
     $processor = new wordProcessor($string, $language);
@@ -15,16 +19,20 @@ if (!empty($string) && !empty($language) && !empty($list)) {
     response(200, "Unique Intersecting Char", $string, $list, $language, $uniqueIntersectingRank);
 }
 else if (isset($string) && empty($string)) {
-    response(400, "Invalid or Empty Word", NULL, NULL, NULL, NULL);
-}
+    invalidResponse("Invalid or Empty Word");
+} 
 else if (isset($language) && empty($language)) {
-    response(400, "Invalid or Empty Language", NULL, NULL, NULL, NULL);
+    invalidResponse("Invalid or Empty Language");
 }
 else if  (isset($language) && isset($language) && empty($list)) {
-    response(400, "Invalid list Number", NULL, NULL, NULL, NULL);
+    invalidResponse("Invalid list Number");
 }  
 else {
-    response(400, "Invalid Request", NULL, NULL, NULL, NULL);
+    invalidResponse("Invalid Request");
+}
+
+function invalidResponse($message) {
+    response(400, $message, NULL, NULL, NULL, NULL);
 }
 
 function response($responseCode, $message, $string, $list, $language, $data) {
