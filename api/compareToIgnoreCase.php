@@ -15,7 +15,7 @@ else if(isset($_GET['input1']) && isset($_GET['input2']) && isset($_GET['input3'
 
 if (!empty($string) && !empty($language) && !empty($secondString)) {
     $processor = new wordProcessor($string, $language);
-    $compareToResult = $processor->compareToIgnoreCase($secondWord);
+    $compareToResult = $processor->compareToIgnoreCase($secondString);
     response(200, "Words Compared", $string, $secondString, $language, $compareToResult);
 }
 else if (isset($string) && empty($string)) {

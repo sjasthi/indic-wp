@@ -14,7 +14,7 @@ else if(isset($_GET['input1']) && isset($_GET['input2']) && isset($_GET['input3'
 
 if (!empty($string) && !empty($language) && !empty($contains)) {
     $processor = new wordProcessor($string, $language);
-    $array = str_split($contains);
+    $array = explode(",",$contains);
     $result = $processor->containsLogicalChars($array);
     response(200, "containsLogicalChars() Processed", $string, $language, $result, $contains);
 } else if (isset($string) && empty($string)) {
