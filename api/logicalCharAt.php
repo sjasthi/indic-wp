@@ -15,8 +15,8 @@ else if(isset($_GET['input1']) && isset($_GET['input2']) && isset($_GET['input3'
 
 if (!empty($index) && !empty($language) && !empty($string)) {
     $processor = new wordProcessor($string, $language);
-    $logicalCharacters = $processor->parseToLogicalCharacters($string);
-    $logicalCharacters-> $processor->$logical_chars;
+    // $logicalCharacters = $processor->parseToLogicalCharacters($string);
+    // $logicalCharacters-> $processor->$logical_chars;
     $logicalCharAtIndex = $processor->logicalCharAt($index);
     response(200, "Logical Char at index", $string, $index, $language, $logicalCharAtIndex);
 }
