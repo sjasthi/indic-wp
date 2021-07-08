@@ -6,6 +6,11 @@ if (isset($_GET['string']) && isset($_GET['language']) && isset($_GET['char'])) 
     $language = $_GET['language'];
     $char = $_GET['char'];
 }
+else if(isset($_GET['input1']) && isset($_GET['input2']) && isset($_GET['input3'])) {
+    $string = $_GET['input1'];
+    $language = $_GET['input2'];
+    $char = $_GET['input3'];
+}
 
 if (!empty($string) && !empty($language) && !empty($char)) {
     $processor = new wordProcessor($string, $language);
