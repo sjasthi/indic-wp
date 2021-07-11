@@ -2,10 +2,9 @@ import java.util.Scanner;
 
 public class UserInterface {
     private static void menu () {
-        System.out.println("Select the function you would like to test.");
-        System.out.println("Press 1 for to test a an API with 1 inputs.");
-        System.out.println("Press 2 for to test a an API with 2 inputs.");
-        System.out.println("Press 3 for to test a an API with 3 inputs.");
+        System.out.println("Select the language.");
+        System.out.println("Press 1 for Telugu.");
+        System.out.println("Press 2 for English.");
     }
 
     private static boolean validateInput(String input) {
@@ -17,7 +16,7 @@ public class UserInterface {
             return false;
         }
         //valid range 1-3 inclusive
-        return numberInput < 4 && numberInput > 0;
+        return numberInput < 3 && numberInput > 0;
     }
 
     public int runMenu() {
