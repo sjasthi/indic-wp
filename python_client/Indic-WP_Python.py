@@ -11,29 +11,44 @@ def getDecode(jsonToDecode):
 	data_decoded2 = data_decoded.encode().decode('utf-8-sig')
 	return data_decoded2
 
+#User will select English or Telugu. 
 print("Welcome to the indic-WP Python test client.")
-print("Please Press 1 to select the English defaults or 2 for Telugu defaults")
+print("Please Press 1 to run tests in English or 2 to run tests in Telugu...")
 userInput = input()
 
 if userInput == '1':
-    service = 'getLength()'
-    input1 = 'hello'
-    input2 = 'NA'
-    input3 = 'NA'
-    language = 'English'
-    url = 'http://localhost/indic-wp/api/getlength.php?string='+ input1 + '&language=' + language
+
+    print('English selected...')
+    #################################
+    #################################
+    ####### GET LENGTH API ##########
+    # Input1 is a string that the length is needed. A integer value is returned. 
+    # Spaces are counted as characters. 
+    #################################
+    #################################
+    getLengthservice = 'getLength'
+    getLengthinput1 = 'hello'
+    getLengthinput2 = 'NA'
+    getLengthinput3 = 'NA'
+    getLengthlanguage = 'English'
+    url = 'http://localhost/indic-wp/api/getlength.php?string='+ getLengthinput1 + '&language=' + getLengthlanguage
     getLengthURL = url
     r = requests.get(url)
     dataDecoded = getDecode(r.text)
     x = json.loads(dataDecoded)
-    expectedResults = 5
-    actualResult = x.get('data')
-    passOrFaill = 'Pass' if expectedResults == x.get('data') else 'Failed'
-    jsonOUTPUT = x
+    getLengthexpectedResults = 5
+    getLengthactualResult = x.get('data')
+    getLengthpassOrFaill = 'Pass' if getLengthactualResult == x.get('data') else 'Failed'
+    getLengthjsonOUTPUT = x
 
-
-
-    reverseService = 'reverse()'
+    #################################
+    #################################
+    ####### GET REVERSE API #########
+    # Input1 is a string that is reversed. 
+    # The output is the reveresed String
+    #################################
+    #################################
+    reverseService = 'reverse'
     reverseInput1 = 'hello'
     reverseInput2 = 'NA'
     reverseInput3 = 'NA'
@@ -48,21 +63,33 @@ if userInput == '1':
     reversePassOrFaill = 'Pass' if reverseExpectedResults == x.get('data') else 'Failed'
     reverseJsonOUTPUT = x
 
+    #################################
+    #################################
+    ### GET CODE POINT LENGTH API ###
+    # Input1 is a string that needs to have the code point length measured.
+    #################################
+    #################################
+    getCodePointLengthService = 'getCodePointLength'
+    getCodePointLengthInput1 = 'hello'
+    getCodePointLengthInput2 = 'NA'
+    getCodePointLengthInput3 = 'NA'
     url = 'http://localhost/indic-wp/api/getCodePointLength.php?string=hello&language=English'
     getCodePointLengthURL = url 
     r = requests.get(url)
     dataDecoded = getDecode(r.text)
     x = json.loads(dataDecoded)
-    getCodePointLengthService = 'getCodePointLength()'
-    getCodePointLengthInput1 = 'hello'
-    getCodePointLengthInput2 = 'NA'
-    getCodePointLengthInput3 = 'NA'
     getCodePointLengthExpectedResults = 5
     getCodePointLengthActualResult = x.get('data')
     getCodePointLengthPassOrFaill = 'Pass' if getCodePointLengthExpectedResults == x.get('data') else 'Failed'
     getCodePointLengthJsonOUTPUT = x
 
-    getCodePointshService = 'getCodePoints()'
+    #################################
+    #################################
+    ###### GET CODE POINTS API ######
+    # Input1 is a string that needs to have the code point length measured.
+    #################################
+    #################################
+    getCodePointshService = 'getCodePoints'
     getCodePointsInput1 = 'hello'
     getCodePointsInput2 = 'NA'
     getCodePointsInput3 = 'NA'
@@ -77,8 +104,14 @@ if userInput == '1':
     getCodePointsPassOrFaill = 'Pass' if getCodePointsExpectedResults == x.get('data') else 'Failed'
     getCodePointsJsonOUTPUT = x
 
-
-    getwordLevelService = 'reverse()'
+    #################################
+    #################################
+    ######  GET WORD LEVEL API  #####
+    # Input1 is a string that has the word level calculated. The Service
+    # returns an integer value for the word value. 
+    #################################
+    #################################
+    getwordLevelService = 'wordLevel'
     getwordLevelInput1 = 'hello'
     getwordLevelInput2 = 'NA'
     getwordLevelInput3 = 'NA'
@@ -93,7 +126,14 @@ if userInput == '1':
     getwordLevelPassOrFaill = 'Pass' if getwordLevelExpectedResults == x.get('data') else 'Failed'
     getwordLevelJsonOUTPUT = x
 
-
+    #################################
+    #################################
+    ######  GET WORD LEVEL API  #####
+    # Input1 is a string that and this API returns the expected logical characters of the 
+    # input string.
+    #################################
+    #################################
+    getLogicalCharsService = 'getLogicalChars'
     getLogicalCharsInput1 = 'hello'
     getLogicalCharsInput2 = 'NA'
     getLogicalCharsInput3 = 'NA'
@@ -103,13 +143,18 @@ if userInput == '1':
     r = requests.get(url)
     dataDecoded = getDecode(r.text)
     x = json.loads(dataDecoded)
-    getLogicalCharsService = 'getLogicalChars()'
     getLogicalCharsExpectedResults = ['h', 'e', 'l', 'l', 'o']
     getLogicalCharsActualResult = x.get('data')
     getLogicalCharsPassOrFaill = 'Pass' if getLogicalCharsExpectedResults == x.get('data') else 'Failed'
     getLogicalCharsJsonOUTPUT = x
 
-
+    #################################
+    #################################
+    ####  GET WORD STRENGTH API  ####
+    # Input1 is a string that has the word strength calculated. The Service
+    # returns an integer value for the strength value. 
+    #################################
+    #################################
     getWordStrengthService = 'getWordStrength'
     getWordStrengthInput1 = 'hello'
     getWordStrengthInput2 = 'NA'
@@ -125,7 +170,13 @@ if userInput == '1':
     getWordStrengthPassOrFaill = 'Pass' if getWordStrengthExpectedResults == x.get('data') else 'Failed'
     getWordStrengthJsonOUTPUT = x
 
-
+    #################################
+    #################################
+    ####  GET WORD WEIGHT API  ####
+    # Input1 is a string that has the word weight calculated. The Service
+    # returns an integer value for the word weight. 
+    #################################
+    #################################    
     getWordWeightService = 'getWordWeight'
     getWordWeightInput1 = 'hello'
     getWordWeightInput2 = 'NA'
@@ -142,7 +193,13 @@ if userInput == '1':
     getWordWeightJsonOUTPUT = x
 
 
-
+    #################################
+    #################################
+    ######  IS PALINDROME API  ######
+    # Input1 is a string that will be checked if it is a palindrome
+    # It returns true if a word is a palindrome. For example, racecar returns true.
+    #################################
+    ################################# 
     isPalindromeService = 'isPalindrome'
     isPalindromeInput1 = 'hello'
     isPalindromeInput2 = 'NA'
@@ -159,6 +216,13 @@ if userInput == '1':
     isPalindromeJsonOUTPUT = x
 
 
+    #################################
+    #################################
+    ######  IS RANDOMIZE API  #######
+    # Input1 is a string that will be randomized. 
+    # The API returns a randomized version of the string.
+    #################################
+    ################################# 
     randomizeService = 'randomize'
     randomizeInput1 = 'hello'
     randomizeInput2 = 'NA'
@@ -174,22 +238,13 @@ if userInput == '1':
     randomizePassOrFaill = 'Pass' if randomizeInput1 != x.get('data') else 'Failed'
     randomizeJsonOUTPUT = x
 
-
-    # url = 'http://localhost/indic-wp/api/randomize.php?string=hello&language=English'
-    # r = requests.get(url)
-    # dataDecoded = getDecode(r.text)
-    # x = json.loads(dataDecoded)
-    # randomizeService = 'randomize'
-    # randomizeInput1 = 'hello'
-    # randomizeInput2 = 'NA'
-    # randomizeInput3 = 'NA'
-    # randomizeExpectedResults = 'Not ' + randomizeInput1
-    # randomizeActualResult = x.get('data')
-    # randomizePassOrFaill = 'Pass' if randomizeInput1 != x.get('data') else 'Failed'
-    # randomizeJsonOUTPUT = x
-
-
-
+    #################################
+    #################################
+    #####  CONTAINS SPACE API  ######
+    # Input1 is a string that will be processed to find out if there is a space in the string. 
+    # The API returns True or False
+    #################################
+    ################################# 
     containsSpaceService = 'containsSpace'
     containsSpaceInput1 = 'hello'
     containsSpaceInput2 = 'NA'
@@ -205,7 +260,14 @@ if userInput == '1':
     containsSpacePassOrFaill = 'Pass' if containsSpaceExpectedResults == x.get('data') else 'Failed'
     containsSpaceJsonOUTPUT = x
 
-
+    #################################
+    #################################
+    ### GET LENGTH NO SPACES API ###
+    # Input1 is a string that will be processed to calculate the length 
+    # minus the spaces in the string.
+    # The API returns the length minus the spaces in the string.  
+    #################################
+    ################################# 
     getLengthNoSpacesService = 'getLengthNoSpaces'
     getLengthNoSpacesInput1 = 'hello world'
     getLengthNoSpacesInput2 = 'NA'
@@ -222,7 +284,14 @@ if userInput == '1':
     getLengthNoSpacesJsonOUTPUT = x
 
 
-
+    #################################
+    #################################
+    # GET LENGTH NO SPACES NO COMMAS API #
+    # Input1 is a string that will be processed to calculate the length 
+    # minus the spaces and commas in the string.
+    # The API returns the length minus the spaces and commas in the string.  
+    #################################
+    ################################# 
     getLengthNoSpacesNoCommasService = 'getLengthNoSpacesNoCommas'
     getLengthNoSpacesNoCommasInput1 = 'hello, World'
     getLengthNoSpacesNoCommasInput2 = 'NA'
@@ -238,7 +307,13 @@ if userInput == '1':
     getLengthNoSpacesNoCommasPassOrFaill = 'Pass' if getLengthNoSpacesNoCommasExpectedResults == x.get('data') else 'Failed'
     getLengthNoSpacesNoCommasJsonOUTPUT = x
 
-
+    #################################
+    #################################
+    ### PARSE TO LOGICAL CHAR API ###
+    # Input1 is a string that will be processed and parsed out to logical characters.
+    # The API returns the parsed out characters. 
+    #################################
+    ################################# 
     parseToLogicalCharsService = 'parseToLogicalChars'
     parseToLogicalCharsInput1 = 'hello'
     parseToLogicalCharsInput2 = 'NA'
@@ -254,7 +329,13 @@ if userInput == '1':
     parseToLogicalCharsPassOrFaill = 'Pass' if parseToLogicalCharsExpectedResults == x.get('data') else 'Failed'
     parseToLogicalCharsJsonOUTPUT = x
 
-
+    #################################
+    #################################
+    #PARSE TO LOGICAL CHARACTERS API#
+    # Input1 is a string that will be processed and parsed out to logical characters.
+    # The API returns the parsed out characters. 
+    #################################
+    ################################# 
     parseToLogicalCharactersService = 'parseToLogicalCharacters'
     parseToLogicalCharactersInput1 = 'hello'
     parseToLogicalCharactersInput2 = 'NA'
@@ -270,7 +351,12 @@ if userInput == '1':
     parseToLogicalCharactersPassOrFaill = 'Pass' if parseToLogicalCharactersExpectedResults == x.get('data') else 'Failed'
     parseToLogicalCharactersJsonOUTPUT = x
 
-
+    #################################
+    #################################
+    ####### IS ANAGRAM API ##########
+    # NEEDS TO BE UPDATED FOR 2 INPUTS. NOT CURRENTLY WORKING CORRECTLY.
+    #################################
+    ################################# 
 ##### isAnagram needs to be fixed to take 2 inputs. Currently only taking one. 
     isAnagramService = 'isAnagram'
     isAnagramInput1 = 'hello'
@@ -287,7 +373,14 @@ if userInput == '1':
     isAnagramPassOrFaill = 'Pass' if isAnagramExpectedResults == x.get('data') else 'Failed'
     isAnagramJsonOUTPUT = x
 
-
+    #################################
+    #################################
+    ####### STARTS WITH API ########
+    # Input1 is a string and Input 2 is a character that will be processed 
+    # to be determined if Input1 begins with input 2
+    # The API returns True or False.
+    #################################
+    ################################# 
     startsWithService = 'startsWith'
     startsWithInput1 = 'hello'
     startsWithInput2 = 'h'
@@ -303,7 +396,14 @@ if userInput == '1':
     startsWithPassOrFaill = 'Pass' if startsWithExpectedResults == x.get('data') else 'Failed'
     startsWithJsonOUTPUT = x
 
-
+    #################################
+    #################################
+    ###### ENDS WITH API ############
+    # Input1 is a string and Input 2 is a character that will be processed 
+    # to be determined if Input1 ends with input 2
+    # The API returns True or False.
+    #################################
+    ################################# 
     endsWithService = 'endsWith'
     endsWithInput1 = 'hello'
     endsWithInput2 = 'o'
@@ -319,7 +419,13 @@ if userInput == '1':
     endsWithPassOrFaill = 'Pass' if endsWithExpectedResults == x.get('data') else 'Failed'
     endsWithJsonOUTPUT = x
 
-
+    #################################
+    #################################
+    #### CONTAINS STRING API ########
+    # Input1 is a string and Input 2 is a possible substring of Input 1
+    # The API returns True or False.
+    #################################
+    ################################# 
     containsStringService = 'containsString'
     containsStringInput1 = 'hello'
     containsStringInput2 = 'lo'
@@ -335,7 +441,14 @@ if userInput == '1':
     containsStringPassOrFaill = 'Pass' if containsStringExpectedResults == x.get('data') else 'Failed'
     containsStringJsonOUTPUT = x
 
-
+    #################################
+    #################################
+    ###### CONTAINS CHAR API ########
+    # Input1 is a string and Input 2 is a character that will be processed 
+    # to be determined if Input1 contains input 2
+    # The API returns True or False.
+    #################################
+    ################################# 
     containsCharService = 'containsChar'
     containsCharInput1 = 'hello'
     containsCharInput2 = 'o'
@@ -351,8 +464,15 @@ if userInput == '1':
     containsCharPassOrFaill = 'Pass' if containsCharExpectedResults == x.get('data') else 'Failed'
     containsCharJsonOUTPUT = x
 
-
-    containsLogicalCharservice = 'containsLogicalChars'
+    #################################
+    #################################
+    ###### CONTAINS LOGICAL CHARS API ########
+    # Input1 is a string and Input 2 is a list of characters that will be processed 
+    # to be determined if Input1 contains input 2
+    # The API returns True or False.
+    #################################
+    ################################# 
+    containsLogicalCharsService = 'containsLogicalChars'
     containsLogicalCharsInput1 = 'hello'
     containsLogicalCharsInput2 = 'l,o'
     containsLogicalCharsInput3 = 'NA'
@@ -367,7 +487,14 @@ if userInput == '1':
     containsLogicalCharsPassOrFaill = 'Pass' if containsLogicalCharsExpectedResults == x.get('data') else 'Failed'
     containsLogicalCharsJsonOUTPUT = x
 
-
+    #################################
+    #################################
+    # CONTAINS ALL LOGICAL CHARS API#
+    # Input1 is a string and Input 2 is a list of characters that will be processed 
+    # to be determined if Input1 contains input 2
+    # The API returns True or False.
+    #################################
+    ################################# 
     containsAllLogicalCharservice = 'containsAllLogicalChars'
     containsAllLogicalCharsInput1 = 'hello'
     containsAllLogicalCharsInput2 = 'l,o'
@@ -383,7 +510,14 @@ if userInput == '1':
     containsAllLogicalCharsPassOrFaill = 'Pass' if containsAllLogicalCharsExpectedResults == x.get('data') else 'Failed'
     containsAllLogicalCharsJsonOUTPUT = x
 
-
+    #################################
+    #################################
+    # CONTAINS LOGICAL CHAR SEQUENCE API#
+    # Input1 is a string and Input 2 is a list of characters that will be processed 
+    # to be determined if Input1 contains Input2
+    # The API returns True or False.
+    #################################
+    ################################# 
     containsLogicalCharSequenceservice = 'containsLogicalCharSequence'
     containsLogicalCharSequenceInput1 = 'hello'
     containsLogicalCharSequenceInput2 = 'lo'
@@ -399,7 +533,14 @@ if userInput == '1':
     containsLogicalCharSequencePassOrFaill = 'Pass' if containsLogicalCharSequenceExpectedResults == x.get('data') else 'Failed'
     containsLogicalCharSequenceJsonOUTPUT = x
 
-
+    #################################
+    #################################
+    ######## CAN MAKE WOR API #######
+    # Input1 is a string and Input 2 is a list of characters that will be processed 
+    # to be determined if Input1 can be made with the characters in Input 2.
+    # The API returns True or False.
+    #################################
+    ################################# 
     canMakeWordservice = 'canMakeWord'
     canMakeWordInput1 = 'hello'
     canMakeWordInput2 = 'lo'
@@ -415,7 +556,14 @@ if userInput == '1':
     canMakeWordPassOrFaill = 'Pass' if canMakeWordExpectedResults == x.get('data') else 'Failed'
     canMakeWordJsonOUTPUT = x
 
-
+    #################################
+    #################################
+    ### CAN MAKE ALL WORDS API ######
+    # Input1 is a string and Input 2 is a list of sub strings that will be processed 
+    # to be determined if the string in Input1 can be made from the sub strings in input 2
+    # The API returns True or False.
+    #################################
+    ################################# 
     canMakeAllWordsservice = 'canMakeAllWords'
     canMakeAllWordsInput1 = 'hello'
     canMakeAllWordsInput2 = 'hell,lo'
@@ -431,7 +579,14 @@ if userInput == '1':
     canMakeAllWordsPassOrFaill = 'Pass' if canMakeAllWordsExpectedResults == x.get('data') else 'Failed'
     canMakeAllWordsJsonOUTPUT = x
 
-
+    #################################
+    #################################
+    ### ADD CHARACTERS AT END API ###
+    # Input1 is a string and Input 2 is a character that will be processed to 
+    # to be added at the end of a Input 1. 
+    # The API returns the new string.
+    #################################
+    ################################# 
     addCharacterAtEndservice = 'addCharacterAtEnd'
     addCharacterAtEndInput1 = 'hello'
     addCharacterAtEndInput2 = 'a'
@@ -447,6 +602,14 @@ if userInput == '1':
     addCharacterAtEndPassOrFaill = 'Pass' if addCharacterAtEndExpectedResults == x.get('data') else 'Failed'
     addCharacterAtEndJsonOUTPUT = x
 
+    #################################
+    #################################
+    ###### IS INTERSECTING API ######
+    # Input1 is a string and Input 2 is a substring that will be processed 
+    # to determined if they intersect with input1.
+    # The API returns True or False. 
+    #################################
+    ################################# 
     isIntersectingservice = 'isIntersecting'
     isIntersectingInput1 = 'hello'
     isIntersectingInput2 = 'el'
@@ -462,7 +625,14 @@ if userInput == '1':
     isIntersectingPassOrFaill = 'Pass' if isIntersectingActualResult == x.get('data') else 'Failed'
     isIntersectingJsonOUTPUT = x
 
-
+    #################################
+    #################################
+    ## GET INTERSECTING RANK API ####
+    # Input1 is a string and Input 2 is a substring that will be processed 
+    # to determined what the intersecting rank is.
+    # The API returns the rank value. 
+    #################################
+    ################################# 
     getIntersectingRankservice = 'getIntersectingRank'
     getIntersectingRankInput1 = 'hello'
     getIntersectingRankInput2 = 'el'
@@ -478,7 +648,15 @@ if userInput == '1':
     getIntersectingRankPassOrFaill = 'Pass' if getIntersectingRankActualResult == x.get('data') else 'Failed'
     getIntersectingRankJsonOUTPUT = x
 
-
+    #################################
+    #################################
+    # GET UNIQUE INTERSECTING RANK API 
+    # Input1 is a string and Input 2 is a substring that will be processed 
+    # to determined what the unique intersecting rank is. This will process
+    # characters once despite appearing in a string more than once. 
+    # The API returns the rank value. 
+    #################################
+    ################################# 
     getUniqueIntersectingRankservice = 'getUniqueIntersectingRank'
     getUniqueIntersectingRankInput1 = 'hello'
     getUniqueIntersectingRankInput2 = ['e', 'l', 'i']
@@ -494,7 +672,13 @@ if userInput == '1':
     getUniqueIntersectingRankPassOrFaill = 'Pass' if getUniqueIntersectingRankActualResult == x.get('data') else 'Failed'
     getUniqueIntersectingRankJsonOUTPUT = x
 
-
+    #################################
+    #################################
+    ####### COMPARE TO API ##########
+    # Input1 is a string and Input2 is a new string comparing to Input1. Case is not ignored.
+    # The API returns 0 if Input 1 and Input 2 are equal. 
+    #################################
+    ################################# 
     compareToservice = 'compareTo'
     compareToInput1 = 'hello'
     compareToInput2 = 'hello'
@@ -510,7 +694,13 @@ if userInput == '1':
     compareToPassOrFaill = 'Pass' if compareToExpectedResults == x.get('data') else 'Failed'
     compareToJsonOUTPUT = x
 
-
+    #################################
+    #################################
+    # COMPARE TO IGNORE CASE API ####
+    # Input1 is a string and Input2 is a new string comparing to Input1. Case is ignored. 
+    # The API returns 0 if Input 1 and Input 2 are equal.  
+    #################################
+    ################################# 
     compareToIgnoreCaseservice = 'compareToIgnoreCase'
     compareToIgnoreCaseInput1 = 'HELLO'
     compareToIgnoreCaseInput2 = 'hel'
@@ -526,7 +716,15 @@ if userInput == '1':
     compareToIgnoreCasePassOrFaill = 'Pass' if compareToIgnoreCaseActualResult == x.get('data') else 'Failed'
     compareToIgnoreCaseJsonOUTPUT = x
 
-
+    #################################
+    #################################
+    # COMPARE TO IGNORE CASE API ####
+    # Input1 is a string and Input2 is an integer to used to break the 
+    # string in Input1 into separate lists.  
+    # The API returns a dictionary of the Input1 slpit out into separate lists size of 
+    # Input 2.  
+    #################################
+    ################################# 
     splitWordservice = 'splitWord'
     splitWordInput1 = 'hello!'
     splitWordInput2 = '2'
@@ -542,7 +740,14 @@ if userInput == '1':
     splitWordPassOrFaill = 'Pass' if splitWordExpectedResults == x.get('data') else 'Failed'
     splitWordJsonOUTPUT = x
 
-
+    #################################
+    #################################
+    ######## EQUALS API #############
+    # Input1 is a string and Input2 is a string that is processed 
+    # to be compared to Input 1 
+    # The API returns True or False.
+    #################################
+    ################################# 
     equalsservice = 'equals'
     equalsInput1 = 'hello!'
     equalsInput2 = 'hello!'
@@ -558,6 +763,15 @@ if userInput == '1':
     equalsPassOrFaill = 'Pass' if equalsExpectedResults == x.get('data') else 'Failed'
     equalsJsonOUTPUT = x
 
+
+    #################################
+    #################################
+    ##### REVERSE EQUALS API ########
+    # Input1 is a string and Input2 is a string that is processed 
+    # to be compared to Input1 to verify if it is the reverse of Input1. 
+    # The API returns True or False.
+    #################################
+    ################################# 
     reverseEqualsservice = 'reverseEquals'
     reverseEqualsInput1 = 'hello!'
     reverseEqualsInput2 = '!olleh'
@@ -573,7 +787,13 @@ if userInput == '1':
     reverseEqualsPassOrFaill = 'Pass' if reverseEqualsExpectedResults == x.get('data') else 'Failed'
     reverseEqualsJsonOUTPUT = x
 
-
+    #################################
+    #################################
+    ###### LOGICAL CHAR AT API ######
+    # Input1 is a string and Input2 is an integer to check the index of Input 1. 
+    # The API returns the logical character at index, if it exists. 
+    #################################
+    ################################# 
     logicalCharAtservice = 'logicalCharAt'
     logicalCharAtInput1 = 'hello!'
     logicalCharAtInput2 = '3'
@@ -589,7 +809,13 @@ if userInput == '1':
     logicalCharAtPassOrFaill = 'Pass' if logicalCharAtExpectedResults == x.get('data') else 'Failed'
     logicalCharAtJsonOUTPUT = x
 
-
+    #################################
+    #################################
+    ###### LOGICAL CHAR AT API ######
+    # Input1 is a string and Input2 is an integer to check the index of Input 1. 
+    # The API returns the logical character at index, if it exists. 
+    #################################
+    ################################# 
     getUniqueIntersectingLogicalCharsservice = 'getUniqueIntersectingLogicalChars'
     getUniqueIntersectingLogicalCharsAtInput1 = 'hello!'
     getUniqueIntersectingLogicalCharsAtInput2 = ['l','l']
@@ -605,7 +831,13 @@ if userInput == '1':
     getUniqueIntersectingLogicalCharsPassOrFaill = 'Pass' if getUniqueIntersectingLogicalCharsExpectedResults == x.get('data') else 'Failed'
     getUniqueIntersectingLogicalCharsJsonOUTPUT = x
 
-
+    #################################
+    #################################
+    ###### INDEX OF API ######
+    # Input1 is a string and Input2 is a char to be processed and searched for in Input1
+    # The API returns the index of the first instance of Input2. 
+    #################################
+    ################################# 
     indexOfservice = 'indexOf'
     indexOfInput1 = 'hello!'
     indexOfInput2 = 'l'
@@ -621,8 +853,13 @@ if userInput == '1':
     indexOfPassOrFaill = 'Pass' if indexOfExpectedResults == x.get('data') else 'Failed'
     indexOfJsonOUTPUT = x
 
-
-
+    #################################
+    #################################
+    ###### ADD CHAR AT API ######
+    # Input1 is a string and Input2 is a character to be added to input at a specific index 
+    # The API returns the new string with Input2 inserted at specified index.
+    #################################
+    ################################# 
     addCharacterAtservice = 'addCharacterAt'
     addCharacterAtInput1 = 'hello!'
     addCharacterAtInput2 = '1'
@@ -638,6 +875,13 @@ if userInput == '1':
     addCharacterAtPassOrFaill = 'Pass' if addCharacterAtExpectedResults == x.get('data') else 'Failed'
     addCharacterAtJsonOUTPUT = x
 
+    #################################
+    #################################
+    ###### REPLACE API ##############
+    # Input1 is a string and Input2 a substring to be replaced in Input1. 
+    # The API returns the new string. 
+    #################################
+    ################################# 
     replaceservice = 'replace'
     replaceInput1 = 'hello!'
     replaceInput2 = 'ell'
@@ -654,24 +898,24 @@ if userInput == '1':
     replaceJsonOUTPUT = x
 ####### Start Telugu 
 elif userInput == '2':
-    print('Telugu selected')
+    print('Telugu selected...')
 
-    service = 'getLength()'
-    input1 = 'అమెరికాఆస్ట్రేలియా'
-    input2 = 'NA'
-    input3 = 'NA'
-    language = 'Telugu'
-    url = 'http://localhost/indic-wp/api/getlength.php?string='+ input1 + '&language=' + language
+    getLengthservice = 'getLength'
+    getLengthinput1 = 'అమెరికాఆస్ట్రేలియా'
+    getLengthinput2 = 'NA'
+    getLengthinput3 = 'NA'
+    getLengthlanguage = 'Telugu'
+    url = 'http://localhost/indic-wp/api/getlength.php?string='+ getLengthinput1 + '&language=' + getLengthlanguage
     getLengthURL = url
     r = requests.get(url)
     dataDecoded = getDecode(r.text)
     x = json.loads(dataDecoded)
-    expectedResults = 8
-    actualResult = x.get('data')
-    passOrFaill = 'Pass' if expectedResults == x.get('data') else 'Failed'
-    jsonOUTPUT = x
+    getLengthexpectedResults = 8
+    getLengthactualResult = x.get('data')
+    getLengthpassOrFaill = 'Pass' if getLengthexpectedResults == x.get('data') else 'Failed'
+    getLengthjsonOUTPUT = x
 
-    reverseService = 'reverse()'
+    reverseService = 'reverse'
     reverseInput1 = 'అమెరికాఆస్ట్రేలియా'
     reverseInput2 = 'NA'
     reverseInput3 = 'NA'
@@ -687,7 +931,7 @@ elif userInput == '2':
     reverseJsonOUTPUT = x
 
 
-    getCodePointLengthService = 'getCodePointLength()'
+    getCodePointLengthService = 'getCodePointLength'
     getCodePointLengthInput1 = 'అమెరికాఆస్ట్రేలియా'
     getCodePointLengthInput2 = 'NA'
     getCodePointLengthInput3 = 'NA'
@@ -704,7 +948,7 @@ elif userInput == '2':
 
 
 
-    getCodePointshService = 'getCodePoints()'
+    getCodePointshService = 'getCodePoints'
     getCodePointsInput1 = 'అమెరికాఆస్ట్రేలియా'
     getCodePointsInput2 = 'NA'
     getCodePointsInput3 = 'NA'
@@ -745,7 +989,7 @@ elif userInput == '2':
     r = requests.get(url)
     dataDecoded = getDecode(r.text)
     x = json.loads(dataDecoded)
-    getLogicalCharsService = 'getLogicalChars()'
+    getLogicalCharsService = 'getLogicalChars'
     getLogicalCharsExpectedResults = ['అ','మె','రి','కా','ఆ','స్ట్రే','లి','యా']
     getLogicalCharsActualResult = x.get('data')
     getLogicalCharsPassOrFaill = 'Pass' if getLogicalCharsExpectedResults == x.get('data') else 'Failed'
@@ -994,7 +1238,7 @@ elif userInput == '2':
     containsCharPassOrFaill = 'Pass' if containsCharExpectedResults == x.get('data') else 'Failed'
     containsCharJsonOUTPUT = x
 
-    containsLogicalCharservice = 'containsLogicalChars'
+    containsLogicalCharsService = 'containsLogicalChars'
     containsLogicalCharsInput1 = 'అమెరికాఆస్ట్రేలియా'
     containsLogicalCharsInput2 = 'కా,యా,లి'
     containsLogicalCharsInput3 = 'NA'
@@ -1232,7 +1476,7 @@ elif userInput == '2':
     logicalCharAtJsonOUTPUT = x
 
     addCharacterAtservice = 'addCharacterAt'
-    addCharacterAtInput1 = 'అమెరికాఆస్ట్రేలియా'
+    addCharacterAtInput1 = 'అమెరికాఆస్ట్రేలియా' 
     addCharacterAtInput2 = '3'
     addCharacterAtInput3 = 'క్క'
     addCharacterAtLanguage = 'Telugu'
@@ -1241,7 +1485,7 @@ elif userInput == '2':
     r = requests.get(url)
     dataDecoded = getDecode(r.text)
     x = json.loads(dataDecoded)
-    addCharacterAtExpectedResults = 'అక్కమెరికాఆస్ట్రేలియా'
+    addCharacterAtExpectedResults = 'అమెరిక్కకాఆస్ట్రేలియా'
     addCharacterAtActualResult = x.get('data')
     addCharacterAtPassOrFaill = 'Pass' if addCharacterAtExpectedResults == x.get('data') else 'Failed'
     addCharacterAtJsonOUTPUT = x
@@ -1317,18 +1561,18 @@ with h.add(body()).add(div(id='content')):
         l.add(th('Pass or Fail'))
         l.add(th('JSON Output'))
         row = tr()
-        row.add(td('getLength'))
+        row.add(td(getLengthservice))
         row.add(td(getLengthURL))
-        row.add(td(input1))
-        row.add(td(input2))
-        row.add(td(input3))
-        row.add(td(expectedResults))
-        row.add(td(actualResult))
-        row.add(td(passOrFaill))
-        row.add(td(str(jsonOUTPUT)))
+        row.add(td(getLengthinput1))
+        row.add(td(getLengthinput2))
+        row.add(td(getLengthinput3))
+        row.add(td(getLengthexpectedResults))
+        row.add(td(getLengthactualResult))
+        row.add(td(getLengthpassOrFaill))
+        row.add(td(str(getLengthjsonOUTPUT)))
 
         row = tr()
-        row.add(td('getCodePointLength'))
+        row.add(td(getCodePointLengthService))
         row.add(td(getCodePointLengthURL))
         row.add(td(getCodePointLengthInput1))
         row.add(td(getCodePointLengthInput2))
@@ -1339,7 +1583,7 @@ with h.add(body()).add(div(id='content')):
         row.add(td(str(getCodePointLengthJsonOUTPUT)))
 
         row = tr()
-        row.add(td('getCodePoints'))
+        row.add(td(getCodePointshService))
         row.add(td(getCodePointsURL))
         row.add(td(getCodePointsInput1))
         row.add(td(getCodePointsInput2))
@@ -1350,7 +1594,7 @@ with h.add(body()).add(div(id='content')):
         row.add(td(str(getCodePointsJsonOUTPUT)))
 
         row = tr()
-        row.add(td('reverse'))
+        row.add(td(reverseService))
         row.add(td(reverseURL))
         row.add(td(reverseInput1))
         row.add(td(reverseInput2))
@@ -1362,7 +1606,7 @@ with h.add(body()).add(div(id='content')):
 
 
         row = tr()
-        row.add(td('getLogicalChars'))
+        row.add(td(getLogicalCharsService))
         row.add(td(getLogicalCharsURL))
         row.add(td(getLogicalCharsInput1))
         row.add(td(getLogicalCharsInput2))
@@ -1373,7 +1617,7 @@ with h.add(body()).add(div(id='content')):
         row.add(td(str(getLogicalCharsJsonOUTPUT)))
 
         row = tr()
-        row.add(td('getWordStrength'))
+        row.add(td(getWordStrengthService))
         row.add(td(getWordStrengthURL))
         row.add(td(getWordStrengthInput1))
         row.add(td(getWordStrengthInput2))
@@ -1384,7 +1628,7 @@ with h.add(body()).add(div(id='content')):
         row.add(td(str(getWordStrengthJsonOUTPUT)))
 
         row = tr()
-        row.add(td('getWordWeight'))
+        row.add(td(getWordWeightService))
         row.add(td(getWordWeightURL))
         row.add(td(getWordWeightInput1))
         row.add(td(getWordWeightInput2))
@@ -1395,7 +1639,7 @@ with h.add(body()).add(div(id='content')):
         row.add(td(str(getWordWeightJsonOUTPUT)))
 
         row = tr()
-        row.add(td('isPalindrome'))
+        row.add(td(isPalindromeService))
         row.add(td(isPalindromeURL))
         row.add(td(isPalindromeInput1))
         row.add(td(isPalindromeInput2))
@@ -1406,7 +1650,7 @@ with h.add(body()).add(div(id='content')):
         row.add(td(str(isPalindromeJsonOUTPUT)))
 
         row = tr()
-        row.add(td('randomize'))
+        row.add(td(randomizeService))
         row.add(td(randomizeURL))
         row.add(td(randomizeInput1))
         row.add(td(randomizeInput2))
@@ -1418,7 +1662,7 @@ with h.add(body()).add(div(id='content')):
 
 
         row = tr()
-        row.add(td('getWordLevel'))
+        row.add(td(getwordLevelService))
         row.add(td(getWordLevelURL))
         row.add(td(getwordLevelInput1))
         row.add(td(getwordLevelInput2))
@@ -1429,7 +1673,7 @@ with h.add(body()).add(div(id='content')):
         row.add(td(str(getwordLevelJsonOUTPUT)))
 
         row = tr()
-        row.add(td('containsSpace'))
+        row.add(td(containsSpaceService))
         row.add(td(containsSpaceURL))
         row.add(td(containsSpaceInput1))
         row.add(td(containsSpaceInput2))
@@ -1440,7 +1684,7 @@ with h.add(body()).add(div(id='content')):
         row.add(td(str(containsSpaceJsonOUTPUT)))
 
         row = tr()
-        row.add(td('getLengthNoSpaces'))
+        row.add(td(getLengthNoSpacesService))
         row.add(td(getLengthNoSpacesURL))
         row.add(td(getLengthNoSpacesInput1))
         row.add(td(getLengthNoSpacesInput2))
@@ -1451,7 +1695,7 @@ with h.add(body()).add(div(id='content')):
         row.add(td(str(getLengthNoSpacesJsonOUTPUT)))
 
        	row = tr()
-        row.add(td('getLengthNoSpacesNoCommas'))
+        row.add(td(getLengthNoSpacesService))
         row.add(td(getLengthNoSpacesNoCommasURL))
         row.add(td(getLengthNoSpacesNoCommasInput1))
         row.add(td(getLengthNoSpacesNoCommasInput2))
@@ -1462,7 +1706,7 @@ with h.add(body()).add(div(id='content')):
         row.add(td(str(getLengthNoSpacesNoCommasJsonOUTPUT)))
 
        	row = tr()
-        row.add(td('parseToLogicalChars'))
+        row.add(td(parseToLogicalCharsService))
         row.add(td(ParseToLogicalCharsURL))
         row.add(td(parseToLogicalCharsInput1))
         row.add(td(parseToLogicalCharsInput2))
@@ -1473,7 +1717,7 @@ with h.add(body()).add(div(id='content')):
         row.add(td(str(parseToLogicalCharsJsonOUTPUT)))
 
         row = tr()
-        row.add(td('parseToLogicalCharacters'))
+        row.add(td(parseToLogicalCharactersService))
         row.add(td(parseToLogicalCharactersURL))
         row.add(td(parseToLogicalCharactersInput1))
         row.add(td(parseToLogicalCharactersInput2))
@@ -1484,7 +1728,7 @@ with h.add(body()).add(div(id='content')):
         row.add(td(str(parseToLogicalCharactersJsonOUTPUT)))
 
        	row = tr()
-        row.add(td('isAnagram'))
+        row.add(td(isAnagramService))
         row.add(td(isAnagramURL))
         row.add(td(isAnagramInput1))
         row.add(td(isAnagramInput2))
@@ -1496,7 +1740,7 @@ with h.add(body()).add(div(id='content')):
 
 
        	row = tr()
-        row.add(td('startsWith'))
+        row.add(td(startsWithService))
         row.add(td(startsWithURL))
         row.add(td(startsWithInput1))
         row.add(td(startsWithInput2))
@@ -1508,7 +1752,7 @@ with h.add(body()).add(div(id='content')):
 
 
        	row = tr()
-        row.add(td('endsWith'))
+        row.add(td(endsWithService))
         row.add(td(endsWithURL))
         row.add(td(endsWithInput1))
         row.add(td(endsWithInput2))
@@ -1519,7 +1763,7 @@ with h.add(body()).add(div(id='content')):
         row.add(td(str(endsWithJsonOUTPUT)))
 
        	row = tr()
-        row.add(td('containsString'))
+        row.add(td(containsStringService))
         row.add(td(containsStringURL))
         row.add(td(containsStringInput1))
         row.add(td(containsStringInput2))
@@ -1531,7 +1775,7 @@ with h.add(body()).add(div(id='content')):
 
 
        	row = tr()
-        row.add(td('containsChar'))
+        row.add(td(containsCharService))
         row.add(td(containsCharURL))
         row.add(td(containsCharInput1))
         row.add(td(containsCharInput2))
@@ -1543,7 +1787,7 @@ with h.add(body()).add(div(id='content')):
 
 
        	row = tr()
-        row.add(td('containsLogicalChars'))
+        row.add(td(containsLogicalCharsService))
         row.add(td(containsLogicalCharsURL))
         row.add(td(containsLogicalCharsInput1))
         row.add(td(containsLogicalCharsInput2))
@@ -1554,7 +1798,7 @@ with h.add(body()).add(div(id='content')):
         row.add(td(str(containsLogicalCharsJsonOUTPUT)))
 
        	row = tr()
-        row.add(td('containsAllLogicalChars'))
+        row.add(td(containsAllLogicalCharservice))
         row.add(td(containsAllLogicalCharsURL))
         row.add(td(containsAllLogicalCharsInput1))
         row.add(td(containsAllLogicalCharsInput2))
@@ -1565,7 +1809,7 @@ with h.add(body()).add(div(id='content')):
         row.add(td(str(containsAllLogicalCharsJsonOUTPUT)))
 
        	row = tr()
-        row.add(td('containsLogicalCharSequence'))
+        row.add(td(containsLogicalCharSequenceservice))
         row.add(td(containsLogicalCharSequenceURL))
         row.add(td(containsLogicalCharSequenceInput1))
         row.add(td(containsLogicalCharSequenceInput2))
@@ -1577,7 +1821,7 @@ with h.add(body()).add(div(id='content')):
 
 
        	row = tr()
-        row.add(td('canMakeWord'))
+        row.add(td(canMakeWordservice))
         row.add(td(canMakeWordURL))
         row.add(td(canMakeWordInput1))
         row.add(td(canMakeWordInput2))
@@ -1588,7 +1832,7 @@ with h.add(body()).add(div(id='content')):
         row.add(td(str(canMakeWordJsonOUTPUT)))
 
        	row = tr()
-        row.add(td('canMakeAllWords'))
+        row.add(td(canMakeAllWordsservice))
         row.add(td(canMakeAllWordsURL))
         row.add(td(canMakeAllWordsInput1))
         row.add(td(canMakeAllWordsInput2))
@@ -1599,7 +1843,7 @@ with h.add(body()).add(div(id='content')):
         row.add(td(str(canMakeAllWordsJsonOUTPUT)))
 
        	row = tr()
-        row.add(td('addCharacterAtEnd'))
+        row.add(td(addCharacterAtEndservice))
         row.add(td(addCharacterAtEndURL))
         row.add(td(addCharacterAtEndInput1))
         row.add(td(addCharacterAtEndInput2))
@@ -1610,7 +1854,7 @@ with h.add(body()).add(div(id='content')):
         row.add(td(str(addCharacterAtEndJsonOUTPUT)))
 
        	row = tr()
-        row.add(td('isIntersecting'))
+        row.add(td(isIntersectingservice))
         row.add(td(isIntersectingURL))
         row.add(td(isIntersectingInput1))
         row.add(td(isIntersectingInput2))
@@ -1621,7 +1865,7 @@ with h.add(body()).add(div(id='content')):
         row.add(td(str(isIntersectingJsonOUTPUT)))
 
        	row = tr()
-        row.add(td('getIntersectingRank'))
+        row.add(td(getIntersectingRankservice))
         row.add(td(getIntersectingRankURL))
         row.add(td(getIntersectingRankInput1))
         row.add(td(getIntersectingRankInput2))
@@ -1632,7 +1876,7 @@ with h.add(body()).add(div(id='content')):
         row.add(td(str(getIntersectingRankJsonOUTPUT)))
 
        	row = tr()
-        row.add(td('getUniqueIntersectingRank'))
+        row.add(td(getUniqueIntersectingRankservice))
         row.add(td(getUniqueIntersectingRankURL))
         row.add(td(getUniqueIntersectingRankInput1))
         row.add(td(getUniqueIntersectingRankInput2))
@@ -1643,7 +1887,7 @@ with h.add(body()).add(div(id='content')):
         row.add(td(str(getUniqueIntersectingRankJsonOUTPUT)))
 
        	row = tr()
-        row.add(td('compareTo'))
+        row.add(td(compareToservice))
         row.add(td(compareToURL))
         row.add(td(compareToInput1))
         row.add(td(compareToInput2))
@@ -1654,7 +1898,7 @@ with h.add(body()).add(div(id='content')):
         row.add(td(str(compareToJsonOUTPUT)))
 
         row = tr()
-        row.add(td('compareToIgnoreCase'))
+        row.add(td(compareToIgnoreCaseservice))
         row.add(td(compareToIgnoreCaseURL))
         row.add(td(compareToIgnoreCaseInput1))
         row.add(td(compareToIgnoreCaseInput2))
@@ -1666,7 +1910,7 @@ with h.add(body()).add(div(id='content')):
 
 
        	row = tr()
-        row.add(td('splitWord'))
+        row.add(td(splitWordservice))
         row.add(td(splitWordURL))
         row.add(td(splitWordInput1))
         row.add(td(splitWordInput2))
@@ -1677,7 +1921,7 @@ with h.add(body()).add(div(id='content')):
         row.add(td(str(splitWordJsonOUTPUT)))
 
        	row = tr()
-        row.add(td('equals'))
+        row.add(td(equalsservice))
         row.add(td(equalsURL))
         row.add(td(equalsInput1))
         row.add(td(equalsInput2))
@@ -1688,7 +1932,7 @@ with h.add(body()).add(div(id='content')):
         row.add(td(str(equalsJsonOUTPUT)))
 
        	row = tr()
-        row.add(td('reverseEquals'))
+        row.add(td(reverseEqualsservice))
         row.add(td(reverseEqualsURL))
         row.add(td(reverseEqualsInput1))
         row.add(td(reverseEqualsInput2))
@@ -1699,7 +1943,7 @@ with h.add(body()).add(div(id='content')):
         row.add(td(str(reverseEqualsJsonOUTPUT)))
 
        	row = tr()
-        row.add(td('logicalCharAt'))
+        row.add(td(logicalCharAtservice))
         row.add(td(logicalCharAtURL))
         row.add(td(logicalCharAtInput1))
         row.add(td(logicalCharAtInput2))
@@ -1756,7 +2000,11 @@ with h.add(body()).add(div(id='content')):
         row.add(td(str(replaceJsonOUTPUT)))
 
 
-
+#######################################################################################
+#######################################################################################
+# Use the below to create new html rows if more services are needed.                  #
+#######################################################################################
+#######################################################################################
 
        	# row = tr()
         # row.add(td(''))
@@ -1769,9 +2017,10 @@ with h.add(body()).add(div(id='content')):
         # row.add(td())
         # row.add(td(str()))
 
-print(h)
+
 f = open("indicPythontest.html", "w")
 f.write(str(h))
 f.close()
+print("HTML Output Generated!")
 
 
