@@ -211,27 +211,23 @@ function remove_non_ascii(str) {
     return str.replace(/[^\x20-\x7E]/g, '');
 }
 
+
 window.onload = function () {
     var language = document.getElementById("languageInput").value;
     getLanguageValues(language);
-
     getDefaultValues(language);
     runTests();
 
 }
 
 /**
- * Generates default values for expected and runs the tests
+ * Generates default values for expected and runs the tests when the language dropdown is changed
  */
 $('#languageInput').on('change', function (e) {
-
     var language = document.getElementById("languageInput").value;
-
     getLanguageValues(language);
     getDefaultValues(language);
     runTests();
-
-
 })
 
 function getLanguageValues(language) {

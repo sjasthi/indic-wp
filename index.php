@@ -39,6 +39,9 @@
                     <a class="dropdown-item" href="https://github.com/sjasthi/indic-wp" target="_blank">sjasthi (Master Repo)</a>
                 </div>
             </li>
+            <li class="nav-item">
+                <a class="nav-link" href="docs/api.php">API Docs</a>
+            </li>
         </ul>
         <span class="navbar-brand mb-0 h1">Indic-WP WebServices</span>
         <a class="btn btn-dark" href="indic_classic.php">Classic Indic-WP</a>
@@ -74,7 +77,7 @@
             </div>
         </div>
         <div class="row" style="padding: 2px;">
-            <div class="col" style="padding: 2px;">
+            <div class="col" id="tableDiv">
                 <table id="testSuite" class="table table-dark table-striped table-sm table-bordered" style="display:table;">
                     <thead id="apiHeader">
                         <tr class="header-data">
