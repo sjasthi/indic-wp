@@ -974,4 +974,33 @@ class wordProcessor {
 	function getLengthNoSpacesNoCommas($word) {
 		return count($this->getLogicalChars()) - substr_count($word, ' ') - substr_count($word, ',');
 	}
+
+    function areLadderWords($string2) {
+        $string = strtolower($this->word);
+        $string2 = strtolower($string2);
+
+        if (strlen($string) != strlen($string2)) {
+            return false;
+        }
+
+        $stringArray = str_split($string);
+        $stringArray2 = str_split($string2);
+        $inconsistencyCount = 0;
+
+        for ($i = 0; $i < sizeof($stringArray); $i++) {
+            if ($stringArray[$i] != $stringArray2[$i]) {
+                $inconsistencyCount++;
+            }
+        }
+//        foreach ($stringArray2 as $letter) {
+//            if (!in_array($letter, $stringArray)) {
+//                $inconsistencyCount += 1;
+//            }
+//        }
+
+        if ($inconsistencyCount > 1 || $inconsistencyCount == 0) {
+            return false;
+        }
+        return true;
+    }
 }
