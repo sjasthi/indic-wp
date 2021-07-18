@@ -1,27 +1,34 @@
 <?php
-// I converted this but I am not sure it actually works???
-// list of isograms https://gist.github.com/TesseractCat/5b4d35c392e077677dd1c0cb745f2b6a
-// these all return true from his isAnagram() function
 require("../word_processor.php");
 
-if (isset($_GET['string']) && isset($_GET['language'])) {
+if (isset($_GET['string']) && isset($_GET['language']) && isset($_GET['string2'])) {
     $string = $_GET['string'];
     $language = $_GET['language'];
+    $string2 = $_GET['string2'];
+}
+else if(isset($_GET['input1']) && isset($_GET['input2']) && isset($_GET['input3'])) {
+    $string = $_GET['input1'];
+    $language = $_GET['input2'];
+    $string2 = $_GET['input3'];
 }
 
 if (!empty($string) && !empty($language)) {
     $processor = new wordProcessor($string, $language);
-    $anagrams = $processor->isAnagram($string);
+    $anagrams = $processor->isAnagram($string2);
     response(200, "Anagram Assessed", $string, $language, $anagrams);
 }
 else if (isset($string) && empty($string)) {
-    response(400, "Invalid or Empty Word", NULL, NULL, NULL);
+    invalidResponse("Invalid or Empty Word");
 }
 else if (isset($language) && empty($language)) {
-    response(400, "Invalid or Empty Language", NULL, NULL, NULL);
-}
+    invalidResponse("Invalid or Empty Language");
+} 
 else {
-    response(400, "Invalid Request", NULL, NULL, NULL);
+    invalidResponse("Invalid Request");
+}
+
+function invalidResponse($message) {
+    response(400, $message, NULL, NULL, NULL);
 }
 
 function response($responseCode, $message, $string, $language, $data) {

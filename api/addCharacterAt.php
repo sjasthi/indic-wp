@@ -7,19 +7,29 @@ if (isset($_GET['string']) && isset($_GET['language']) && isset($_GET['index']) 
     $index = $_GET['index'];
     $char = $_GET['char'];
 }
+else if(isset($_GET['input1']) && isset($_GET['input2']) && isset($_GET['input3']) && isset($_GET['input4'])) {
+    $string = $_GET['input1'];
+    $language = $_GET['input2'];
+    $index = $_GET['input3'];
+    $char = $_GET['input4'];
+}
 
 if (!empty($string) && !empty($language) && !empty($index) && !empty($char)) {
     $processor = new wordProcessor($string, $language);
     $result = $processor->addCharacterAt($index, $char);
     response(200, "addCharacterAt() Processed", $string, $language, $result, $index, $char);
 } else if (isset($string) && empty($string)) {
-    response(400, "Invalid or Empty Word", NULL, NULL, NULL, NULL, NULL);
+    invalidResponse("Invalid or Empty Word");
 } else if (isset($language) && empty($language)) {
-    response(400, "Invalid or Empty Language", NULL, NULL, NULL, NULL, NULL);
+    invalidResponse("Invalid or Empty Language");
 } else if (empty($index) || empty($char)) {
-    response(400, "Invalid or Empty Index or Char", NULL, NULL, NULL, NULL, NULL);
+    invalidResponse("Invalid or Empty Index or Char");
 } else {
-    response(400, "Invalid Request", NULL, NULL, NULL, NULL, NULL);
+    invalidResponse("Invalid Request");
+}
+
+function invalidResponse($message) {
+    response(400, $message, NULL, NULL, NULL, NULL, NULL);
 }
 
 function response($responseCode, $message, $string, $language, $data, $index, $char)

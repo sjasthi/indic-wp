@@ -14,20 +14,16 @@ else if(isset($_GET['input1']) && isset($_GET['input2']) && isset($_GET['input3'
 
 if (!empty($string) && !empty($language) && !empty($char)) {
     $processor = new wordProcessor($string, $language);
-    $result = $processor->addCharacterAtEnd($char);
-    response(200, "addCharacterAtEnd() Processed", $string, $language, $result, $char);
+    $result = $processor->indexOf($char);
+    response(200, "indexOf() Processed", $string, $language, $result, $char);
 } else if (isset($string) && empty($string)) {
-    invalidResponse("Invalid or Empty Word");
+    response(400, "Invalid or Empty Word", NULL, NULL, NULL, NULL, NULL);
 } else if (isset($language) && empty($language)) {
-    invalidResponse("Invalid or Empty Language");
-} else if (empty($char)) {
-    invalidResponse("Invalid or Empty Char");
+    response(400, "Invalid or Empty Language", NULL, NULL, NULL, NULL, NULL);
+} else if (isset($char) && empty($char)) {
+    response(400, "Invalid or Empty Char", NULL, NULL, NULL, NULL, NULL);
 } else {
-    invalidResponse("Invalid Request");
-}
-
-function invalidResponse($message) {
-    response(400, $message, NULL, NULL, NULL, NULL);
+    response(400, "Invalid Request", NULL, NULL, NULL, NULL, NULL);
 }
 
 function response($responseCode, $message, $string, $language, $data, $char)

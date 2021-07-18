@@ -6,21 +6,29 @@ if(isset($_GET['string']) && isset($_GET['language'])) {
     $string = $_GET['string'];
     $language = $_GET['language'];
 }
+else if(isset($_GET['input1']) && isset($_GET['input2'])) {
+    $string = $_GET['input1'];
+    $language = $_GET['input2'];
+}
 
 if(!empty($string) && !empty($language)) {
     $processor = new wordProcessor($string, $language);
     $codePoints = $processor->getCodePoints();
-
+    
     response(200, "Code Points Calculated", $string, $language, $codePoints);
 }
-else if(isset($string) && empty($string)){
-    response(400, "Invalid or Empty Word", NULL, NULL, NULL);
+else if (isset($string) && empty($string)) {
+    invalidResponse("Invalid or Empty Word");
 }
-else if(isset($language) && empty($language)){
-    response(400, "Invalid or Empty Language", NULL, NULL, NULL);
-}
+else if (isset($language) && empty($language)) {
+    invalidResponse("Invalid or Empty Language");
+} 
 else {
-    response(400, "Invalid Request", NULL, NULL, NULL);
+    invalidResponse("Invalid Request");
+}
+
+function invalidResponse($message) {
+    response(400, $message, NULL, NULL, NULL);
 }
 
 function response($responseCode, $message, $string, $language, $data) {

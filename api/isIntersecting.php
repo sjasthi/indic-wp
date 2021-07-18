@@ -1,4 +1,5 @@
 <?php
+
 require("../word_processor.php");
 
 if (isset($_GET['string']) && isset($_GET['language']) && isset($_GET['word'])) {
@@ -6,19 +7,28 @@ if (isset($_GET['string']) && isset($_GET['language']) && isset($_GET['word'])) 
     $language = $_GET['language'];
     $word = $_GET['word'];
 }
+else if(isset($_GET['input1']) && isset($_GET['input2']) && isset($_GET['input3'])) {
+    $string = $_GET['input1'];
+    $language = $_GET['input2'];
+    $word = $_GET['input3'];
+}
 
 if (!empty($string) && !empty($language) && !empty($word)) {
     $processor = new wordProcessor($string, $language);
     $result = $processor->isIntersecting($word);
     response(200, "isIntersecting() Processed", $string, $language, $result, $word);
 } else if (isset($string) && empty($string)) {
-    response(400, "Invalid or Empty Word", NULL, NULL, NULL, NULL);
+    invalidResponse("Invalid or Empty Word");
 } else if (isset($language) && empty($language)) {
-    response(400, "Invalid or Empty Language", NULL, NULL, NULL, NULL);
+    invalidResponse("Invalid or Empty Language");
 } else if (empty($word)) {
-    response(400, "Invalid or Empty Word", NULL, NULL, NULL, NULL);
+    invalidResponse("Invalid or Empty Word");
 } else {
-    response(400, "Invalid Request", NULL, NULL, NULL, NULL);
+    invalidResponse("Invalid Request");
+}
+
+function invalidResponse($message) {
+    response(400, $message, NULL, NULL, NULL, NULL);
 }
 
 function response($responseCode, $message, $string, $language, $data, $word)

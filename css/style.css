@@ -45,3 +45,9 @@ th.jsonHeader {
 .fail {
     color: red;
 }
+
+#tableDiv {
+    padding: 2px;
+    height: 820px;
+    overflow: auto;
+}

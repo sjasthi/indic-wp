@@ -3,7 +3,7 @@
 <div class='jumbotron' id='jumbos'></div><br>
 <div class='jumbotron1' id='jumbos1'></div>
 <head>
-	<form action = "index.html" method = "get">
+	<form action = "index.php" method = "get">
 		<input type="submit" value="Home" style="height:40px;width:100px;float: right; font-size: 100%; cursor:pointer" />
 	</form>
 
