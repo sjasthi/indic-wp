@@ -42,6 +42,9 @@
             <li class="nav-item">
                 <a class="nav-link" href="docs/api.php">API Docs</a>
             </li>
+            <li class="nav-item">
+                <a class="nav-link" href="parser.php">Parser</a>
+            </li>
         </ul>
         <span class="navbar-brand mb-0 h1">Indic-WP WebServices</span>
         <a class="btn btn-dark" href="indic_classic.php">Classic Indic-WP</a>
