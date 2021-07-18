@@ -14,24 +14,24 @@ else if(isset($_GET['input1']) && isset($_GET['input2']) && isset($_GET['input3'
 
 if (!empty($string) && !empty($language)) {
     $processor = new wordProcessor($string, $language);
-    $anagrams = $processor->isAnagram($string2);
-    response(200, "Anagram Assessed", $string, $language, $anagrams);
+    $result = $processor->areLadderWords($string2);
+    response(200, "areLadderWords() executed", $string, $string2, $language, $result);
 }
-else if (isset($string) && empty($string)) {
+else if ((isset($string) && empty($string)) || (isset($string2) && empty($string2))) {
     invalidResponse("Invalid or Empty Word");
 }
 else if (isset($language) && empty($language)) {
     invalidResponse("Invalid or Empty Language");
-} 
+}
 else {
     invalidResponse("Invalid Request");
 }
 
 function invalidResponse($message) {
-    response(400, $message, NULL, NULL, NULL);
+    response(400, $message, NULL, NULL, NULL, NULL);
 }
 
-function response($responseCode, $message, $string, $language, $data) {
+function response($responseCode, $message, $string, $string2, $language, $data) {
     // Locally cache results for two hours
     header('Cache-Control: max-age=7200');
 
@@ -39,7 +39,7 @@ function response($responseCode, $message, $string, $language, $data) {
     header('Content-type:application/json;charset=utf-8');
 
     http_response_code($responseCode);
-    $response = array("response_code" => $responseCode, "message" => $message, "string" => $string, "language" => $language, "data" => $data);
+    $response = array("response_code" => $responseCode, "message" => $message, "string" => $string, "string2" => $string2,"language" => $language, "data" => $data);
     $json = json_encode($response);
     echo $json;
 }
