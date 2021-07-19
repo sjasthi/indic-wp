@@ -241,8 +241,8 @@ public class Main {
             String[] compareToIgnoreCase = new String[]{"అమెరికాఆస్ట్రేలియా", language, "ఆస్ట్రేలియా"};
             pool.execute(new API("compareToIgnoreCase", compareToIgnoreCase, "1"));
 
-            String[] splitWord = new String[]{"అమెరికాఆస్ట్రేలియా", language, "TODO: not sure what this does(2)"};
-            pool.execute(new API("splitWord", splitWord, ""));
+            String[] splitWord = new String[]{"అమెరికాఆస్ట్రేలియా", language, "2"};
+            pool.execute(new API("splitWord", splitWord, "{\"0\":[\"\\u0c05\",\"\\u0c2e\\u0c46\"],\"2\":[\"\\u0c30\\u0c3f\",\"\\u0c15\\u0c3e\"],\"4\":[\"\\u0c06\",\"\\u0c38\\u0c4d\\u0c1f\\u0c4d\\u0c30\\u0c47\"],\"6\":[\"\\u0c32\\u0c3f\",\"\\u0c2f\\u0c3e\"]}"));
 
             String[] equals = new String[]{"అమెరికాఆస్ట్రేలియా", language, "అమెరికాఆస్ట్రేలియా"};
             pool.execute(new API("equals", equals, " TRUE"));
