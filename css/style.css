@@ -47,8 +47,8 @@ th.jsonHeader {
 }
 
 #tableDiv {
-    padding: 2px;
-    height: 820px;
+    padding: 20px;
+    height: 780px;
     overflow: auto;
 }
 
