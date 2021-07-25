@@ -50,11 +50,11 @@
                                 <th>Frequency</th>
                             </tr>
                         </thead>
-                        <tbody>
+                        <tbody id="word-entries">
                             <tr>
-                                <td>Word</td>
-                                <td>0</td>
-                                <td>0</td>
+                                <td>Enter some text...</td>
+                                <td>-</td>
+                                <td>-</td>
                             </tr>
                         </tbody>
                     </table>
