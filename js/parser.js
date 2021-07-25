@@ -47,3 +47,41 @@ function updateLanguageSelection(e) {
             console.log('Unknown language selected');
     }
 }
+
+/**
+ * This takes the value of the text area and processes it via the APIs. This function returns a map where the key is
+ * the word and the value is the length
+ */
+async function getWordLengths() {
+    const languageSelector = document.querySelector('#language-select');
+    const language = languageSelector.value;
+
+    const textArea = document.querySelector('#parsing-input');
+    const string = textArea.value.trim();
+    let words = string.split(" ");
+
+    const wordWithLength = new Map();
+
+    for (const word of words) {
+        await fetch(`http://localhost/indic-wp/api/getLength.php?language=${language}&string=${word}`)
+        .then(response => response.text())
+        .then(data => result = data);
+        newResult = remove_non_ascii(result);
+        const jsonObj = JSON.parse(newResult);
+        wordWithLength.set(word, jsonObj["data"])
+    }
+
+    return wordWithLength;
+}
+
+/**
+ * Removes NON-ASCII characters from strings
+ * taken from index.js
+ */
+function remove_non_ascii(str) {
+    if ((str === null) || (str === ''))
+        return false;
+    else
+        str = str.toString();
+    return str.replace(/[^\x20-\x7E]/g, '');
+}
