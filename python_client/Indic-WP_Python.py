@@ -360,10 +360,10 @@ if userInput == '1':
 ##### isAnagram needs to be fixed to take 2 inputs. Currently only taking one. 
     isAnagramService = 'isAnagram'
     isAnagramInput1 = 'hello'
-    isAnagramInput2 = 'NA'
+    isAnagramInput2 = 'ellho'
     isAnagramInput3 = 'NA'
     isAnagramLanguage = 'Language'
-    url = 'http://localhost/indic-wp/api/isAnagram.php?string='+isAnagramInput1+'&language=' + isAnagramLanguage
+    url = 'http://localhost/indic-wp/api/isAnagram.php?input1='+isAnagramInput1+'&input2=' + isAnagramLanguage + '&input3=' + isAnagramInput2
     isAnagramURL = url
     r = requests.get(url)
     dataDecoded = getDecode(r.text)
@@ -935,7 +935,7 @@ if userInput == '1':
     headsAndTailInput2 = 'other'
     headsAndTailInput3 = 'NA'
     headsAndTailLanguage = 'English'
-    url = 'http://localhost/indic-wp/api/areHeadsAndTailWords.php?input1='+ headsAndTailInput1 + '&input2='+ headsAndTailLanguage +'&input3='+ headsAndTailInput2
+    url = 'http://localhost/indic-wp/api/areHeadAndTailWords.php?input1='+ headsAndTailInput1 + '&input2='+ headsAndTailLanguage +'&input3='+ headsAndTailInput2
     headsAndTailAtURL = url
     r = requests.get(url)
     dataDecoded = getDecode(r.text)
@@ -953,12 +953,12 @@ if userInput == '1':
     # the words differ by just one logical character. 
     #################################
     ################################# 
-    areLadderWordsService = 'Head and Tail Words'
+    areLadderWordsService = 'Are Ladder Words'
     areLadderWordsInput1 = 'hello'
     areLadderWordsInput2 = 'hillo'
     areLadderWordsInput3 = 'NA'
     areLadderWordsLanguage = 'English'
-    url = 'http://localhost/indic-wp/api/areHeadsAndTailWords.php?input1='+ areLadderWordsInput1 + '&input2='+ areLadderWordsLanguage +'&input3='+ areLadderWordsInput2
+    url = 'http://localhost/indic-wp/api/areLadderWords.php?input1='+ areLadderWordsInput1 + '&input2='+ areLadderWordsLanguage +'&input3='+ areLadderWordsInput2
     areLadderWordsAtURL = url
     r = requests.get(url)
     dataDecoded = getDecode(r.text)
