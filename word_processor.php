@@ -1001,6 +1001,12 @@ class wordProcessor {
     function areHeadAndTailWords($string2) {
         $string = strtolower($this->word);
         $string2 = strtolower($string2);
+        $length = $this->getLength();
+        $this->setWord($string2);
+        $length2 = $this->getLength();
+        if ($length != $length2) {
+            return false;
+        }
         $stringArray = str_split($string);
         $stringArray2 = str_split($string2);
         if ($stringArray[strlen($string) - 1] == $stringArray2[0]) {
