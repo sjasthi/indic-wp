@@ -69,7 +69,7 @@ public class Main {
             String[] parseToLogicalCharacters = new String[]{"hello", language};
             pool.execute(new API("parseToLogicalCharacters", parseToLogicalCharacters, "[\"h\",\"e\",\"l\",\"l\",\"o\"]"));
 
-            String[] isAnagram = new String[]{"hello", language};
+            String[] isAnagram = new String[]{"study", language, "dusty"};
             pool.execute(new API("isAnagram", isAnagram, "TRUE"));
 
             String[] startsWith = new String[]{"hello", language, "h"};
@@ -144,6 +144,12 @@ public class Main {
             temp = new API("getUniqueIntersectingLogicalChars", getUniqueIntersectingLogicalChars, "2");
             temp.setLanguage(language);
             pool.execute(temp);
+
+            String[] areLadderWords = new String[]{"help", language, "held"};
+            pool.execute(new API("areLadderWords", areLadderWords, "true"));
+
+            String[] areHeadAndTailWords = new String[]{"cat", language, "tin"};
+            pool.execute(new API("areHeadAndTailWords", areHeadAndTailWords, "true"));
         }
 
         //Start of telugu
