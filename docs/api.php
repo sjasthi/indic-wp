@@ -507,6 +507,35 @@ $root = 'http://' . $_SERVER['HTTP_HOST'] . '/indic-wp/';
       For example, if 'hello!', 'ell', 'i' are entered the service returns 'hio!'. </p>
 </div>
 
+<div class="APIDescription" id="baseConsonants">
+  <body>
+    <h4>Base Consonants:</h4>
+    <p> The base consonants API takes two strings as input. The API processes the strings
+      to see if the strings contain the same consonants and have the same length. For example,
+      if moon and maan are entered, the service will return true.
+    </p>
+</div>
+
+<div class="APIDescription" id="areLadderWords">
+  <body>
+    <h4>Are Ladder Words:</h4>
+    <p>
+      The are ladder words takes 2 strings and processes the string to see if the 
+      strings are equal in length and if they differ by 1 logical Character. For example, 
+      if input 1 is Cold and input 2 is Cord the service returns true. 
+    </p>
+</div>
+
+<div class="APIDescription" id="headAndTail">
+  <body>
+    <h4>Head and Tail:</h4>
+    <p>
+      The head and tail API takes 2 strings as input and checks if the 
+      last character of the first word is the same as the first character of the second word. 
+      For example, if cat and tin are entered the service returns true. 
+    </p>
+</div>
+
 
 <link rel="stylesheet" href="<?= $root ?>css/style.css">
 
