@@ -360,10 +360,10 @@ if userInput == '1':
 ##### isAnagram needs to be fixed to take 2 inputs. Currently only taking one. 
     isAnagramService = 'isAnagram'
     isAnagramInput1 = 'hello'
-    isAnagramInput2 = 'NA'
+    isAnagramInput2 = 'ellho'
     isAnagramInput3 = 'NA'
     isAnagramLanguage = 'Language'
-    url = 'http://localhost/indic-wp/api/isAnagram.php?string='+isAnagramInput1+'&language=' + isAnagramLanguage
+    url = 'http://localhost/indic-wp/api/isAnagram.php?input1='+isAnagramInput1+'&input2=' + isAnagramLanguage + '&input3=' + isAnagramInput2
     isAnagramURL = url
     r = requests.get(url)
     dataDecoded = getDecode(r.text)
@@ -887,7 +887,7 @@ if userInput == '1':
     replaceInput2 = 'ell'
     replaceInput3 = 'i'
     replaceLanguage = 'English'
-    url = 'http://localhost/indic-wp/api/replace.php?string='+ replaceInput1 + '&language='+addCharacterAtLanguage+'&target='+ replaceInput2 +'&new=' +replaceInput3
+    url = 'http://localhost/indic-wp/api/replace.php?string='+ replaceInput1 + '&language='+replaceLanguage+'&target='+ replaceInput2 +'&new=' +replaceInput3
     replaceAtURL = url
     r = requests.get(url)
     dataDecoded = getDecode(r.text)
@@ -896,6 +896,79 @@ if userInput == '1':
     replaceActualResult = x.get('data')
     replacePassOrFaill = 'Pass' if replaceExpectedResults == x.get('data') else 'Failed'
     replaceJsonOUTPUT = x
+
+
+    #################################
+    #################################
+    ###### Base Consonants API ######
+    # Input1 is a string and Input2 is a string. 
+    # The API checks that the 2 input strings have the same 
+    # consonants. 
+    #################################
+    ################################# 
+    baseConsonantService = 'Base Consonants'
+    baseConsonantInput1 = 'hello'
+    baseConsonantInput2 = 'hello'
+    baseConsonantInput3 = 'NA'
+    baseConsonantLanguage = 'English'
+    url = 'http://localhost/indic-wp/api/baseConsonants.php?input1='+ baseConsonantInput1 + '&input2='+ baseConsonantLanguage +'&input3='+ baseConsonantInput2
+    baseConsonantAtURL = url
+    r = requests.get(url)
+    dataDecoded = getDecode(r.text)
+    x = json.loads(dataDecoded)
+    baseConsonantExpectedResults = True
+    baseConsonantActualResult = x.get('data')
+    baseConsonantPassorFaill = 'Pass' if baseConsonantExpectedResults == x.get('data') else 'Failed'
+    baseConsonantJsonOUTPUT = x
+
+    #################################
+    #################################
+    ###### Heads and Tails API ######
+    # Input 1 is a string. Input 2 is a string. The 
+    # API checks if the first letter if input 2 is the 
+    # last letter of input 1. It also validates the strings
+    # are the same length. 
+    #################################
+    ################################# 
+    headsAndTailService = 'Head and Tail Words'
+    headsAndTailInput1 = 'hello'
+    headsAndTailInput2 = 'other'
+    headsAndTailInput3 = 'NA'
+    headsAndTailLanguage = 'English'
+    url = 'http://localhost/indic-wp/api/areHeadAndTailWords.php?input1='+ headsAndTailInput1 + '&input2='+ headsAndTailLanguage +'&input3='+ headsAndTailInput2
+    headsAndTailAtURL = url
+    r = requests.get(url)
+    dataDecoded = getDecode(r.text)
+    x = json.loads(dataDecoded)
+    headsAndTailExpectedResults = True
+    headsAndTailActualResult = x.get('data')
+    headsAndTailPassorFaill = 'Pass' if headsAndTailExpectedResults == x.get('data') else 'Failed'
+    headsAndTailJsonOUTPUT = x
+
+
+    #################################
+    #################################
+    ###### Are Ladder Words API #####
+    # Takes 2 strings as input and checks if
+    # the words differ by just one logical character. 
+    #################################
+    ################################# 
+    areLadderWordsService = 'Are Ladder Words'
+    areLadderWordsInput1 = 'hello'
+    areLadderWordsInput2 = 'hillo'
+    areLadderWordsInput3 = 'NA'
+    areLadderWordsLanguage = 'English'
+    url = 'http://localhost/indic-wp/api/areLadderWords.php?input1='+ areLadderWordsInput1 + '&input2='+ areLadderWordsLanguage +'&input3='+ areLadderWordsInput2
+    areLadderWordsAtURL = url
+    r = requests.get(url)
+    dataDecoded = getDecode(r.text)
+    x = json.loads(dataDecoded)
+    areLadderWordsExpectedResults = True
+    areLadderWordsActualResult = x.get('data')
+    areLadderWordsPassorFaill = 'Pass' if areLadderWordsExpectedResults == x.get('data') else 'Failed'
+    areLadderWordsJsonOUTPUT = x
+
+
 ####### Start Telugu 
 elif userInput == '2':
     print('Telugu selected...')
@@ -1537,6 +1610,55 @@ elif userInput == '2':
     indexOfPassOrFaill = 'Pass' if indexOfExpectedResults == x.get('data') else 'Failed'
     indexOfJsonOUTPUT = x
 
+    baseConsonantService = 'Base Consonants'
+    baseConsonantInput1 = 'కర్త'
+    baseConsonantInput2 = 'కర్త'
+    baseConsonantInput3 = 'NA'
+    baseConsonantLanguage = 'Telugu'
+    url = 'http://localhost/indic-wp/api/baseConsonants.php?input1='+ baseConsonantInput1 + '&input2='+ baseConsonantLanguage +'&input3='+ baseConsonantInput2
+    baseConsonantAtURL = url
+    r = requests.get(url)
+    dataDecoded = getDecode(r.text)
+    x = json.loads(dataDecoded)
+    baseConsonantExpectedResults = True
+    baseConsonantActualResult = x.get('data')
+    baseConsonantPassorFaill = 'Pass' if baseConsonantExpectedResults == x.get('data') else 'Failed'
+    baseConsonantJsonOUTPUT = x
+
+    ###########################################
+    # Need Telugu inputs for testing
+    ##########################################
+    headsAndTailService = 'Head and Tail Words'
+    headsAndTailInput1 = ''
+    headsAndTailInput2 = ''
+    headsAndTailInput3 = 'NA'
+    headsAndTailLanguage = 'Telugu'
+    url = 'http://localhost/indic-wp/api/areHeadsAndTailWords.php?input1='+ headsAndTailInput1 + '&input2='+ headsAndTailLanguage +'&input3='+ headsAndTailInput2
+    headsAndTailAtURL = url
+    r = requests.get(url)
+    dataDecoded = getDecode(r.text)
+    x = json.loads(dataDecoded)
+    headsAndTailExpectedResults = True
+    headsAndTailActualResult = x.get('data')
+    headsAndTailPassorFaill = 'Pass' if headsAndTailExpectedResults == x.get('data') else 'Failed'
+    headsAndTailJsonOUTPUT = x
+
+
+    areLadderWordsService = 'Are Ladder Words'
+    areLadderWordsInput1 = ''
+    areLadderWordsInput2 = ''
+    areLadderWordsInput3 = 'NA'
+    areLadderWordsLanguage = 'Telugu'
+    url = 'http://localhost/indic-wp/api/areHeadsAndTailWords.php?input1='+ areLadderWordsInput1 + '&input2='+ areLadderWordsLanguage +'&input3='+ areLadderWordsInput2
+    areLadderWordsAtURL = url
+    r = requests.get(url)
+    dataDecoded = getDecode(r.text)
+    x = json.loads(dataDecoded)
+    areLadderWordsExpectedResults = True
+    areLadderWordsActualResult = x.get('data')
+    areLadderWordsPassorFaill = 'Pass' if areLadderWordsExpectedResults == x.get('data') else 'Failed'
+    areLadderWordsJsonOUTPUT = x
+
 
 
 
@@ -2000,6 +2122,42 @@ with h.add(body()).add(div(id='content')):
         row.add(td(str(replaceJsonOUTPUT)))
 
 
+        row = tr()
+        row.add(td(baseConsonantService))
+        row.add(td(baseConsonantAtURL))
+        row.add(td(baseConsonantInput1))
+        row.add(td(baseConsonantInput2))
+        row.add(td(baseConsonantInput3))
+        row.add(td(baseConsonantExpectedResults))
+        row.add(td(baseConsonantActualResult))
+        row.add(td(baseConsonantPassorFaill))
+        row.add(td(str(baseConsonantJsonOUTPUT)))
+
+        row = tr()
+        row.add(td(headsAndTailService))
+        row.add(td(headsAndTailAtURL))
+        row.add(td(headsAndTailInput1))
+        row.add(td(headsAndTailInput2))
+        row.add(td(headsAndTailInput3))
+        row.add(td(headsAndTailLanguage))
+        row.add(td(headsAndTailExpectedResults))
+        row.add(td(headsAndTailActualResult))
+        row.add(td(headsAndTailPassorFaill))
+        row.add(td(str(headsAndTailJsonOUTPUT)))
+
+        row = tr()
+        row.add(td(areLadderWordsService))
+        row.add(td(areLadderWordsAtURL))
+        row.add(td(areLadderWordsInput1))
+        row.add(td(areLadderWordsInput2))
+        row.add(td(areLadderWordsInput3))
+        row.add(td(areLadderWordsLanguage))
+        row.add(td(areLadderWordsExpectedResults))
+        row.add(td(areLadderWordsActualResult))
+        row.add(td(areLadderWordsPassorFaill))
+        row.add(td(str(areLadderWordsJsonOUTPUT)))
+
+
 #######################################################################################
 #######################################################################################
 # Use the below to create new html rows if more services are needed.                  #
@@ -2007,7 +2165,7 @@ with h.add(body()).add(div(id='content')):
 #######################################################################################
 
        	# row = tr()
-        # row.add(td(''))
+        # row.add(td())
         # row.add(td())
         # row.add(td())
         # row.add(td())

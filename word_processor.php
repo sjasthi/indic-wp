@@ -1014,4 +1014,116 @@ class wordProcessor {
         }
         return false;
     }
+
+	function baseConsonants($firstWord, $secondWord) {
+		$TeluguVstart = hexdec("0x0C05");
+		$TeluguVend = hexdec("0x0C14");
+		$result = false;
+		$englishVowels = array("041","045","049","4f","055");
+
+		if($this->language == "English") {
+			$secondWord = strtoupper($secondWord);
+			$firstWord = strtoupper($firstWord);
+			
+		}
+		if($this->language == "English") {
+			$this->setWord($firstWord);
+			$firstWordLength = $this->getLength();
+			$this->setWord($secondWord);
+			$secondWordLength = $this->getLength();
+
+
+		
+			if($firstWordLength == $secondWordLength){
+				$secondWordArray = parseToLogicalCharacters($secondWord);
+				$firstWordArray = parseToLogicalCharacters($firstWord);
+				foreach ($secondWordArray as $char) {
+					if(!in_array(strval(dechex(ord($char))), $englishVowels)) {
+						if(str_contains($firstWord, $char)){
+							$result = True;
+							
+						}
+						else {
+							$result = false;
+							break;
+						}
+					}
+				}
+			}
+		}
+
+		if($this->language == "Telugu") {
+			$teluguCon1 = "3093";  //"క"
+			$teluguCon2 = "3120";       //"ర"
+			$teluguCon = array($teluguCon1, $teluguCon2);
+			$this->setWord($firstWord);
+			$firstWordLength = $this->getLength();
+			$this->setWord($secondWord);
+			$secondWordLength = $this->getLength();
+			if($firstWordLength == $secondWordLength) {
+
+				$firstWordArray = $this->getCodePoints();
+				$this->setWord($secondWord);
+				$secondWordArray = $this->getCodePoints();
+				$newFirstWordArray = array();
+				$newsecondWordArray = array();
+				for($i = 0; $i < count($firstWordArray); $i++ ) {
+					for($j = 0; $j < count($firstWordArray[$i]); $j++) {
+						array_push($newFirstWordArray, $firstWordArray[$i][$j]);
+					}
+				}
+
+				for($i = 0; $i < count($secondWordArray); $i++ ) {
+					for($j = 0; $j < count($secondWordArray[$i]); $j++) {
+						array_push($newsecondWordArray, $secondWordArray[$i][$j]);
+					}
+				}
+
+				foreach ($newsecondWordArray as $char) {
+					if(in_array($char, $teluguCon)) {
+						if(in_array($char, $newFirstWordArray)){
+							$result = true;
+						}
+						else {
+							$result = false;
+							break;
+						}
+					}
+				}
+
+			}
+		}
+
+		if($result == true && $this->language == "English"){
+			foreach($secondWordArray as $char) {
+				$count1 = 0;
+				$count2 = 0;
+				if(!in_array(strval(dechex(ord($char))), $englishVowels)) {
+					$count2 = substr_count($secondWord, $char);
+					$count1 = substr_count($firstWord, $char);
+					if($count1 != $count2) {
+						$result = false;
+					}
+				}
+			}
+		}
+
+		if($result == true && $this->language == "Telugu"){
+			foreach($newsecondWordArray as $char) {
+				if($char == $teluguCon1 || $char == $teluguCon2) {
+					if(!in_array($char, $newFirstWordArray)) {
+						$result = false;
+					}
+					elseif(!in_array($char, $newsecondWordArray)) {
+						$result = false;
+					}
+					$count2 = count(array_keys($newsecondWordArray, $char));
+					$count1 = count(array_keys($newFirstWordArray, $char));
+				}
+			}
+		}
+
+		return $result;
+
+	}
 }
