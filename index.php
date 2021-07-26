@@ -56,12 +56,6 @@
     <form name="form" id="form">
         <div class="row" style="padding: 15px;">
             <div class="col text-center">
-                <!-- <label for="apiChoice">WS Type: </label>
-                <select name="apiChoice" class="m-1" id="apiChoice">
-                    <option selected disabled hidden>Select an option</option>
-                    <option selected value="all">All WebServices</option>
-                    <option value="getFillerCharacters">getFillerCharacters</option>
-                </select> -->
                 <div id="testForm" style="display: block">
                     <label for="universalInput">Universal Input: </label>
                     <input type="text" class="m-1" name="word" id="universalInput">
@@ -69,7 +63,6 @@
                     <br>
                     <label for="languageInput">Language: </label>
                     <select name="languageInput" class="m-1" id="languageInput">
-                        <!-- <option selected disabled hidden>Select an option</option> -->
                         <option value="English">English</option>
                         <option selected value="Telugu">Telugu</option>
                     </select>
@@ -93,7 +86,7 @@
                         <?php
                         $output = '';
                         $singleInputAPIs = array("getCodePointLength", "getCodePoints", "getLength", "getLogicalChars", "getWordStrength", "getWordWeight", "isPalindrome", "reverse", "containsSpace", "getWordLevel", "getLengthNoSpaces", "getLengthNoSpacesNoCommas", "parseToLogicalChars", "parseToLogicalCharacters", "isAnagram");
-                        $doubleInputAPIs = array("startsWith", "endsWith", "containsString", "containsChar", "containsLogicalChars", "containsAllLogicalChars", "containsLogicalCharSequence", "canMakeWord", "canMakeAllWords", "addCharacterAtEnd", "isIntersecting", "getIntersectingRank", "getUniqueIntersectingRank", "compareTo", "compareToIgnoreCase", "splitWord", "equals", "reverseEquals", "logicalCharAt", "getUniqueIntersectingLogicalChars", "indexOf");
+                        $doubleInputAPIs = array("startsWith", "endsWith", "containsString", "containsChar", "containsLogicalChars", "containsAllLogicalChars", "containsLogicalCharSequence", "canMakeWord", "canMakeAllWords", "addCharacterAtEnd", "isIntersecting", "getIntersectingRank", "getUniqueIntersectingRank", "compareTo", "compareToIgnoreCase", "splitWord", "equals", "reverseEquals", "logicalCharAt", "getUniqueIntersectingLogicalChars", "indexOf", "areLadderWords", "areHeadAndTailWords");
                         $tripleInputAPIs = array("addCharacterAt", "replace");
                         $getFillerChars = array("getFillerCharacters");
 

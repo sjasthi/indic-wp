@@ -118,7 +118,7 @@ async function runTests() {
 async function callAPI(methodName) {
 
     const singleInput = ["getCodePointLength", "getCodePoints", "getLength", "getLogicalChars", "getWordStrength", "getWordWeight", "isPalindrome", "randomize", "reverse", "containsSpace", "getWordLevel", "getLengthNoSpaces", "getLengthNoSpacesNoCommas", "parseToLogicalChars", "parseToLogicalCharacters", "isAnagram"];
-    const doubleInput = ["startsWith", "endsWith", "containsString", "containsChar", "containsLogicalChars", "containsAllLogicalChars", "containsLogicalCharSequence", "canMakeWord", "canMakeAllWords", "addCharacterAtEnd", "isIntersecting", "getIntersectingRank", "getUniqueIntersectingRank", "compareTo", "compareToIgnoreCase", "splitWord", "equals", "reverseEquals", "logicalCharAt", "getUniqueIntersectingLogicalChars", "indexOf"];
+    const doubleInput = ["startsWith", "endsWith", "containsString", "containsChar", "containsLogicalChars", "containsAllLogicalChars", "containsLogicalCharSequence", "canMakeWord", "canMakeAllWords", "addCharacterAtEnd", "isIntersecting", "getIntersectingRank", "getUniqueIntersectingRank", "compareTo", "compareToIgnoreCase", "splitWord", "equals", "reverseEquals", "logicalCharAt", "getUniqueIntersectingLogicalChars", "indexOf", "areLadderWords", "areHeadAndTailWords"];
     const tripleInput = ["addCharacterAt", "replace"];
 
     if (methodName == "getFillerCharacters") {
@@ -282,6 +282,9 @@ function getDefaultValues(language) {
         document.getElementById("replaceInputText2").value = "ell";
         document.getElementById("addCharacterAtInputText3").value = "e";
         document.getElementById("replaceInputText3").value = "i";
+        document.getElementById("areLadderWordsInputText2").value = "cello";
+        document.getElementById("areHeadAndTailWordsInputText2").value = "oasis";
+
 
         document.getElementById("getCodePointLengthExpectedText").value = "5";
         document.getElementById("getCodePointsExpectedText").value = "104,101,108,108,111";
@@ -321,6 +324,8 @@ function getDefaultValues(language) {
         document.getElementById("indexOfExpectedText").value = "1";
         document.getElementById("addCharacterAtExpectedText").value = "heello";
         document.getElementById("replaceExpectedText").value = "hio";
+        document.getElementById("areLadderWordsExpectedText").value = "true";
+        document.getElementById("areHeadAndTailWordsExpectedText").value = "true";
     }
 
     if (language == "Telugu") {
