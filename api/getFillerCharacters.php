@@ -43,14 +43,14 @@ function invalidResponse($message) {
 
 function response($responseCode, $message, $count, $type, $language, $data) {
     // Locally cache results for two hours
-    header('Cache-Control: max-age=7200');
+    header('Cache-Control: max-age=60');
 
     // JSON Header
     header('Content-type:application/json;charset=utf-8');
 
     http_response_code($responseCode);
     $response = array("response_code" => $responseCode, "message" => $message, "count" => $count, "type" => $type, "language" => $language, "data" => $data);
-    $json = json_encode($response, JSON_UNESCAPED_UNICODE);
+    $json = json_encode($response);
     echo $json;
 }
 
