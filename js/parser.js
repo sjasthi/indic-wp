@@ -81,11 +81,11 @@ function updateLanguageSelection(e) {
 async function getWordLengths() {
     const textArea = document.querySelector('#parsing-input');
     const string = textArea.value.trim();
-    let words = string.split(" ");
+    let words = string.split(/\s+/);
     const wordWithLength = new Map();
     
     for (const word of words) {
-        await fetch(`http://localhost/indic-wp/api/getLength.php?language=${language}&string=${word}`)
+        await fetch(`https://indic-wp.thisisjava.com/api/getLength.php?language=${language}&string=${word}`)
         .then(response => response.text())
         .then(data => result = data);
         
