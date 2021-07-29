@@ -7,8 +7,8 @@ if (isset($_GET['string']) && isset($_GET['language']) && isset($_GET['secondStr
     $secondString = $_GET['secondString'];
 } else if (isset($_GET['input1']) && isset($_GET['input2']) && isset($_GET['input3'])) {
     $string = $_GET['input1'];
-    $language = $_GET['input3'];
-    $secondString = $_GET['input2'];
+    $language = $_GET['input2'];
+    $secondString = $_GET['input3'];
 }
 
 if (!empty($string) && !empty($language) && !empty($secondString)) {
