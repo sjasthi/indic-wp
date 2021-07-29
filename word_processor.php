@@ -42,8 +42,8 @@ class wordProcessor
 		if (is_string($word)) return $this->setWord($word);
 	}
 
-	// setter for the word 
-	// this also parses the word to logical characters 
+	// setter for the word
+	// this also parses the word to logical characters
 	function setWord($a_word)
 	{
 		if (!is_string($a_word)) return;
@@ -269,7 +269,7 @@ class wordProcessor
 		if ($index >= count($this->getLogicalChars()))
 			return $this->addCharacterAtEnd($log_char);
 
-		// array_splice may as well work here. 
+		// array_splice may as well work here.
 		$build = array();
 		$build_i = 0;
 		foreach ($this->getLogicalChars() as $char) {
@@ -543,7 +543,7 @@ class wordProcessor
 		a number of logicalCharCount characters will be generated.
 		If a type is not of the known variants, a pool from all
 		available types is automatically selected.
-		@return results - Array with logicalCharCount filler characters 
+		@return results - Array with logicalCharCount filler characters
 	*/
 	function getFillerCharacters($logicalCharCount, $type)
 	{
@@ -1047,42 +1047,100 @@ class wordProcessor
 	//It compares the inconsistencies within two given words to see if they are ladder words.
 	function areLadderWords($string2)
 	{
-		$string = strtolower($this->word);
-		$string2 = strtolower($string2);
-		if (strlen($string) != strlen($string2)) {
-			return false;
-		}
-		$stringArray = str_split($string);
-		$stringArray2 = str_split($string2);
-		$inconsistencyCount = 0;
-		for ($i = 0; $i < sizeof($stringArray); $i++) {
-			if ($stringArray[$i] != $stringArray2[$i]) {
-				$inconsistencyCount++;
-			}
-		}
-		if ($inconsistencyCount > 1 || $inconsistencyCount == 0) {
-			return false;
-		}
-		return true;
+        if (strtolower($this->language) == "english")
+        {
+            $string = strtolower($this->word);
+            $string2 = strtolower($string2);
+            if (strlen($string) != strlen($string2))
+            {
+                return false;
+            }
+            $stringArray = str_split($string);
+            $stringArray2 = str_split($string2);
+            $inconsistencyCount = 0;
+            for ($i = 0; $i < sizeof($stringArray); $i++)
+            {
+                if ($stringArray[$i] != $stringArray2[$i])
+                {
+                    $inconsistencyCount++;
+                }
+            }
+            if ($inconsistencyCount == 1)
+            {
+                return true;
+            }
+        }
+
+        if (strtolower($this->language) == "telugu")
+        {
+            $length = $this->getLength();
+            $wordCodePoints = $this->getCodePoints();
+            $this->setWord($string2);
+            $length2 = $this->getLength();
+            $wordCodePoints2 = $this->getCodePoints();
+
+            if ($length != $length2)
+            {
+                return false;
+            }
+            $differenceArray = array();
+            for ($i = 0; $i < $length; $i++)
+            {
+                //this will return an array of size 0 if there is no difference between arrays
+                $differenceResult = array_diff($wordCodePoints[$i], $wordCodePoints2[$i]);
+                if (sizeof($differenceResult) != 0)
+                {
+                    array_push($differenceArray, $differenceResult);
+                }
+            }
+            if (sizeof($differenceArray) == 1)
+            {
+                return true;
+            }
+        }
+		return false;
 	}
 
 	//Compares the last letter of the first word and the first letter of the last word.
 	function areHeadAndTailWords($string2)
 	{
-		$string = strtolower($this->word);
-		$string2 = strtolower($string2);
-		$length = $this->getLength();
-		$this->setWord($string2);
-		$length2 = $this->getLength();
-		if ($length != $length2) {
-			return false;
-		}
-		$stringArray = str_split($string);
-		$stringArray2 = str_split($string2);
-		if ($stringArray[strlen($string) - 1] == $stringArray2[0]) {
-			return true;
-		}
-		return false;
+        if (strtolower($this->language) == "english")
+        {
+            $string = strtolower($this->word);
+            $string2 = strtolower($string2);
+            $length = $this->getLength();
+            $this->setWord($string2);
+            $length2 = $this->getLength();
+            if ($length != $length2) {
+                return false;
+            }
+            $stringArray = str_split($string);
+            $stringArray2 = str_split($string2);
+            if ($stringArray[strlen($string) - 1] == $stringArray2[0]) {
+                return true;
+            }
+        }
+
+        if (strtolower($this->language) == "telugu")
+        {
+            $length = $this->getLength();
+            $wordCodePoints = $this->getCodePoints();
+            $this->setWord($string2);
+            $length2 = $this->getLength();
+            $wordCodePoints2 = $this->getCodePoints();
+            if ($length != $length2)
+            {
+                return false;
+            }
+            //sees if theres a difference between the last index of the first word
+            //and the first index of the last word.
+            $differenceResult = array_diff($wordCodePoints[$length2 - 1], $wordCodePoints2[0]);
+            if (sizeof($differenceResult) == 0)
+            {
+                return true;
+            }
+        }
+            return false;
 	}
 
 	function baseConsonants($firstWord, $secondWord)
