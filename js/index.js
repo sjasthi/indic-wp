@@ -118,7 +118,7 @@ async function runTests() {
 async function callAPI(methodName) {
 
     const singleInput = ["getCodePointLength", "getCodePoints", "getLength", "getLogicalChars", "getWordStrength", "getWordWeight", "isPalindrome", "randomize", "reverse", "containsSpace", "getWordLevel", "getLengthNoSpaces", "getLengthNoSpacesNoCommas", "parseToLogicalChars", "parseToLogicalCharacters", "isAnagram"];
-    const doubleInput = ["startsWith", "endsWith", "containsString", "containsChar", "containsLogicalChars", "containsAllLogicalChars", "containsLogicalCharSequence", "canMakeWord", "canMakeAllWords", "addCharacterAtEnd", "isIntersecting", "getIntersectingRank", "getUniqueIntersectingRank", "compareTo", "compareToIgnoreCase", "splitWord", "equals", "reverseEquals", "logicalCharAt", "getUniqueIntersectingLogicalChars", "indexOf", "areLadderWords", "areHeadAndTailWords"];
+    const doubleInput = ["startsWith", "endsWith", "containsString", "containsChar", "containsLogicalChars", "containsAllLogicalChars", "containsLogicalCharSequence", "canMakeWord", "canMakeAllWords", "addCharacterAtEnd", "isIntersecting", "getIntersectingRank", "getUniqueIntersectingRank", "compareTo", "compareToIgnoreCase", "splitWord", "equals", "reverseEquals", "logicalCharAt", "getUniqueIntersectingLogicalChars", "indexOf", "areLadderWords", "areHeadAndTailWords", "baseConsonants"];
     const tripleInput = ["addCharacterAt", "replace"];
 
     if (methodName == "getFillerCharacters") {
@@ -284,6 +284,7 @@ function getDefaultValues(language) {
         document.getElementById("replaceInputText3").value = "i";
         document.getElementById("areLadderWordsInputText2").value = "cello";
         document.getElementById("areHeadAndTailWordsInputText2").value = "oasis";
+        document.getElementById("baseConsonantsInputText2").value = "hilla";
 
 
         document.getElementById("getCodePointLengthExpectedText").value = "5";
@@ -326,6 +327,7 @@ function getDefaultValues(language) {
         document.getElementById("replaceExpectedText").value = "hio";
         document.getElementById("areLadderWordsExpectedText").value = "true";
         document.getElementById("areHeadAndTailWordsExpectedText").value = "true";
+        document.getElementById("baseConsonantsExpectedText").value = "true";
     }
 
     if (language == "Telugu") {
