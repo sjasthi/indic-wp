@@ -262,6 +262,11 @@ public class Main {
             String[] replace = new String[]{"అమెరికాఆస్ట్రేలియా", language, "క్క", "2"};
             pool.execute(new API("replace", replace, "అక్కరికాఆస్ట్రేలియా"));
 
+            String[] areLadderWords = new String[]{"మురుకు", language, "మురుగు"};
+            pool.execute(new API("areLadderWords", areLadderWords, "true"));
+
+            String[] areHeadAndTailWords = new String[]{"మురుకు", language, "కుడుము"};
+            pool.execute(new API("areHeadAndTailWords", areHeadAndTailWords, "true"));
         }
 
         pool.shutdown();
