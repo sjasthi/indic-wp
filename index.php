@@ -1,6 +1,7 @@
 <!DOCTYPE html>
 <html lang="en">
 
+
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -12,7 +13,6 @@
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.0/dist/js/bootstrap.min.js" integrity="sha384-+YQ4JLhjyBLPDQt//I+STsc9iw4uQqACwlvpslubQzn4u2UU2UFM80nGisd026JF" crossorigin="anonymous"></script>
 
     <!-- <script src="js/index.js"></script> -->
-
 </head>
 
 <nav id="navigation" class="navbar navbar-expand-lg navbar-dark bg-dark">
@@ -56,12 +56,6 @@
     <form name="form" id="form">
         <div class="row" style="padding: 15px;">
             <div class="col text-center">
-                <!-- <label for="apiChoice">WS Type: </label>
-                <select name="apiChoice" class="m-1" id="apiChoice">
-                    <option selected disabled hidden>Select an option</option>
-                    <option selected value="all">All WebServices</option>
-                    <option value="getFillerCharacters">getFillerCharacters</option>
-                </select> -->
                 <div id="testForm" style="display: block">
                     <label for="universalInput">Universal Input: </label>
                     <input type="text" class="m-1" name="word" id="universalInput">
@@ -69,7 +63,6 @@
                     <br>
                     <label for="languageInput">Language: </label>
                     <select name="languageInput" class="m-1" id="languageInput">
-                        <!-- <option selected disabled hidden>Select an option</option> -->
                         <option value="English">English</option>
                         <option selected value="Telugu">Telugu</option>
                     </select>
@@ -92,8 +85,8 @@
                     <tbody id="apiTable">
                         <?php
                         $output = '';
-                        $singleInputAPIs = array("getCodePointLength", "getCodePoints", "getLength", "getLogicalChars", "getWordStrength", "getWordWeight", "isPalindrome", "reverse", "containsSpace", "getWordLevel", "getLengthNoSpaces", "getLengthNoSpacesNoCommas", "parseToLogicalChars", "parseToLogicalCharacters", "isAnagram");
-                        $doubleInputAPIs = array("startsWith", "endsWith", "containsString", "containsChar", "containsLogicalChars", "containsAllLogicalChars", "containsLogicalCharSequence", "canMakeWord", "canMakeAllWords", "addCharacterAtEnd", "isIntersecting", "getIntersectingRank", "getUniqueIntersectingRank", "compareTo", "compareToIgnoreCase", "splitWord", "equals", "reverseEquals", "logicalCharAt", "getUniqueIntersectingLogicalChars", "indexOf");
+                        $singleInputAPIs = array("getCodePointLength", "getCodePoints", "getLength", "getLogicalChars", "getWordStrength", "getWordWeight", "isPalindrome", "reverse", "containsSpace", "getWordLevel", "getLengthNoSpaces", "getLengthNoSpacesNoCommas", "parseToLogicalChars", "parseToLogicalCharacters");
+                        $doubleInputAPIs = array("isAnagram", "startsWith", "endsWith", "containsString", "containsChar", "containsLogicalChars", "containsAllLogicalChars", "containsLogicalCharSequence", "canMakeWord", "canMakeAllWords", "addCharacterAtEnd", "isIntersecting", "getIntersectingRank", "getUniqueIntersectingRank", "compareTo", "compareToIgnoreCase", "splitWord", "equals", "reverseEquals", "logicalCharAt", "getUniqueIntersectingLogicalChars", "indexOf", "areLadderWords", "areHeadAndTailWords", "baseConsonants");
                         $tripleInputAPIs = array("addCharacterAt", "replace");
                         $getFillerChars = array("getFillerCharacters");
 
