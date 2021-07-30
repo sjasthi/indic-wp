@@ -4,18 +4,8 @@ let language = "english";
 let table;
 
 function startup() {
-    registerParsingInput();
     registerSelectLanguage();
     table = $('#parsed-table').DataTable();
-    console.log('loaded');
-}
-
-function registerParsingInput() {
-    const parsing_input_area = document.querySelector('#parsing-input');
-
-    if(parsing_input_area) {
-        parsing_input_area.addEventListener('input', updateParseTable);
-    }
 }
 
 function registerSelectLanguage() {
@@ -85,7 +75,7 @@ async function getWordLengths() {
     const wordWithLength = new Map();
     
     for (const word of words) {
-        await fetch(`https://indic-wp.thisisjava.com/api/getLength.php?language=${language}&string=${word}`)
+        await fetch(`api/getLength.php?language=${language}&string=${word}`)
         .then(response => response.text())
         .then(data => result = data);
         
@@ -120,5 +110,5 @@ function remove_non_ascii(str) {
         return false;
     else
         str = str.toString();
-    return str.replace(/[^\x20-\x7E]/g, '');
+    return str.replace(/[^\x20-\x7E\uC00-\u0C7F]/g, '');
 }

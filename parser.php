@@ -41,6 +41,9 @@
                 <div id="input-container" class="container my-5">
                     <textarea id="parsing-input" class="form-control" rows="10"></textarea>
                 </div>
+                <div id="buttons" class="container mb-4 d-flex justify-content-center">
+                    <button onclick="updateParseTable()" class="btn btn-outline-secondary w-25">Process</button>
+                </div>
                 <div id="table-container" class="container">
                     <table id="parsed-table">
                         <thead>

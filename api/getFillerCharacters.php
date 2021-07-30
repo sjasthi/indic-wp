@@ -50,7 +50,7 @@ function response($responseCode, $message, $count, $type, $language, $data) {
 
     http_response_code($responseCode);
     $response = array("response_code" => $responseCode, "message" => $message, "count" => $count, "type" => $type, "language" => $language, "data" => $data);
-    $json = json_encode($response);
+    $json = json_encode($response, JSON_UNESCAPED_UNICODE);
     echo $json;
 }
 
