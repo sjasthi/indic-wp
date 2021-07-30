@@ -182,8 +182,16 @@ async function callAPI(methodName) {
         const jsonObj = JSON.parse(newResult);
 
         jsonElement.innerHTML = result;
-        actualCell.innerHTML = jsonObj.data;
 
+        if(Array.isArray(jsonObj.data)) {
+            actualCell.innerHTML = jsonObj.data.toString();
+        }
+        else if(jsonObj.data?.constructor.name === "Object") {
+            actualCell.innerHTML = JSON.stringify(jsonObj.data);
+        }
+        else {
+            actualCell.innerHTML = jsonObj.data;
+        }
 
         if (jsonObj.response_code != 200) {
             passFail.innerHTML = "FAIL";
@@ -212,13 +220,12 @@ async function callAPI(methodName) {
  * Removes NON-ASCII characters from strings 
  */
 function remove_non_ascii(str) {
-
     if ((str === null) || (str === ''))
         return false;
     else
         str = str.toString();
 
-    return str.replace(/[^\x20-\x7E]/g, '');
+    return str.replace(/[^\x20-\x7E\uC00-\u0C7F]/g, '');
 }
 
 
@@ -320,7 +327,7 @@ function getDefaultValues(language) {
         document.getElementById("getUniqueIntersectingRankExpectedText").value = "5";
         document.getElementById("compareToExpectedText").value = "0";
         document.getElementById("compareToIgnoreCaseExpectedText").value = "2";
-        document.getElementById("splitWordExpectedText").value = "{'0': ['h', 'e'], '2': ['l', 'l'], '4': ['o', '']}";
+        document.getElementById("splitWordExpectedText").value = `{"0":["h","e"],"2":["l","l"],"4":["o",null]}`;
         document.getElementById("equalsExpectedText").value = "true";
         document.getElementById("reverseEqualsExpectedText").value = "true";
         document.getElementById("logicalCharAtExpectedText").value = "l";
@@ -394,7 +401,7 @@ function getDefaultValues(language) {
         document.getElementById("getUniqueIntersectingRankExpectedText").value = "8";
         document.getElementById("compareToExpectedText").value = "0";
         document.getElementById("compareToIgnoreCaseExpectedText").value = "-1";
-        document.getElementById("splitWordExpectedText").value = ""; //Need to update
+        document.getElementById("splitWordExpectedText").value = `{"0":["అ","మె"],"2":["రి","కా"],"4":["ఆ","స్ట్రే"],"6":["లి","యా"]}`;
         document.getElementById("equalsExpectedText").value = "true";
         document.getElementById("reverseEqualsExpectedText").value = "true";
         document.getElementById("logicalCharAtExpectedText").value = "లి";
