@@ -24,19 +24,13 @@ public class API implements Runnable {
      */
     public void create() {
         this.url += method + ".php?";
-        if (method.equals("getUniqueIntersectingRank") && language.equals("english")) {
-            url = "http://localhost/indic-wp/api/getUniqueIntersectingRank.php?string=hello&language=English&list[0]=e&list[1]=l&list[2]=i";
-        } else if (method.equals("getUniqueIntersectingLogicalChars") && language.equals("english")) {
-            url = "http://localhost/indic-wp/api/getUniqueIntersectingLogicalChars.php?string=hello!&language=English&list[0]=l&list[1]=l";
-        } else {
-            for (int i = 0; i < inputs.length; i++) {
-                this.url += "input";
-                this.url += String.valueOf(i + 1);
-                this.url += "=";
-                this.url += inputs[i];
-                if (i < inputs.length - 1) {
-                    this.url += "&";
-                }
+        for (int i = 0; i < inputs.length; i++) {
+            this.url += "input";
+            this.url += String.valueOf(i + 1);
+            this.url += "=";
+            this.url += inputs[i];
+            if (i < inputs.length - 1) {
+                this.url += "&";
             }
         }
         url = url.replaceAll(" ", "%20");

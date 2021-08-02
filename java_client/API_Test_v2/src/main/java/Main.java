@@ -140,12 +140,12 @@ public class Main {
             String[] replace = new String[]{"hello!", language, "ell", "i"};
             pool.execute(new API("replace", replace, "\"hio!\""));
 
-            String[] getUniqueIntersectingRank = new String[]{"hello", language, "input3[0]=e&input3[1]=l&input3[2]=i"};
+            String[] getUniqueIntersectingRank = new String[]{"hello", language, "e,l,i"};
             API temp = new API("getUniqueIntersectingRank", getUniqueIntersectingRank, "2");
             temp.setLanguage(language);
             pool.execute(temp);
 
-            String[] getUniqueIntersectingLogicalChars = new String[]{"hello!", language, "['l', 'l']"};
+            String[] getUniqueIntersectingLogicalChars = new String[]{"hello!", language, "l,l"};
             temp = new API("getUniqueIntersectingLogicalChars", getUniqueIntersectingLogicalChars, "2");
             temp.setLanguage(language);
             pool.execute(temp);
