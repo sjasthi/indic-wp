@@ -1150,11 +1150,11 @@ class wordProcessor
 		$result = false;
 		$englishVowels = array("041", "045", "049", "4f", "055");
 
-		if ($this->language == "English") {
+		if (strtolower($this->language) == "english") {
 			$secondWord = strtoupper($secondWord);
 			$firstWord = strtoupper($firstWord);
 		}
-		if ($this->language == "English") {
+		if (strtolower($this->language) == "english") {
 			$this->setWord($firstWord);
 			$firstWordLength = $this->getLength();
 			$this->setWord($secondWord);
@@ -1178,7 +1178,7 @@ class wordProcessor
 			}
 		}
 
-		if ($this->language == "Telugu") {
+		if (strtolower($this->language) == "telugu") {
 			$teluguCon1 = "3093";  //"క"
 			$teluguCon2 = "3120";       //"ర"
 			$teluguCon = array($teluguCon1, $teluguCon2);
