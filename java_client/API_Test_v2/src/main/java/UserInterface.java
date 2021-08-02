@@ -12,10 +12,8 @@ public class UserInterface {
         try {
             numberInput = Integer.parseInt(input);
         } catch (Exception e) {
-//            System.out.println("Invalid input. Please try again.");
             return false;
         }
-        //valid range 1-3 inclusive
         return numberInput < 3 && numberInput > 0;
     }
 
