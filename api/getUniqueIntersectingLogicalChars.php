@@ -15,7 +15,7 @@ else if(isset($_GET['input1']) && isset($_GET['input2']) && isset($_GET['input3'
 
 if (!empty($string) && !empty($language) && !empty($list)) {
     $processor = new wordProcessor($string, $language);
-    $uniqueIntersectingRank = $processor->getUniqueIntersectingRank($list);
+    $uniqueIntersectingRank = $processor->getUniqueIntersectingRank(explode(',',$list));
     response(200, "Unique Intersecting Char", $string, $list, $language, $uniqueIntersectingRank);
 }
 else if (isset($string) && empty($string)) {
@@ -47,5 +47,3 @@ function response($responseCode, $message, $string, $list, $language, $data) {
     $json = json_encode($response);
     echo $json;
 }
-
-?>

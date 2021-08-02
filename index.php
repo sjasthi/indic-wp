@@ -68,7 +68,6 @@
                     </select>
                     <br>
                     <input name="submit" type="submit" class="btn btn-primary btn-lg btn-block" value="Run Tests">
-                    <br>
                 </div>
             </div>
         </div>

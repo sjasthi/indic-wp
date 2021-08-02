@@ -5,32 +5,30 @@ require("../word_processor.php");
 if (isset($_GET['string']) && isset($_GET['language'])) {
     $string = $_GET['string'];
     $language = $_GET['language'];
-}
-else if(isset($_GET['input1']) && isset($_GET['input2'])) {
+} else if (isset($_GET['input1']) && isset($_GET['input2'])) {
     $string = $_GET['input1'];
     $language = $_GET['input2'];
 }
 
 if (!empty($string) && !empty($language)) {
-    $processor = new wordProcessor($string, $language);
+    $processor = new wordProcessor(strtolower($string), $language);
     $palindromeBool = $processor->isPalindrome();
     response(200, "Palindrome Assessed", $string, $language, $palindromeBool);
-}
-else if (isset($string) && empty($string)) {
+} else if (isset($string) && empty($string)) {
     invalidResponse("Invalid or Empty Word");
-}
-else if (isset($language) && empty($language)) {
+} else if (isset($language) && empty($language)) {
     invalidResponse("Invalid or Empty Language");
-} 
-else {
+} else {
     invalidResponse("Invalid Request");
 }
 
-function invalidResponse($message) {
+function invalidResponse($message)
+{
     response(400, $message, NULL, NULL, NULL);
 }
 
-function response($responseCode, $message, $string, $language, $data) {
+function response($responseCode, $message, $string, $language, $data)
+{
     // Locally cache results for two hours
     header('Cache-Control: max-age=7200');
 
@@ -42,5 +40,3 @@ function response($responseCode, $message, $string, $language, $data) {
     $json = json_encode($response);
     echo $json;
 }
-
-?>
