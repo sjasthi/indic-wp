@@ -16,38 +16,38 @@
 </head>
 
 <nav id="navigation" class="navbar navbar-expand-lg navbar-dark bg-dark">
-    <a class="navbar-brand" href="index.php">Home</a>
+    <a class="navbar-brand text-white" href="index.php">Home</a>
     <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
         <span class="navbar-toggler-icon"></span>
     </button>
 
     <div class="collapse navbar-collapse" id="navbarSupportedContent">
         <ul class="navbar-nav mr-auto">
-            <li class="nav-item">
-                <a class="nav-link" href="https://trello.com/b/BhYKwqBf/indic-wp-499su21" target="_blank">Trello Board <span class="sr-only">(current)</span></a>
+            <li class="nav-item ">
+                <a class="nav-link text-white" href="https://trello.com/b/BhYKwqBf/indic-wp-499su21" target="_blank">Trello Board <span class="sr-only">(current)</span></a>
             </li>
             <li class="nav-item dropdown">
-                <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                <a class="nav-link dropdown-toggle text-white" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                     GitHub
                 </a>
                 <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-                    <a class="dropdown-item" href="https://github.com/tonynguyen-metrostate" target="_blank">Tony Nguyen (Scrum Master)</a>
-                    <a class="dropdown-item" href="https://github.com/NathanAlkurdi" target="_blank">Nathan Al-Kurdi - GitHub</a>
-                    <a class="dropdown-item" href="https://github.com/duvickcedu" target="_blank">Christian Duvick - GitHub</a>
-                    <a class="dropdown-item" href="https://github.com/EricDMunoz" target="_blank">Eric Munoz - GitHub</a>
+                    <a class="dropdown-item text-white" href="https://github.com/tonynguyen-metrostate" target="_blank">Tony Nguyen (Scrum Master)</a>
+                    <a class="dropdown-item text-white" href="https://github.com/NathanAlkurdi" target="_blank">Nathan Al-Kurdi - GitHub</a>
+                    <a class="dropdown-item text-white" href="https://github.com/duvickcedu" target="_blank">Christian Duvick - GitHub</a>
+                    <a class="dropdown-item text-white" href="https://github.com/EricDMunoz" target="_blank">Eric Munoz - GitHub</a>
                     <div class="dropdown-divider"></div>
-                    <a class="dropdown-item" href="https://github.com/sjasthi/indic-wp" target="_blank">sjasthi (Master Repo)</a>
+                    <a class="dropdown-item text-white" href="https://github.com/sjasthi/indic-wp" target="_blank">sjasthi (Master Repo)</a>
                 </div>
             </li>
             <li class="nav-item">
-                <a class="nav-link" href="docs/api.php">API Docs</a>
+                <a class="nav-link text-white" href="docs/api.php">API Docs</a>
             </li>
             <li class="nav-item">
-                <a class="nav-link" href="parser.php">Parser</a>
+                <a class="nav-link text-white" href="parser.php">Parser</a>
             </li>
         </ul>
-        <span class="navbar-brand mb-0 h1">Indic-WP WebServices</span>
-        <a class="btn btn-dark" href="indic_classic.php">Classic Indic-WP</a>
+        <span class="navbar-brand mb-0 h1 text-white">Indic-WP WebServices</span>
+        <a class="btn btn-dark text-white" href="indic_classic.php">Classic Indic-WP</a>
         <button class="btn btn-light" value="light" onclick="changeTheme(this)" id="theme">Light Mode</button>
     </div>
 </nav>
@@ -71,14 +71,19 @@
                 </div>
             </div>
         </div>
-        <div class="row" style="padding: 2px;">
+        <div class="row" style="padding: 0px;">
             <div class="col" id="tableDiv">
                 <table id="testSuite" class="table table-dark table-striped table-sm table-bordered" style="display:table;">
                     <thead id="apiHeader">
                         <tr class="header-data">
-                            <?php
-                            echo '<th scope="col" class="methodHeader">Method</th><th scope="col">Input 1</th><th scope="col">Input 2</th><th scope="col">Input 3</th><th scope="col">Expected Result</th><th scope="col">Actual Result</th><th scope="col">Pass/Fail</th><th scope="col" class="jsonHeader">JSON Output</th></tr>';
-                            ?>
+                            <th scope="col" class="methodHeader">Method</th>
+                            <th scope="col">Input 1</th>
+                            <th scope="col">Input 2</th>
+                            <th scope="col">Input 3</th>
+                            <th scope="col">Expected Result</th>
+                            <th scope="col">Actual Result</th>
+                            <th scope="col">Pass/Fail</th>
+                            <th scope="col" class="jsonHeader">JSON Output</th>
                         </tr>
                     </thead>
                     <tbody id="apiTable">
