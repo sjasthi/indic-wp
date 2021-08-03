@@ -5,7 +5,12 @@ let table;
 
 function startup() {
     registerSelectLanguage();
-    table = $('#parsed-table').DataTable();
+    table = $('#parsed-table').DataTable({
+        dom: 'Bflrtip', 
+        buttons: [
+            'copy', 'csv', 'excel', 'pdf', 'print'
+        ]
+    });
 }
 
 function registerSelectLanguage() {
@@ -18,8 +23,14 @@ function registerSelectLanguage() {
 
 function rebuildTable() {
     table.clear();
+    table.destroy();
     $('#parsed-table tbody').empty();
-    table = $('#parsed-table').DataTable();
+    table = $('#parsed-table').DataTable({
+        dom: 'Bflrtip', 
+        buttons: [
+            'copy', 'csv', 'excel', 'pdf', 'print'
+        ]
+    });
 }
 
 function updateParseTable() {
