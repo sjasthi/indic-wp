@@ -39,7 +39,7 @@ function response($responseCode, $message, $string, $language, $data) {
 
     http_response_code($responseCode);
     $response = array("response_code" => $responseCode, "message" => $message, "string" => $string, "language" => $language, "data" => $data);
-    $json = json_encode($response);
+    $json = json_encode($response, JSON_UNESCAPED_UNICODE);
     echo $json;
 }
 

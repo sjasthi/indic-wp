@@ -1237,7 +1237,7 @@ elif userInput == '2':
     isAnagramInput2 = 'అఆమెస్ట్రేరిలికాయా'
     isAnagramInput3 = 'NA'
     isAnagramLanguage = 'Language'
-    url = 'http://localhost/indic-wp/api/isAnagram.php?string='+isAnagramInput1+'&language=' + isAnagramLanguage
+    url = 'http://localhost/indic-wp/api/isAnagram.php?input1='+isAnagramInput1+'&input2=' + isAnagramLanguage + '&input3=' + isAnagramInput2
     isAnagramURL = url
     r = requests.get(url)
     dataDecoded = getDecode(r.text)
@@ -1625,15 +1625,12 @@ elif userInput == '2':
     baseConsonantPassorFaill = 'Pass' if baseConsonantExpectedResults == x.get('data') else 'Failed'
     baseConsonantJsonOUTPUT = x
 
-    ###########################################
-    # Need Telugu inputs for testing
-    ##########################################
     headsAndTailService = 'Head and Tail Words'
-    headsAndTailInput1 = ''
-    headsAndTailInput2 = ''
+    headsAndTailInput1 = 'మురుకు'
+    headsAndTailInput2 = 'కుడుము'
     headsAndTailInput3 = 'NA'
     headsAndTailLanguage = 'Telugu'
-    url = 'http://localhost/indic-wp/api/areHeadsAndTailWords.php?input1='+ headsAndTailInput1 + '&input2='+ headsAndTailLanguage +'&input3='+ headsAndTailInput2
+    url = 'http://localhost/indic-wp/api/areHeadAndTailWords.php?input1='+ headsAndTailInput1 + '&input2='+ headsAndTailLanguage +'&input3='+ headsAndTailInput2
     headsAndTailAtURL = url
     r = requests.get(url)
     dataDecoded = getDecode(r.text)
@@ -1645,11 +1642,11 @@ elif userInput == '2':
 
 
     areLadderWordsService = 'Are Ladder Words'
-    areLadderWordsInput1 = ''
-    areLadderWordsInput2 = ''
+    areLadderWordsInput1 = 'మురుకు'
+    areLadderWordsInput2 = 'మురుగు'
     areLadderWordsInput3 = 'NA'
     areLadderWordsLanguage = 'Telugu'
-    url = 'http://localhost/indic-wp/api/areHeadsAndTailWords.php?input1='+ areLadderWordsInput1 + '&input2='+ areLadderWordsLanguage +'&input3='+ areLadderWordsInput2
+    url = 'http://localhost/indic-wp/api/areLadderWords.php?input1='+ areLadderWordsInput1 + '&input2='+ areLadderWordsLanguage +'&input3='+ areLadderWordsInput2
     areLadderWordsAtURL = url
     r = requests.get(url)
     dataDecoded = getDecode(r.text)
@@ -2139,7 +2136,6 @@ with h.add(body()).add(div(id='content')):
         row.add(td(headsAndTailInput1))
         row.add(td(headsAndTailInput2))
         row.add(td(headsAndTailInput3))
-        row.add(td(headsAndTailLanguage))
         row.add(td(headsAndTailExpectedResults))
         row.add(td(headsAndTailActualResult))
         row.add(td(headsAndTailPassorFaill))
@@ -2151,7 +2147,6 @@ with h.add(body()).add(div(id='content')):
         row.add(td(areLadderWordsInput1))
         row.add(td(areLadderWordsInput2))
         row.add(td(areLadderWordsInput3))
-        row.add(td(areLadderWordsLanguage))
         row.add(td(areLadderWordsExpectedResults))
         row.add(td(areLadderWordsActualResult))
         row.add(td(areLadderWordsPassorFaill))

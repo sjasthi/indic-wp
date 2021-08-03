@@ -106,6 +106,8 @@ $root = 'http://' . $_SERVER['HTTP_HOST'] . '/indic-wp/';
       The getLength API takes a single string as a
       parameter and returns an integer value. For example, sending a
       the word 'Mississippi' would return an integer value of 11.
+      <br>
+      <a href="http://localhost/indic-wp/api/getLength.php?string=hello&language=English">Link to API: http://localhost/indic-wp/api/getLength.php?string=hello&language=English</a>
     </p>
   </body>
 </div>
@@ -117,7 +119,9 @@ $root = 'http://' . $_SERVER['HTTP_HOST'] . '/indic-wp/';
     <p>
       The reverse API takes a single string as input and returns
       the reverse of the input string. For example, entering racecar would
-      return racecar :) . Also, entering moan would reutrn noam.
+      return racecar :) . Also, entering moon would return noom.
+      <br>
+      <a href="http://localhost/indic-wp/api/reverse.php?string=hello&language=English">Link to API: http://localhost/indic-wp/api/reverse.php?string=hello&language=English</a>
 
     </p>
   </body>
@@ -133,6 +137,8 @@ $root = 'http://' . $_SERVER['HTTP_HOST'] . '/indic-wp/';
       a sequence of code points. For example, entering hello would
       return 5 as the value for the code point length. Entering అమెరికాఆస్ట్రేలియా would result in
       a return value of 18.
+      <br>
+      <a href="http://localhost/indic-wp/api/getCodePointLength.php?string=hello&language=English">Link to API: http://localhost/indic-wp/api/getCodePointLength.php?string=hello&language=English</a>
 
     </p>
   </body>
@@ -146,6 +152,9 @@ $root = 'http://' . $_SERVER['HTTP_HOST'] . '/indic-wp/';
       The get code points API takes a single string and returns the actual
       code points of the characters in the string. For example, if hello is enetered
       the return array is [[104], [101], [108], [108], [111]]
+      <br>
+      <a href="http://localhost/indic-wp/api/getCodePoints.php?string=hello&language=English">Link to API: http://localhost/indic-wp/api/getCodePoints.php?string=hello&language=English</a>
+
 
     </p>
   </body>
@@ -160,6 +169,9 @@ $root = 'http://' . $_SERVER['HTTP_HOST'] . '/indic-wp/';
       The get word level API takes a single string as input and reutrns the word level
       as an integer value. For example, entering the word 'hello' would return the value
       5 as the word level.
+      <br>
+      <a href="http://localhost/indic-wp/api/getWordLevel.php?string=hello&language=English">Link to API: http://localhost/indic-wp/api/getWordLevel.php?string=hello&language=English</a>
+
     </p>
   </body>
 </div>
@@ -172,6 +184,9 @@ $root = 'http://' . $_SERVER['HTTP_HOST'] . '/indic-wp/';
       The get logical Chars API takes a single string as input and returns an
       array of the logical characters from the string. For example, if the word 'hello'
       is entered, ['h', 'e', 'l', 'l', 'o'] is returned.
+      <br>
+      <a href="http://localhost/indic-wp/api/getLogicalChars.php?string=hello&language=English">Link to API: http://localhost/indic-wp/api/getLogicalChars.php?string=hello&language=English</a>
+
     </p>
   </body>
 </div>
@@ -185,6 +200,9 @@ $root = 'http://' . $_SERVER['HTTP_HOST'] . '/indic-wp/';
       The get word strength API takes a single string and returns an integer
       representing the value of the word strength. For example, submitting the word
       'hello' will return a value of 5.
+      <br>
+      <a href="http://localhost/indic-wp/api/getWordStrength.php?string=hello&language=English">Link to API: http://localhost/indic-wp/api/getWordStrength.php?string=hello&language=English</a>
+
     </p>
   </body>
 </div>
@@ -197,6 +215,9 @@ $root = 'http://' . $_SERVER['HTTP_HOST'] . '/indic-wp/';
       The get word weight API takes a single string and returns an integer
       representing the value of the word weight. For example, submitting the word
       'hello' will return a value of 5.
+      <br>
+      <a href="http://localhost/indic-wp/api/getWordWeight.php?string=hello&language=English">Link to API: http://localhost/indic-wp/api/getWordWeight.php?string=hello&language=English</a>
+
     </p>
   </body>
 </div>
@@ -209,6 +230,9 @@ $root = 'http://' . $_SERVER['HTTP_HOST'] . '/indic-wp/';
       The is palindrome API take a single string and returns true if it is a palindrome.
       For example, if the string 'racecar' is enetered True will be returned. If 'hello'
       is entered False will be returned.
+      <br>
+      <a href="http://localhost/indic-wp/api/isPalindrome.php?string=hello&language=English">Link to API: http://localhost/indic-wp/api/isPalindrome.php?string=hello&language=English</a>
+
     </p>
   </body>
 </div>
@@ -220,6 +244,9 @@ $root = 'http://' . $_SERVER['HTTP_HOST'] . '/indic-wp/';
     <p>
       The randomize API takes a string and randomizes the order of the string and returns
       that new string. For example, if 'hello' is entered 'elhol' could be returned.
+      <br>
+      <a href="http://localhost/indic-wp/api/randomize.php?string=hello&language=English">Link to API: http://localhost/indic-wp/api/randomize.php?string=hello&language=English</a>
+
     </p>
   </body>
 </div>
@@ -231,6 +258,9 @@ $root = 'http://' . $_SERVER['HTTP_HOST'] . '/indic-wp/';
     <p>
       The word level API takes a string and returns an integer value as the word level.
       For example, if 'hello' is enetered 5 is returned as the word level value.
+      <br>
+      <a href="http://localhost/indic-wp/api/getWordLevel.php?string=hello&language=English">Link to API: http://localhost/indic-wp/api/getWordLevel.php?string=hello&language=English</a>
+
     </p>
   </body>
 </div>
@@ -242,6 +272,9 @@ $root = 'http://' . $_SERVER['HTTP_HOST'] . '/indic-wp/';
     <p>
       The contains space API takes a string and determines if the string has a space or not.
       If a space is detected the response is True else, it is False.
+      <br>
+      <a href="http://localhost/indic-wp/api/containsSpace.php?string=hello&language=English">Link to API: http://localhost/indic-wp/api/containsSpace.php?string=hello&language=English</a>
+
     </p>
   </body>
 </div>
@@ -253,6 +286,9 @@ $root = 'http://' . $_SERVER['HTTP_HOST'] . '/indic-wp/';
     <p>
       The get length no spaces API takes a string as input and determines it that string has a space. If the string
       does have a space it returns True else, it returns False.
+      <br>
+      <a href="http://localhost/indic-wp/api/getLengthNoSpaces.php?string=hello&language=English">Link to API: http://localhost/indic-wp/api/getLengthNoSpaces.php?string=hello&language=English</a>
+
     </p>
   </body>
 </div>
@@ -264,6 +300,9 @@ $root = 'http://' . $_SERVER['HTTP_HOST'] . '/indic-wp/';
     <p>
       The parse to logical characters API takes a string and returns an array of logical characters.
       For example, if 'hello' is entered ['h', 'e', 'l', 'l', 'o'] is returned.
+      <br>
+      <a href="http://localhost/indic-wp/api/parseToLogicalCharacters.php?string=hello&language=English">Link to API: http://localhost/indic-wp/api/parseToLogicalCharacters.php?string=hello&language=English</a>
+
     </p>
   </body>
 </div>
@@ -276,6 +315,9 @@ $root = 'http://' . $_SERVER['HTTP_HOST'] . '/indic-wp/';
       The is anagram API takes two strings. The service checks if the first string can be made up
       of the second string. For example, input 1 is 'cat' and second string is 'tac'. This API returns true
       if the strings meet the anagram definition, otherwise it returns false.
+      <br>
+      <a href="http://localhost/indic-wp/api/isAnagram.php?input1=cat&input2=English&input3=tac">Link to API: http://localhost/indic-wp/api/isAnagram.php?input1=cat&input2=English&input3=tac</a>
+
     </p>
   </body>
 </div>
@@ -287,16 +329,22 @@ $root = 'http://' . $_SERVER['HTTP_HOST'] . '/indic-wp/';
     <p>
       The starts with API takes a string and a character as input. The service checks if the string begins with the character that is
       supplied. For example, if 'hello' and 'h' are supplied the service will return true. </p>
+    <br>
+    <a href="http://localhost/indic-wp/api/startswith.php?input1=hello&input2=English&input3=h">Link to API: http://localhost/indic-wp/api/startswith.php?input1=hello&input2=English&input3=h</a>
+
   </body>
 </div>
 
 <div class="APIDescription" id="endsWith">
 
   <body>
-    <h4>Starts With:</h4>
+    <h4>Ends With:</h4>
     <p>
       The ends with API takes a string and a character as input. The service checks if the string ends with the character that is
       supplied. For example, if 'hello' and 'o' are supplied the service will return true. </p>
+    <br>
+    <a href="http://localhost/indic-wp/api/endswith.php?input1=hello&input2=English&input3=o">Link to API: http://localhost/indic-wp/api/endswith.php?input1=hello&input2=English&input3=o</a>
+
   </body>
 </div>
 
@@ -308,6 +356,9 @@ $root = 'http://' . $_SERVER['HTTP_HOST'] . '/indic-wp/';
     <p>
       The contains string API takes two strings. The service checks if the second string is in the first string.
       For example, if the first input was 'Hello, World' and the second input was 'Hello' the service would return true. </p>
+    <br>
+    <a href="http://localhost/indic-wp/api/containsString.php?input1=hello&input2=English&input3=hello">Link to API: http://localhost/indic-wp/api/containsString.php?input1=hello&input2=English&input3=hello</a>
+
   </body>
 </div>
 
@@ -317,7 +368,11 @@ $root = 'http://' . $_SERVER['HTTP_HOST'] . '/indic-wp/';
     <h4>Contains Char:</h4>
     <p>
       The contains char API takes a string and a character as input. The service checks if the character is in the string supplied.
-      For example, if the first input is 'hello' and the second input is 'e' the service returns true. </p>
+      For example, if the first input is 'hello' and the second input is 'e' the service returns true.
+      <br>
+      <a href="http://localhost/indic-wp/api/containsChar.php?input1=hello&input2=English&input3=e">Link to API: http://localhost/indic-wp/api/containsChar.php?input1=hello&input2=English&input3=e</a>
+
+    </p>
   </body>
 </div>
 
@@ -329,7 +384,11 @@ $root = 'http://' . $_SERVER['HTTP_HOST'] . '/indic-wp/';
       The contains logical chars API takes a string and a list of characters as input. The service checks if
       any of the characters are in the string.
       For example if the first input is 'hello' and the second input is ['l', 'o'] the service will
-      return true. </p>
+      return true.
+      <br>
+      <a href="http://localhost/indic-wp/api/containsLogicalChars.php?input1=hello&input2=English&input3=l,o">Link to API: http://localhost/indic-wp/api/containsLogicalChars.php?input1=hello&input2=English&input3=l,o</a>
+
+    </p>
   </body>
 </div>
 
@@ -341,17 +400,25 @@ $root = 'http://' . $_SERVER['HTTP_HOST'] . '/indic-wp/';
       The contains all logical chars API takes a string and a list of characters as input. The service checks if all of the characrters
       in the list are in the string.
       For example if the first input is 'hello' and the second input is ['l', 'o'] the service will
-      return true. </p>
+      return true.
+      <br>
+      <a href="http://localhost/indic-wp/api/containsAllLogicalChars.php?input1=hello&input2=English&input3=l,o">Link to API: http://localhost/indic-wp/api/containsAllLogicalChars.php?input1=hello&input2=English&input3=l,o</a>
+
+    </p>
   </body>
 </div>
 
 <div class="APIDescription" id="containsLogicalCharSequence">
 
   <body>
-    <h4>Contains All Logical Chars:</h4>
+    <h4>Contains Logical Char Sequence:</h4>
     <p>
       The contains logical char sequence API takes two strings as input. The service checks to see if the second input is a sub string
-      of the first input. For example, if 'hello' and 'lo' are submitted the service will return true.</p>
+      of the first input. For example, if 'hello' and 'lo' are submitted the service will return true.
+      <br>
+      <a href="http://localhost/indic-wp/api/containsLogicalCharsequence.php?input1=hello&input2=English&input3=lo">Link to API: http://localhost/indic-wp/api/containsLogicalCharsequence.php?input1=hello&input2=English&input3=lo</a>
+
+    </p>
   </body>
 </div>
 
@@ -362,7 +429,11 @@ $root = 'http://' . $_SERVER['HTTP_HOST'] . '/indic-wp/';
     <h4>Can Make Word:</h4>
     <p>
       The can make word API takes two strings as input. The service checks if the second string submitted can be made from the first string.
-      For example, if 'hello' and 'lo' are submitted the service will return true. </p>
+      For example, if 'hello' and 'lo' are submitted the service will return true.
+      <br>
+      <a href="http://localhost/indic-wp/api/canmakeword.php?input1=hello&input2=English&input3=lo">Link to API: http://localhost/indic-wp/api/canmakeword.php?input1=hello&input2=English&input3=lo</a>
+
+    </p>
   </body>
 </div>
 
@@ -372,7 +443,11 @@ $root = 'http://' . $_SERVER['HTTP_HOST'] . '/indic-wp/';
     <h4>Can Make All Words:</h4>
     <p>
       The can make word API takes a string and a list of strings as input. It behaves similar to the can make word API except it will
-      iterate through a list of words. </p>
+      iterate through a list of words.
+      <br>
+      <a href="http://localhost/indic-wp/api/canmakeallwords.php?input1=hello&input2=English&input3=lo">Link to API: http://localhost/indic-wp/api/canmakeallwords.php?input1=hello&input2=English&input3=lo</a>
+
+    </p>
   </body>
 </div>
 
@@ -382,7 +457,11 @@ $root = 'http://' . $_SERVER['HTTP_HOST'] . '/indic-wp/';
     <h4>Add Character At End:</h4>
     <p>
       The add character at end API takes a string and a character as input. The service then appends the string with the provided character.
-      For example, if 'hello' and 'a' is submitted the result will be 'helloa'.</p>
+      For example, if 'hello' and 'a' is submitted the result will be 'helloa'.
+      <br>
+      <a href="http://localhost/indic-wp/api/addCharacterAtEnd.php?input1=hello&input2=English&input3=a">Link to API: http://localhost/indic-wp/api/addCharacterAtEnd.php?input1=hello&input2=English&input3=a</a>
+
+    </p>
   </body>
 </div>
 
@@ -393,6 +472,9 @@ $root = 'http://' . $_SERVER['HTTP_HOST'] . '/indic-wp/';
     <p>
       The is intersecting API takes two strings as input. It then checks if the second string intersects with the first string.
       For example, if 'hello' and 'el' are submitted the service returns true. </p>
+    <br>
+    <a href="http://localhost/indic-wp/api/addCharacterAtEnd.php?input1=hello&input2=English&input3=a">Link to API: http://localhost/indic-wp/api/addCharacterAtEnd.php?input1=hello&input2=English&input3=a</a>
+
   </body>
 </div>
 
@@ -402,7 +484,11 @@ $root = 'http://' . $_SERVER['HTTP_HOST'] . '/indic-wp/';
     <h4>Get Intersecting Rank:</h4>
     <p>
       The get intersecting rank API take two strings as input. The service returns the rank as an integer value for the rank.
-      For example, if 'hello' and 'el' are submitted the service will return 3.</p>
+      For example, if 'hello' and 'el' are submitted the service will return 3.
+      <br>
+      <a href="http://localhost/indic-wp/api/getIntersectingRank.php?input1=hello&input2=English&input3=el">Link to API: http://localhost/indic-wp/api/getIntersectingRank.php?input1=hello&input2=English&input3=el</a>
+
+    </p>
 </div>
 
 <div class="APIDescription" id="getUniqueIntersectingRank">
@@ -412,6 +498,10 @@ $root = 'http://' . $_SERVER['HTTP_HOST'] . '/indic-wp/';
     <p>
       The get unique intersecting rank API take two strings as input. The service returns the rank as an integer value for the rank.
       For example, if 'hello' and 'eli' are submitted the service will return 2.
+      <br>
+      <a href="http://localhost/indic-wp/api/getUniqueIntersectingRank.php?input1=hello&input2=English&input3[0]=e&input3[1]=l&input3[2]=i">Link to API: http://localhost/indic-wp/api/getUniqueIntersectingRank.php?input1=hello&input2=English&input3[0]=e&input3[1]=l&input3[2]=i</a>
+
+    </p>
 </div>
 
 <div class="APIDescription" id="compareTo">
@@ -420,7 +510,11 @@ $root = 'http://' . $_SERVER['HTTP_HOST'] . '/indic-wp/';
     <h4>Compare To:</h4>
     <p>
       The compare to API takes two strings as input. The service compares the strings and if the strings are equal the service will
-      return 0. For example, if 'hello' and 'hello' are entered the service will return 0. </p>
+      return 0. For example, if 'hello' and 'hello' are entered the service will return 0.
+      <br>
+      <a href="http://localhost/indic-wp/api/compareTo.php?input1=hello&input2=English&input3=hello">Link to API: http://localhost/indic-wp/api/compareTo.php?input1=hello&input2=English&input3=hello</a>
+
+    </p>
 </div>
 
 <div class="APIDescription" id="splitWord">
@@ -431,7 +525,11 @@ $root = 'http://' . $_SERVER['HTTP_HOST'] . '/indic-wp/';
       The split word API takes a string and a integer value as input. The service will split the string into
       "chunks" based on the number
       that was provided. For example, if 'hello!' and 2 is entered the
-      service will return: {'0': ['h', 'e'], '2': ['l', 'l'], '4': ['o', '!']}</p>
+      service will return: {'0': ['h', 'e'], '2': ['l', 'l'], '4': ['o', '!']}
+      <br>
+      <a href="http://localhost/indic-wp/api/splitword.php?input1=hello!&input2=English&input3=2">Link to API: http://localhost/indic-wp/api/splitword.php?input1=hello!&input2=English&input3=2</a>
+
+    </p>
 </div>
 
 <div class="APIDescription" id="equals">
@@ -440,16 +538,11 @@ $root = 'http://' . $_SERVER['HTTP_HOST'] . '/indic-wp/';
     <h4>Equals:</h4>
     <p>
       The equals API takes two strings as input. The service will compare the strings and if they are equal the service will
-      return true. For example, if 'hello!' and 'hello!' are entered the service will return true. </p>
-</div>
+      return true. For example, if 'hello!' and 'hello!' are entered the service will return true.
+      <br>
+      <a href="http://localhost/indic-wp/api/equals.php?input1=hello&input2=English&input3=hello">Link to API: http://localhost/indic-wp/api/equals.php?input1=hello&input2=English&input3=hello</a>
 
-<div class="APIDescription" id="equals">
-
-  <body>
-    <h4>Equals:</h4>
-    <p>
-      The equals API takes two strings as input. The service will compare the strings and if they are equal the service will
-      return true. For example, if 'hello!' and 'hello!' are entered the service will return true. </p>
+    </p>
 </div>
 
 
@@ -459,7 +552,11 @@ $root = 'http://' . $_SERVER['HTTP_HOST'] . '/indic-wp/';
     <h4>Reverse Equals:</h4>
     <p>
       The reverse equals API takes two strings as input. The service checks if the second string is equal to the reverse of the first string.
-      For example, if 'hello!' and '!olleh' are entered the service returns true. </p>
+      For example, if 'hello!' and '!olleh' are entered the service returns true.
+      <br>
+      <a href="http://localhost/indic-wp/api/reverseequals.php?input1=hello!&input2=English&input3=!olleh">Link to API: http://localhost/indic-wp/api/reverseequals.php?input1=hello!&input2=English&input3=!olleh</a>
+
+    </p>
 </div>
 
 <div class="APIDescription" id="logicalCharAt">
@@ -468,7 +565,11 @@ $root = 'http://' . $_SERVER['HTTP_HOST'] . '/indic-wp/';
     <h4>Logical Char At:</h4>
     <p>
       The logical char at API takes a string and an integer value as input. The service checks if the string contains a logical
-      char at the position specified. For example, if 'hello!' and 3 are entered the service returns true. </p>
+      char at the position specified. For example, if 'hello!' and 3 are entered the service returns the item at the index.
+      <br>
+      <a href="http://localhost/indic-wp/api/logicalCharAt.php?input1=hello!&input2=English&input3=3">Link to API: http://localhost/indic-wp/api/logicalCharAt.php?input1=hello!&input2=English&input3=3</a>
+
+    </p>
 </div>
 
 <div class="APIDescription" id="getUniqueIntersectingLogicalChars">
@@ -477,7 +578,11 @@ $root = 'http://' . $_SERVER['HTTP_HOST'] . '/indic-wp/';
     <h4>Get Unique Intersecting Logical Chars:</h4>
     <p>
       The get unique Intersecting Logical Chars takes a string and a list of characters as input. The service will return a value for the unique
-      intersecting rank. For example if 'hello!' and ['l', 'l'] are entered the service will return 2. </p>
+      intersecting rank. For example if 'hello!' and ['l', 'l'] are entered the service will return 2.
+      <br>
+      <a href="http://localhost/indic-wp/api/getUniqueIntersectingLogicalChars.php?input1=hello!&input2=English&input3[0]=l&input3[1]=l">Link to API: http://localhost/indic-wp/api/getUniqueIntersectingLogicalChars.php?input1=hello!&input2=English&input3[0]=l&input3[1]=l</a>
+
+    </p>
 </div>
 
 <div class="APIDescription" id="indexOf">
@@ -486,7 +591,11 @@ $root = 'http://' . $_SERVER['HTTP_HOST'] . '/indic-wp/';
     <h4>Index Of:</h4>
     <p>
       The indx of API will takes a string and a character as input. The service returns an integer value for the index of the character.
-      For example, if 'hello!' and 'l' are entered the service will return 2. This API uses zero based indexing. </p>
+      For example, if 'hello!' and 'l' are entered the service will return 2. This API uses zero based indexing.
+      <br>
+      <a href="http://localhost/indic-wp/api/indexof.php?input1=hello!&input2=English&input3=l">Link to API: http://localhost/indic-wp/api/indexof.php?input1=hello!&input2=English&input3=l</a>
+
+    </p>
 </div>
 
 <div class="APIDescription" id="addCharacterAt">
@@ -495,7 +604,11 @@ $root = 'http://' . $_SERVER['HTTP_HOST'] . '/indic-wp/';
     <h4>Add Character At:</h4>
     <p>
       The add character at API takes a string, an integer, and a character as input. The service will insert the character into the string at
-      the specified location. For example, if 'hello!', 1, and 'e' are entered the service will return 'heelo!'. </p>
+      the specified location. For example, if 'hello!', 1, and 'e' are entered the service will return 'heelo!'.
+      <br>
+      <a href="http://localhost/indic-wp/api/addCharacterAt.php?input1=hello!&input2=English&input3=1&input4=e">Link to API: http://localhost/indic-wp/api/addCharacterAt.php?input1=hello!&input2=English&input3=1&input4=e</a>
+
+    </p>
 </div>
 
 <div class="APIDescription" id="replace">
@@ -504,40 +617,70 @@ $root = 'http://' . $_SERVER['HTTP_HOST'] . '/indic-wp/';
     <h4>Replace:</h4>
     <p>
       The replace API takes a string and 3 strings as input. The service will replace the 2nd string that is found in the first string with the 3rd string.
-      For example, if 'hello!', 'ell', 'i' are entered the service returns 'hio!'. </p>
+      For example, if 'hello!', 'ell', 'i' are entered the service returns 'hio!'.
+      <br>
+      <a href="http://localhost/indic-wp/api/replace.php?input1=hello!&input2=English&input3=ell&input4=i">Link to API: http://localhost/indic-wp/api/replace.php?input1=hello!&input2=English&input3=ell&input4=i</a>
+
+    </p>
 </div>
 
 <div class="APIDescription" id="baseConsonants">
+
   <body>
     <h4>Base Consonants:</h4>
     <p> The base consonants API takes two strings as input. The API processes the strings
       to see if the strings contain the same consonants and have the same length. For example,
       if moon and maan are entered, the service will return true.
+      <br>
+      <a href="http://localhost/indic-wp/api/baseConsonants.php?input1=moon&input2=English&input3=maan">Link to API: http://localhost/indic-wp/api/baseConsonants.php?input1=moon&input2=English&input3=moan</a>
+
+
     </p>
 </div>
 
 <div class="APIDescription" id="areLadderWords">
+
   <body>
     <h4>Are Ladder Words:</h4>
     <p>
-      The are ladder words takes 2 strings and processes the string to see if the 
-      strings are equal in length and if they differ by 1 logical Character. For example, 
-      if input 1 is Cold and input 2 is Cord the service returns true. 
+      The are ladder words takes 2 strings and processes the string to see if the
+      strings are equal in length and if they differ by 1 logical Character. For example,
+      if input 1 is Cold and input 2 is Cord the service returns true.
+      <br>
+      <a href="http://localhost/indic-wp/api/areLadderWords.php?input1=Cold&input2=English&input3=Cord">Link to API: http://localhost/indic-wp/api/areLadderWords.php?input1=Cold&input2=English&input3=Cord</a>
+
+
     </p>
 </div>
 
 <div class="APIDescription" id="headAndTail">
+
   <body>
     <h4>Head and Tail:</h4>
     <p>
-      The head and tail API takes 2 strings as input and checks if the 
-      last character of the first word is the same as the first character of the second word. 
-      For example, if cat and tin are entered the service returns true. 
+      The head and tail API takes 2 strings as input and checks if the
+      last character of the first word is the same as the first character of the second word.
+      For example, if cat and tin are entered the service returns true.
+      <br>
+      <a href="http://localhost/indic-wp/api/areLadderWords.php?input1=cat&input2=English&input3=tin">Link to API: http://localhost/indic-wp/api/areLadderWords.php?input1=cat&input2=English&input3=tin</a>
+
+    </p>
+</div>
+
+<div class="APIDescription" id="getFillerCharacters">
+
+  <body>
+    <h4>Get Filler Characters:</h4>
+    <p>
+      The get filler API takes a character count to and the type of character (vowel or consonant) and returns the type and count of those vowels. For example,
+      If 10 and vowel are entered, the service returns 10 random vowels.
+      <br>
+      <a href="http://localhost/indic-wp/api/getFillerCharacters.php?input1=10&input2=English&input3=vowel">Link to API: http://localhost/indic-wp/api/getFillerCharacters.php?input1=10&input2=English&input3=vowel</a>
+
     </p>
 </div>
 
 
-<link rel="stylesheet" href="<?= $root ?>css/style.css">
-
+<link rel="stylesheet" href="<?= $root ?>/css/style.css">
 
 </html>

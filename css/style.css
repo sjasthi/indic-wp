@@ -21,8 +21,12 @@ th.methodHeader {
     width: 22%;
 }
 
-th {
+thead{
     width: 11%;
+    top:0;
+    position: sticky;
+    background-color: black;
+    color: white;
 }
 
 th.jsonHeader {
@@ -47,8 +51,8 @@ th.jsonHeader {
 }
 
 #tableDiv {
-    padding: 20px;
-    height: 600px;
+    padding: 0px;
+    height: 660px;
     overflow: auto;
 }
 
@@ -74,6 +78,5 @@ th.jsonHeader {
     margin-bottom: 15px;
     color: grey;
     font-family: Consolas,Monaco,Lucida Console,Liberation Mono,DejaVu Sans Mono,Bitstream Vera Sans Mono,Courier New, monospace;
-   }
-
+}
 

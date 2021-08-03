@@ -18,26 +18,27 @@ public class API implements Runnable {
         this.inputs = inputs;
     }
 
+    /**
+     * This method creates a url to the web APIs
+     * Upon instantiation of this class a string array is passed which should contain the parameters to turn into a UrL
+     */
     public void create() {
         this.url += method + ".php?";
-        if (method.equals("getUniqueIntersectingRank") && language.equals("english")) {
-            url = "http://localhost/indic-wp/api/getUniqueIntersectingRank.php?string=hello&language=English&list[0]=e&list[1]=l&list[2]=i";
-        } else if (method.equals("getUniqueIntersectingLogicalChars") && language.equals("english")) {
-            url = "http://localhost/indic-wp/api/getUniqueIntersectingLogicalChars.php?string=hello!&language=English&list[0]=l&list[1]=l";
-        } else {
-            for (int i = 0; i < inputs.length; i++) {
-                this.url += "input";
-                this.url += String.valueOf(i + 1);
-                this.url += "=";
-                this.url += inputs[i];
-                if (i < inputs.length - 1) {
-                    this.url += "&";
-                }
+        for (int i = 0; i < inputs.length; i++) {
+            this.url += "input";
+            this.url += String.valueOf(i + 1);
+            this.url += "=";
+            this.url += inputs[i];
+            if (i < inputs.length - 1) {
+                this.url += "&";
             }
         }
         url = url.replaceAll(" ", "%20");
     }
 
+    /**
+     * This is the call method. This method is what is ran by the thread pool.
+     */
     public void call() {
         Client client = Client.create();
         WebResource resource = client.resource(this.url);
@@ -46,6 +47,9 @@ public class API implements Runnable {
         resultBuilder(response);
     }
 
+    /**
+     * This method takes the whole string response of the API. The string is then processed to get the data form the response.
+     */
     public String getData(String response) {
         String data = null;
         try {
@@ -56,6 +60,9 @@ public class API implements Runnable {
         return data;
     }
 
+    /**
+     * This method builds the results that are spit out to the CLI.
+     */
     public void resultBuilder(String response) {
         String output = "Method: " + this.method + " | Address: " + this.url + " | ";
         for (int i = 0; i < inputs.length; i++) {

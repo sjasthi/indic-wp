@@ -1,4 +1,6 @@
-var local = false;
+/*Set local = true for local api endpoints, else set local = false to use thisisjava.com domain endpoints */
+var local = true;
+
 if (local == true) {
     apiURL = "http://localhost/indic-wp/api/";
 } else {
@@ -117,8 +119,8 @@ async function runTests() {
 /*Takes methodName as argument and does API call to retrieve the appropriate data*/
 async function callAPI(methodName) {
 
-    const singleInput = ["getCodePointLength", "getCodePoints", "getLength", "getLogicalChars", "getWordStrength", "getWordWeight", "isPalindrome", "randomize", "reverse", "containsSpace", "getWordLevel", "getLengthNoSpaces", "getLengthNoSpacesNoCommas", "parseToLogicalChars", "parseToLogicalCharacters", "isAnagram"];
-    const doubleInput = ["startsWith", "endsWith", "containsString", "containsChar", "containsLogicalChars", "containsAllLogicalChars", "containsLogicalCharSequence", "canMakeWord", "canMakeAllWords", "addCharacterAtEnd", "isIntersecting", "getIntersectingRank", "getUniqueIntersectingRank", "compareTo", "compareToIgnoreCase", "splitWord", "equals", "reverseEquals", "logicalCharAt", "getUniqueIntersectingLogicalChars", "indexOf", "areLadderWords", "areHeadAndTailWords"];
+    const singleInput = ["getCodePointLength", "getCodePoints", "getLength", "getLogicalChars", "getWordStrength", "getWordWeight", "isPalindrome", "randomize", "reverse", "containsSpace", "getWordLevel", "getLengthNoSpaces", "getLengthNoSpacesNoCommas", "parseToLogicalChars", "parseToLogicalCharacters"];
+    const doubleInput = ["isAnagram", "startsWith", "endsWith", "containsString", "containsChar", "containsLogicalChars", "containsAllLogicalChars", "containsLogicalCharSequence", "canMakeWord", "canMakeAllWords", "addCharacterAtEnd", "isIntersecting", "getIntersectingRank", "getUniqueIntersectingRank", "compareTo", "compareToIgnoreCase", "splitWord", "equals", "reverseEquals", "logicalCharAt", "getUniqueIntersectingLogicalChars", "indexOf", "areLadderWords", "areHeadAndTailWords", "baseConsonants"];
     const tripleInput = ["addCharacterAt", "replace"];
 
     if (methodName == "getFillerCharacters") {
@@ -180,43 +182,50 @@ async function callAPI(methodName) {
         const jsonObj = JSON.parse(newResult);
 
         jsonElement.innerHTML = result;
-        actualCell.innerHTML = jsonObj.data;
 
+        if (Array.isArray(jsonObj.data)) {
+            actualCell.innerHTML = jsonObj.data.toString();
+        }
+        else if (jsonObj.data?.constructor.name === "Object") {
+            actualCell.innerHTML = JSON.stringify(jsonObj.data);
+        }
+        else {
+            actualCell.innerHTML = jsonObj.data;
+        }
 
         if (jsonObj.response_code != 200) {
             passFail.innerHTML = "FAIL";
-            passFail.classList.remove("pass")
-            passFail.classList.add("fail")
-            passFail.classList.remove("table-success")
-            passFail.classList.add("table-danger")
+            passFail.classList.remove("pass");
+            passFail.classList.add("fail");
+            passFail.classList.remove("table-success");
+            passFail.classList.add("table-danger");
         } else if (expectedResult == actualCell.innerHTML) {
             passFail.innerHTML = "PASS";
-            passFail.classList.remove("fail")
-            passFail.classList.add("pass")
-            passFail.classList.remove("table-danger")
-            passFail.classList.add("table-success")
+            passFail.classList.remove("fail");
+            passFail.classList.add("pass");
+            passFail.classList.remove("table-danger");
+            passFail.classList.add("table-success");
         } else {
             passFail.innerHTML = "FAIL";
-            passFail.classList.remove("pass")
-            passFail.classList.add("fail")
-            passFail.classList.remove("table-success")
-            passFail.classList.add("table-danger")
+            passFail.classList.remove("pass");
+            passFail.classList.add("fail");
+            passFail.classList.remove("table-success");
+            passFail.classList.add("table-danger");
         }
     }
-
 }
+
 
 /**
  * Removes NON-ASCII characters from strings 
  */
 function remove_non_ascii(str) {
-
     if ((str === null) || (str === ''))
         return false;
     else
         str = str.toString();
 
-    return str.replace(/[^\x20-\x7E]/g, '');
+    return str.replace(/[^\x20-\x7E\uC00-\u0C7F]/g, '');
 }
 
 
@@ -257,6 +266,7 @@ function getLanguageValues(language) {
 
 function getDefaultValues(language) {
     if (language == "English") {
+        document.getElementById("isAnagramInputText2").value = "llohe";
         document.getElementById("startsWithInputText2").value = "h";
         document.getElementById("endsWithInputText2").value = "o";
         document.getElementById("containsStringInputText2").value = "lo";
@@ -269,7 +279,7 @@ function getDefaultValues(language) {
         document.getElementById("addCharacterAtEndInputText2").value = "a";
         document.getElementById("isIntersectingInputText2").value = "el";
         document.getElementById("getIntersectingRankInputText2").value = "el";
-        document.getElementById("getUniqueIntersectingRankInputText2").value = "eli";
+        document.getElementById("getUniqueIntersectingRankInputText2").value = "e,l,i";
         document.getElementById("compareToInputText2").value = "hello";
         document.getElementById("compareToIgnoreCaseInputText2").value = "HEL";
         document.getElementById("splitWordInputText2").value = "2";
@@ -284,6 +294,7 @@ function getDefaultValues(language) {
         document.getElementById("replaceInputText3").value = "i";
         document.getElementById("areLadderWordsInputText2").value = "cello";
         document.getElementById("areHeadAndTailWordsInputText2").value = "oasis";
+        document.getElementById("baseConsonantsInputText2").value = "hilla";
 
 
         document.getElementById("getCodePointLengthExpectedText").value = "5";
@@ -313,22 +324,24 @@ function getDefaultValues(language) {
         document.getElementById("addCharacterAtEndExpectedText").value = "helloa";
         document.getElementById("isIntersectingExpectedText").value = "true";
         document.getElementById("getIntersectingRankExpectedText").value = "3";
-        document.getElementById("getUniqueIntersectingRankExpectedText").value = "5";
+        document.getElementById("getUniqueIntersectingRankExpectedText").value = "2";
         document.getElementById("compareToExpectedText").value = "0";
         document.getElementById("compareToIgnoreCaseExpectedText").value = "2";
-        document.getElementById("splitWordExpectedText").value = "{'0': ['h', 'e'], '2': ['l', 'l'], '4': ['o', '']}";
+        document.getElementById("splitWordExpectedText").value = `{"0":["h","e"],"2":["l","l"],"4":["o",null]}`;
         document.getElementById("equalsExpectedText").value = "true";
         document.getElementById("reverseEqualsExpectedText").value = "true";
         document.getElementById("logicalCharAtExpectedText").value = "l";
-        document.getElementById("getUniqueIntersectingLogicalCharsExpectedText").value = "5";
+        document.getElementById("getUniqueIntersectingLogicalCharsExpectedText").value = "2";
         document.getElementById("indexOfExpectedText").value = "1";
         document.getElementById("addCharacterAtExpectedText").value = "heello";
         document.getElementById("replaceExpectedText").value = "hio";
         document.getElementById("areLadderWordsExpectedText").value = "true";
         document.getElementById("areHeadAndTailWordsExpectedText").value = "true";
+        document.getElementById("baseConsonantsExpectedText").value = "true";
     }
 
     if (language == "Telugu") {
+        document.getElementById("isAnagramInputText2").value = "అఆమెస్ట్రేరిలికాయా";
         document.getElementById("startsWithInputText2").value = "అమె";
         document.getElementById("endsWithInputText2").value = "లియా";
         document.getElementById("containsStringInputText2").value = "అమెరికా";
@@ -341,19 +354,22 @@ function getDefaultValues(language) {
         document.getElementById("addCharacterAtEndInputText2").value = "ల్లో";
         document.getElementById("isIntersectingInputText2").value = "ఇటలి";
         document.getElementById("getIntersectingRankInputText2").value = "కాయాలి";
-        document.getElementById("getUniqueIntersectingRankInputText2").value = "కాయాలి";
+        document.getElementById("getUniqueIntersectingRankInputText2").value = "కా,యా,లి";
         document.getElementById("compareToInputText2").value = "అమెరికాఆస్ట్రేలియా";
         document.getElementById("compareToIgnoreCaseInputText2").value = "ఆస్ట్రేలియా";
         document.getElementById("splitWordInputText2").value = "2";
         document.getElementById("equalsInputText2").value = "అమెరికాఆస్ట్రేలియా";
         document.getElementById("reverseEqualsInputText2").value = "యాలిస్ట్రేఆకారిమెఅ";
         document.getElementById("logicalCharAtInputText2").value = "6";
-        document.getElementById("getUniqueIntersectingLogicalCharsInputText2").value = "కాయాలి";
+        document.getElementById("getUniqueIntersectingLogicalCharsInputText2").value = "కా,యా,లి";
         document.getElementById("indexOfInputText2").value = "లి";
         document.getElementById("addCharacterAtInputText2").value = "3";
         document.getElementById("replaceInputText2").value = "అమెరికా";
         document.getElementById("addCharacterAtInputText3").value = "క్క";
         document.getElementById("replaceInputText3").value = "క్క";
+        document.getElementById("areLadderWordsInputText2").value = "అమ్మరికాఆస్ట్రేలియా";
+        document.getElementById("areHeadAndTailWordsInputText2").value = "యామాతారాజభానస";
+        document.getElementById("baseConsonantsInputText2").value = "అమరకఆసలయ";
 
         document.getElementById("getCodePointLengthExpectedText").value = "18";
         document.getElementById("getCodePointsExpectedText").value = "3077,3118,3142,3120,3135,3093,3134,3078,3128,3149,3103,3149,3120,3143,3122,3135,3119,3134";
@@ -382,16 +398,19 @@ function getDefaultValues(language) {
         document.getElementById("addCharacterAtEndExpectedText").value = "అమెరికాఆస్ట్రేలియాల్లో";
         document.getElementById("isIntersectingExpectedText").value = "true";
         document.getElementById("getIntersectingRankExpectedText").value = "3";
-        document.getElementById("getUniqueIntersectingRankExpectedText").value = "8";
+        document.getElementById("getUniqueIntersectingRankExpectedText").value = "3";
         document.getElementById("compareToExpectedText").value = "0";
         document.getElementById("compareToIgnoreCaseExpectedText").value = "-1";
-        document.getElementById("splitWordExpectedText").value = ""; //Need to update
+        document.getElementById("splitWordExpectedText").value = `{"0":["అ","మె"],"2":["రి","కా"],"4":["ఆ","స్ట్రే"],"6":["లి","యా"]}`;
         document.getElementById("equalsExpectedText").value = "true";
         document.getElementById("reverseEqualsExpectedText").value = "true";
         document.getElementById("logicalCharAtExpectedText").value = "లి";
-        document.getElementById("getUniqueIntersectingLogicalCharsExpectedText").value = "8";
+        document.getElementById("getUniqueIntersectingLogicalCharsExpectedText").value = "3";
         document.getElementById("indexOfExpectedText").value = "6";
         document.getElementById("addCharacterAtExpectedText").value = "అమెరిక్కకాఆస్ట్రేలియా";
         document.getElementById("replaceExpectedText").value = "క్కఆస్ట్రేలియా";
+        document.getElementById("areLadderWordsExpectedText").value = "true";
+        document.getElementById("areHeadAndTailWordsExpectedText").value = "true";
+        document.getElementById("baseConsonantsExpectedText").value = "true";
     }
 }
