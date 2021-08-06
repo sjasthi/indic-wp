@@ -107,6 +107,36 @@ class wordProcessor
 		return $this->logical_chars;
 	}
 
+	function getLogicalChars2()
+	{
+		$invalidCharacters = array("!", "@", "#", "$", "%", "^", "&", "*", "(", ")", "_", "-", "+", "=", "{", "}", "[", "]", ":", ";", " \" ", " ' ", "<", ",", "<", ",", ">", ".", "?", "/", "|", '\\', " ");
+		$parsedLogicalChars = $this->parseToLogicalChars($this->word);
+		$newParsedLogicalChars = array();
+
+		foreach($parsedLogicalChars as $char) {
+			if(!in_array($char, $invalidCharacters)) {
+				array_push($newParsedLogicalChars, $char);
+			}	
+		}
+
+
+		// var_dump($parsedLogicalChars);
+		// var_dump($newParsedLogicalChars);
+		// $this->setLogicalChars($newParsedLogicalChars);   
+		
+		
+
+		return $newParsedLogicalChars;
+	}
+
+	function parseToLogicalChars2() {
+		return $this->getLogicalChars2();
+	}
+
+	function getLength2() {
+		return count($this->getLogicalChars2());
+	}
+
 	function getCodePoints()
 	{
 		return $this->code_points;
