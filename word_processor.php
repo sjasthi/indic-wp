@@ -1278,4 +1278,20 @@ class wordProcessor
 
 		return $result;
 	}
+
+	//gets base characters of a string stripping spaces and special characters
+	function getBaseCharacters () {
+	    $logicalCharacters = $this->getLogicalChars2();
+	    $baseCharacters = array();
+
+	    foreach ($logicalCharacters as $character) {
+	        $this->setWord($character);
+	        $result = $this->getCodePoints();
+	        $codePoint = $result[0][0];
+            $char = mb_chr($codePoint, "utf8");
+            array_push($baseCharacters, $char);
+        }
+
+	    return $baseCharacters;
+    }
 }

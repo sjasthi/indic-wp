@@ -25,8 +25,6 @@
     <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/pdfmake/0.1.53/vfs_fonts.js"></script>
     <script type="text/javascript" src="https://cdn.datatables.net/buttons/1.7.1/js/buttons.html5.min.js"></script>
     <script type="text/javascript" src="https://cdn.datatables.net/buttons/1.7.1/js/buttons.print.min.js"></script>
-
-    <script src="js/finder.js"></script>
 </head>
 
 <body>
@@ -59,19 +57,20 @@
             </div>
             <div id="input-container" class="container my-3">
                 <!-- Made text area disabled as this should be pre-filled by system. Remove "disabled" attribute to allow for manual comparison -->
-                <textarea id="text-to-compare" class="form-control" rows="10" disabled></textarea>
+                <textarea id="text-to-compare" class="form-control" rows="10" ></textarea>
             </div>
             <div id="buttons" class="container mb-4 d-flex justify-content-center">
-                <!-- TODO: Add functionality on click -->
-                <button onclick="" class="btn btn-outline-primary w-25">Process</button>
+                <button id="process" class="btn btn-outline-primary w-25">Process</button>
             </div>
             <p class="h6 text-center">Matches Found:</p>
             <div id="table-container" class="container">
                 <!-- TODO: Fill text area below with matches between input text and text-to-compare -->
-                <textarea id="finder-matches" class="form-control" rows="10"></textarea>
+                <textarea id="finder-matches" class="form-control" rows="10" disabled></textarea>
             </div>
         </div>
     </div>
+
+    <script src="js/finder.js"></script>
 </body>
 
 </html>
