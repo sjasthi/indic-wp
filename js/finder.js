@@ -14,17 +14,24 @@ processButton.addEventListener("click", async () => {
     const textToCompareValue = textToCompare.value.trim();
 
     //getting base chars and length of input for comparison
-    const inputTextBaseCharacters = await getBaseCharacters(inputTextValue);
-    const inputTextLength = inputTextBaseCharacters.length;
+        const inputTextBaseCharacters = await getBaseCharacters(inputTextValue);
+
+
+
+    // const inputTextLength = inputTextBaseCharacters.length;
 
     //splitting each line from the text area into an array
     const stringArray = textToCompareValue.split("\n");
 
     //placing all strings with their base characters into a map
     const wordWithbaseChars = new Map();
-    for (const string of stringArray) {
-        const value = await getBaseCharacters(string)
-        wordWithbaseChars.set(string, value);
+    if(inputTextValue !== ""){
+        if(textToCompareValue !== ""){
+            for (const string of stringArray) {
+                const value = await getBaseCharacters(string)
+                wordWithbaseChars.set(string, value);
+            }
+        }
     }
 
     //if contents of arrays are the same then adds them to the match box
@@ -37,6 +44,12 @@ processButton.addEventListener("click", async () => {
 
 //compares if the arrays have the same contents
 function compareArrays (array1, array2) {
+    if (array1 == undefined || array1.length == 0) {
+        return false;
+    }
+    if (array1 == undefined || array1.length == 0) {
+        return false;
+    }
     if (array1.length != array2.length) {
         return false
     } else {
@@ -52,7 +65,8 @@ function compareArrays (array1, array2) {
 }
 
 //calls the base chars api and returns result
-async function getBaseCharacters (string) {
+async function getBaseCharacters (string) {    
+    if(string !== "") {
     await fetch(`http://localhost/indic-wp/api/getBaseCharacters.php?language=${language}&string=${string}`)
         .then(response => response.text())
         .then(data => result = data);
@@ -60,6 +74,7 @@ async function getBaseCharacters (string) {
     const jsonObj = JSON.parse(newResult);
 
     return jsonObj["data"];
+}
 }
 
 /**
