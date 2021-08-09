@@ -1,12 +1,18 @@
-//TODO: do things within finder.php lulz
 //Getting DOM objects
 const inputText = document.querySelector("#input-text");
 const textToCompare = document.querySelector("#text-to-compare");
 const finderMatches = document.querySelector("#finder-matches");
 const processButton = document.querySelector("#process");
-const language = document.querySelector("#language-select").value;
+const languageSelector = document.querySelector("#language-select");
+let language = document.querySelector("#language-select").value;
 
-//put finder method inside here
+languageSelector.addEventListener("change", () => {
+    language= languageSelector.value;
+    inputText.value = "";
+    textToCompare.value = "";
+    finderMatches.value = "";
+})
+
 processButton.addEventListener("click", async () => {
     finderMatches.value = "";
     //gettting text values of input box and text area
@@ -14,11 +20,7 @@ processButton.addEventListener("click", async () => {
     const textToCompareValue = textToCompare.value.trim();
 
     //getting base chars and length of input for comparison
-        const inputTextBaseCharacters = await getBaseCharacters(inputTextValue);
-
-
-
-    // const inputTextLength = inputTextBaseCharacters.length;
+    const inputTextBaseCharacters = await getBaseCharacters(inputTextValue);
 
     //splitting each line from the text area into an array
     const stringArray = textToCompareValue.split("\n");
