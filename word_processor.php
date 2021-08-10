@@ -107,6 +107,36 @@ class wordProcessor
 		return $this->logical_chars;
 	}
 
+	function getLogicalChars2()
+	{
+		$invalidCharacters = array("!", "@", "#", "$", "%", "^", "&", "*", "(", ")", "_", "-", "+", "=", "{", "}", "[", "]", ":", ";", " \" ", " ' ", "<", ",", "<", ",", ">", ".", "?", "/", "|", '\\', " ");
+		$parsedLogicalChars = $this->parseToLogicalChars($this->word);
+		$newParsedLogicalChars = array();
+
+		foreach($parsedLogicalChars as $char) {
+			if(!in_array($char, $invalidCharacters)) {
+				array_push($newParsedLogicalChars, $char);
+			}	
+		}
+
+
+		// var_dump($parsedLogicalChars);
+		// var_dump($newParsedLogicalChars);
+		// $this->setLogicalChars($newParsedLogicalChars);   
+		
+		
+
+		return $newParsedLogicalChars;
+	}
+
+	function parseToLogicalChars2() {
+		return $this->getLogicalChars2();
+	}
+
+	function getLength2() {
+		return count($this->getLogicalChars2());
+	}
+
 	function getCodePoints()
 	{
 		return $this->code_points;
@@ -1248,4 +1278,20 @@ class wordProcessor
 
 		return $result;
 	}
+
+	//gets base characters of a string stripping spaces and special characters
+	function getBaseCharacters () {
+	    $logicalCharacters = $this->getLogicalChars2();
+	    $baseCharacters = array();
+
+	    foreach ($logicalCharacters as $character) {
+	        $this->setWord($character);
+	        $result = $this->getCodePoints();
+	        $codePoint = $result[0][0];
+            $char = mb_chr($codePoint, "utf8");
+            array_push($baseCharacters, $char);
+        }
+
+	    return $baseCharacters;
+    }
 }

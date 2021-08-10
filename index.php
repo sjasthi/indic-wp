@@ -45,6 +45,9 @@
             <li class="nav-item">
                 <a class="nav-link text-white" href="parser.php">Parser</a>
             </li>
+            <li class="nav-item">
+                <a class="nav-link text-white" href="finder.php">Finder</a>
+            </li>
         </ul>
         <span class="navbar-brand mb-0 h1 text-white">Indic-WP WebServices</span>
         <a class="btn btn-dark text-white" href="indic_classic.php">Classic Indic-WP</a>
