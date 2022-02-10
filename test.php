@@ -7,7 +7,7 @@ $words = array('అమ్మ', 'అరక', 'స్త్రీ', 'ఆస్ట�
 
 //$language = "English";
 //$words = array('mother', 'tool', 'cow', 'australia', 'happiness');
-//Seeing github Changes
+
 
 foreach ($words as $x) {
 
