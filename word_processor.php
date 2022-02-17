@@ -1294,4 +1294,44 @@ class wordProcessor
 
 	    return $baseCharacters;
     }
+
+	function splitInto15Chunks(){
+		$myString= $this->getLogicalChars2();
+		while(count($myString)<15){
+            array_push($myString,"");
+        }
+        $myArray=[];
+        for($i=0;$i<15;$i++)
+        {
+            array_push($myArray,"");
+        }
+        $myFloor=floor(count($myString)/15);
+        if($myFloor <1){
+            $myFloor=1;
+        }
+        $total=0;
+       
+        for($i=0;$i<15;$i++){
+            for($j=0;$j < $myFloor;$j++){
+                $myArray[$i]=$myArray[$i].($myString[$total]);
+                $total ++;
+            }
+        }
+        while(count($myString)>$total){
+            $random=rand(1,14);
+            $myArray[$random -1]=$myArray[$random-1].$myArray[$random];
+             array_splice($myArray,$random,1);
+             array_push($myArray,"");
+            for($j=0;$j < $myFloor;$j++){
+                if($total < count($myString)){
+                    $myArray[count($myArray)-1]= $myArray[count($myArray)-1].$myString[$total];
+                }
+                $total++;
+            }
+ 
+        }
+        return $myArray;
+    }
+
+	
 }
