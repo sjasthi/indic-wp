@@ -622,7 +622,7 @@ $root = 'http://' . $_SERVER['HTTP_HOST'] . '/indic-wp/';
       last character of the first word is the same as the first character of the second word. 
       For example, if cat and tin are entered the service returns true. 
       <br>
-    <a href="https://indic-wp.thisisjava.com/api/areLadderWords.php?input1=cat&input2=English&input3=tin">Link to API: https://indic-wp.thisisjava.com/api/areLadderWords.php?input1=cat&input2=English&input3=tin</a>
+    <a href="https://indic-wp.thisisjava.com/api/areHeadAndTailWords.php?input1=cat&input2=English&input3=tin">Link to API: https://indic-wp.thisisjava.com/api/areHeadAndTailWords.php?input1=cat&input2=English&input3=tin</a>
  
     </p>
 </div>
@@ -638,6 +638,108 @@ $root = 'http://' . $_SERVER['HTTP_HOST'] . '/indic-wp/';
  
     </p>
 </div>
+
+<div class="APIDescription" id="CompareToIgnoreCase">
+  <body>
+    <h4>Compare To Ignore Case:</h4>
+    <p>
+      The Compare to Ignore Case API takes two Strings and compares them to one another. This API is not case senstive, meaning if 
+      a lowercase letter will be equal to its uppercase counterpart.   
+      <br>
+    <a href="https://indic-wp.thisisjava.com/api/compareToIgnoreCase.php?input1=HELLO&input2=English&input3=Denver">Link to API: https://indic-wp.thisisjava.com/api/compareToIgnoreCase.php?input1=HELLO&input2=English&input3=DENVER</a>
+ 
+    </p>
+</div>
+
+
+<div class="APIDescription" id="getLength2">
+  <body>
+    <h4>Get Length2:</h4>
+    <p>
+      The get length API takes a two parameters the first input is a string and the second input is the Language.
+      This API returns the length of the string. If you have the word Colorado it returns 8.  
+      <br>
+    <a href="https://indic-wp.thisisjava.com/api/getLength2.php?input1=Colorado&input2=English">Link to API: https://indic-wp.thisisjava.com/api/getLength2.php?input1=Colorado&input2=English</a>
+ 
+    </p>
+</div>
+
+<div class="APIDescription" id="getLengthNoSpacesNoCommas">
+  <body>
+    <h4>Get Length No spaces No Commas:</h4>
+    <p>
+    The get length API takes a two parameters the first input is a string and the second input is the Language. It ignores all commas. 
+      and spaces This API returns the length of the string. If you have the string I love Colorado, it returns 13.  
+      <br>
+    <a href="https://indic-wp.thisisjava.com/api/getLengthNoSpacesNoCommas.php?input1=I love, Colorado&input2=English">Link to API: https://indic-wp.thisisjava.com/api/getLengthNoSpacesNoCommas.php?input1=I love, Colorado&input2=English</a>
+ 
+    </p>
+</div>
+
+
+<div class="APIDescription" id="getLogicalChars2">
+  <body>
+    <h4>Get Logical Chars 2 :</h4>
+    <p>
+    The get logical Chars API takes a single string as input and returns an 
+    array of the logical characters from the string.It removes a set of special characters For example, if the word 'hello'
+    is entered, ['h', 'e', 'l', 'l', 'o'] is returned.
+      <br>
+    <a href="https://indic-wp.thisisjava.com/api/getLogicalChars2.php?input1=hello&input2=English">Link to API: https://indic-wp.thisisjava.com/api/getLogicalChars2.php?input1=hello&input2=English</a>
+ 
+    </p>
+</div>
+
+<div class="APIDescription" id="splitInto15Chunks">
+  <body>
+    <h4>Split Into 15 Chunks :</h4>
+    <p>
+    The Split Into 15 chunks API takes two inputs. The first is a string and the second is the language
+    After Which it will break that string into 15 pieces randomly. But will retain its order. If you have ABCDEFGHIJKLMNOP
+      <br>
+    <a href="https://indic-wp.thisisjava.com/api/splitInto15Chunks.php?input1=ABCDEFGHIJKLMNOP&input2=English">Link to API: https://indic-wp.thisisjava.com/api/splitInto15Chunks.php?input1=ABCDEFGHIJKLMNOP&input2=English</a>
+ 
+    </p>
+</div>
+
+<div class="APIDescription" id="getBaseCharacters">
+  <body>
+    <h4>get Base Characters :</h4>
+    <p>
+    Still Have to figure out what Base Characters does
+      <br>
+    <a href="https://indic-wp.thisisjava.com/api/getBaseCharacters.php?input1=ABCDEFGHIJKLMNOP&input2=English">Link to API: https://indic-wp.thisisjava.com/api/getaBaseCharacters.php?input1=ABCDEFGHIJKLMNOP&input2=English</a>
+ 
+    </p>
+</div>
+
+
+
+<div class="APIDescription" id="isCharConsonant">
+  <body>
+    <h4>Is Character Consonant :</h4>
+    <p>
+    This API takes two parameters. The first Parameter being a single Char, and the other other a language.
+    It will then check if the char is a consonant or not and return true if it is, false if it is not.
+      <br>
+    <a href="https://indic-wp.thisisjava.com/api/isCharConsonant.php?input1=A&input2=English">Link to API: https://indic-wp.thisisjava.com/api/isCharConsonant.php?input1=A&input2=English</a>
+ 
+    </p>
+</div>
+
+
+<div class="APIDescription" id="isCharConsonant">
+  <body>
+    <h4>Is Character Vowel :</h4>
+    <p>
+    This API takes two parameters. The first Parameter being a single Char, and the other other a language.
+    It will then check if the char is a Vowel or not and return true if it is, false if it is not.
+      <br>
+    <a href="https://indic-wp.thisisjava.com/api/isCharVowel.php?input1=A&input2=English">Link to API: https://indic-wp.thisisjava.com/api/isCharVowel.php?input1=A&input2=English</a>
+ 
+    </p>
+</div>
+
 
 
 <link rel="stylesheet" href="../../indic-wp/css/style.css">

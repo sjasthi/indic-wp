@@ -446,7 +446,7 @@ class wordProcessor
 	function isCharConsonant($hexcode)
 	{
 		$retVal = true;
-		$englishVowels = array("041", "045", "049", "04f", "055");
+		$englishVowels = array("041", "045", "049", "04f", "055","O");
 
 		$TeluguVstart = hexdec("0x0C05");
 		$TeluguVend = hexdec("0x0C14");
@@ -1294,7 +1294,7 @@ class wordProcessor
 
 	    return $baseCharacters;
     }
-
+	//Splits A string into 15 chunks. 
 	function splitInto15Chunks(){
 		$myString= $this->getLogicalChars2();
 		while(count($myString)<15){
@@ -1332,6 +1332,86 @@ class wordProcessor
         }
         return $myArray;
     }
+	//a certain string will be returned if the characters are matched in the same position.
+	function get_match_id_string($string1,$string2){
+		if(strtolower($this->language)=="english"){
+			$firstString=strtolower($string1);
+			$this->setWord($firstString);
+			$firstArray= $this->getLogicalChars2();
+			$secondString=strtolower($string2);
+			$this->setWord($secondString);
+			$secondArray= $this->getLogicalChars2();
+
+			
+			if(count($firstArray)!= count($secondArray)){
+				return "Cannot Solve inputs are different lengths";
+			}
+			else{
+				$returnString='';
+				for ($i=0;$i < count($firstArray);$i++){
+					if(strcmp($firstArray[$i],($secondArray[$i]))==0){
+						$returnString=$returnString.'1';
+					}
+					else{
+						if(in_array($secondArray[$i],$firstArray)){
+							$returnString=$returnString.'2';
+						}
+						else{
+							$returnString=$returnString.'5';
+						}
+					}
+				}
+				return $returnString;
+				
+			}
+			
+		}
+		else if(strtolower($this->language)=="telugu"){
+			$this->setWord($string1);
+			$firstArray= $this->getLogicalChars2();
+			$firstBase=$this->getBaseCharacters();
+			
+			$this->setWord($string2);
+			$secondArray= $this->getLogicalChars2();
+			$secondBase=$this->getBaseCharacters();
+
+			if(count($firstArray)!= count($secondArray ) && (count($firstBase)!= count($secondBase ))){
+				return "Cannot solve Inputs are different Lengths";
+			}
+			$returnString="";
+			for ($i=0;$i < count($firstArray);$i++){
+			switch (true){
+				case (in_array($secondBase[$i],$firstBase)):
+					if(strcmp($firstArray[$i],($secondArray[$i]))==0){
+						if(strcmp($firstBase[$i],($secondBase[$i]))==0){
+							$returnString= $returnString.'1';
+						}
+					else{
+						$returnString= $returnString.'3';
+					}
+					}
+					else{
+						if(strcmp($firstBase[$i],($secondBase[$i]))==0){
+							$returnString= $returnString.'4';
+						}
+					else{
+						$returnString= $returnString.'2';
+					}
+					}
+					break;
+				
+				case(!in_array($secondArray[$i],$firstArray)):
+					$returnString= $returnString.'5';
+					break;
+				}
+			}
+			return $returnString;
+
+		}
+		else{
+			return "Not valid Langugage";
+		} 
+	}
 
 	
 }
