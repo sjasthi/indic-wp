@@ -1392,10 +1392,13 @@ class wordProcessor
 					}
 					else{
 						if(strcmp($firstBase[$i],($secondBase[$i]))==0){
-							$returnString= $returnString.'4';
+							$returnString= $returnString.'3';
 						}
-					else{
-						$returnString= $returnString.'2';
+						else if(in_array($secondArray[$i],$firstArray)){
+							$returnString= $returnString.'2';
+						}
+						else{
+						$returnString= $returnString.'4';
 					}
 					}
 					break;

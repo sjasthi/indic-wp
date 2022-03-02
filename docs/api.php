@@ -59,6 +59,9 @@ $root = 'http://' . $_SERVER['HTTP_HOST'] . '/indic-wp/';
         <p>
         How to use the Indic-WP API and what to expect.
         </p>
+        <p>
+        We currently have 51 API's
+        </p>
     <h3>How to use the API URLs</h3>
         <p>
         The URL for any API is </p>
@@ -697,7 +700,7 @@ $root = 'http://' . $_SERVER['HTTP_HOST'] . '/indic-wp/';
     The Split Into 15 chunks API takes two inputs. The first is a string and the second is the language
     After Which it will break that string into 15 pieces randomly. But will retain its order. If you have ABCDEFGHIJKLMNOP
       <br>
-    <a href="https://indic-wp.thisisjava.com/api/splitInto15Chunks.php?input1=ABCDEFGHIJKLMNOP&input2=English">Link to API: https://indic-wp.thisisjava.com/api/splitInto15Chunks.php?input1=ABCDEFGHIJKLMNOP&input2=English</a>
+    <a href="http://localhost/indic-wp/api/splitInto15Chunks.php?input1=ABCDEFGHIJKLMNOP&input2=english">Link to API: http://localhost/indic-wp/api/splitInto15Chunks.php?input1=ABCDEFGHIJKLMNOP&input2=english</a>
  
     </p>
 </div>
@@ -736,6 +739,23 @@ $root = 'http://' . $_SERVER['HTTP_HOST'] . '/indic-wp/';
     It will then check if the char is a Vowel or not and return true if it is, false if it is not.
       <br>
     <a href="https://indic-wp.thisisjava.com/api/isCharVowel.php?input1=A&input2=English">Link to API: https://indic-wp.thisisjava.com/api/isCharVowel.php?input1=A&input2=English</a>
+ 
+    </p>
+</div>
+
+
+<div class="APIDescription" id="isCharConsonant">
+  <body>
+    <h4>Get Match Id String :</h4>
+    <p>
+    This API takes Three parameters. The first is a string, the second the language and the third another string. This APi
+    represents the second string trying to guess what the first string is. If a character in the second string is in the same position and is the same character
+    you the string will return a 1. if a character in the second string is not in the same position as the first but exist in the first string 
+    it returns a 2. IF the character in the second string does not exist in the first string at all it'll return a 5. If String1= hello 
+    and string 2=hello than it'll return 11111 because the characters in string two are the same and in the same position.
+    If string 1= hello and string 2= elloh than that returns 21222. And If string 1= Hello and string 2=SamSu. Then itll return 5555
+      <br>
+    <a href="http://localhost/indic-wp/api/get_match_id_string.php?input1=Hello&input2=english&input3=Hello">Link to API: http://localhost/indic-wp/api/get_match_id_string.php?input1=Hello&input2=english&input3=Hello</a>
  
     </p>
 </div>
