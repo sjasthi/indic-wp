@@ -274,3 +274,118 @@ def isAnagram(string,language,string2):
         r=requests.get(urls,headers={"User-Agent":"XY"})
         data=str(r.text)
         return data
+
+@app.route("/isCharConsonant/<string>/<language>")
+def isCharConstant(string,language):
+        #urls="https://indic-wp.thisisjava.com/api/isCharConsonant.php?input1="+string+"&input2="+language
+        urls="http://localhost/indic-wp/api/isCharConsonant.php?input1="+string+"&input2="+language
+        r=requests.get(urls,headers={"User-Agent":"XY"})
+        data=str(r.text)
+        return data
+@app.route("/isCharVowel/<string>/<language>")
+def isCharVowel(string,language):
+    #urls="https://indic-wp.thisisjava.com/api/isCharVowel.php?input1="+string+"&input2="+language
+        urls="http://localhost/indic-wp/api/isCharVowel.php?input1="+string+"&input2="+language
+        r=requests.get(urls,headers={"User-Agent":"XY"})
+        data=str(r.text)
+        return data
+
+@app.route("/isIntersecting/<string>/<language>/<string2>")
+def isIntersecting(string,language,string2):
+    #urls="https://indic-wp.thisisjava.com/api/isIntersecting.php?input1="+string+"&input2="+language+"&input3="+string2
+        urls="http://localhost/indic-wp/api/isIntersecting.php?input1="+string+"&input2="+language+"&input3="+string2
+        r=requests.get(urls,headers={"User-Agent":"XY"})
+        data=str(r.text)
+        return data
+
+@app.route("/isPalindrome/<string>/<language>")
+def isPalindrome(string,language):
+    #urls="https://indic-wp.thisisjava.com/api/isPalindrome.php?input1="+string+"&input2="+language
+        urls="http://localhost/indic-wp/api/isPalindrome.php?input1="+string+"&input2="+language
+        r=requests.get(urls,headers={"User-Agent":"XY"})
+        data=str(r.text)
+        return data
+
+@app.route("/logicalCharAt/<string>/<language>/<string2>")
+def logicalCharAt(string,language,string2):
+    #urls="https://indic-wp.thisisjava.com/api/logicalCharAt.php?input1="+string+"&input2="+language+"&input3="+string2
+        urls="http://localhost/indic-wp/api/logicalCharAt.php?input1="+string+"&input2="+language+"&input3="+string2
+        r=requests.get(urls,headers={"User-Agent":"XY"})
+        data=str(r.text)
+        return data
+
+@app.route("/parseToLogicalCharacters/<string>/<language>")
+def parseToLogicalCharacters(string,language):
+    #urls="https://indic-wp.thisisjava.com/api/parseToLogicalCharacters.php?input1="+string+"&input2="+language
+        urls="http://localhost/indic-wp/api/parseToLogicalCharacters.php?input1="+string+"&input2="+language
+        r=requests.get(urls,headers={"User-Agent":"XY"})
+        data=str(r.text)
+        return data
+
+@app.route("/parseToLogicalChars/<string>/<language>")
+def parseToLogicalChars(string,language):
+    #urls="https://indic-wp.thisisjava.com/api/parseToLogicalChars.php?input1="+string+"&input2="+language
+        urls="http://localhost/indic-wp/api/parseToLogicalChars.php?input1="+string+"&input2="+language
+        r=requests.get(urls,headers={"User-Agent":"XY"})
+        data=str(r.text)
+        return data
+
+@app.route("/parseToLogicalChars2/<string>/<language>")
+def parseToLogicalChars2(string,language):
+    #urls="https://indic-wp.thisisjava.com/api/parseToLogicalChars2.php?input1="+string+"&input2="+language
+        urls="http://localhost/indic-wp/api/parseToLogicalChars2.php?input1="+string+"&input2="+language
+        r=requests.get(urls,headers={"User-Agent":"XY"})
+        data=str(r.text)
+        return data
+
+@app.route("/randomize/<string>/<language>")
+def randomize(string,language):
+    #urls="https://indic-wp.thisisjava.com/api/randomize.php?input1="+string+"&input2="+language
+        urls="http://localhost/indic-wp/api/randomize.php?input1="+string+"&input2="+language
+        r=requests.get(urls,headers={"User-Agent":"XY"})
+        data=str(r.text)
+        return data
+@app.route("/replace/<string>/<language>/<string2>/<target>")
+def replace(string,language,string2,target):
+        urls="http://localhost/indic-wp/api/replace.php?input1="+string+"&input2="+language+"&input3="+string2+"&input4="+target
+        r=requests.get(urls,headers={"User-Agent":"XY"})
+        data=str(r.text)
+            
+        return data
+@app.route("/reverse/<string>/<language>")
+def reverse(string,language):
+    #urls="https://indic-wp.thisisjava.com/api/reverse.php?input1="+string+"&input2="+language
+        urls="http://localhost/indic-wp/api/reverse.php?input1="+string+"&input2="+language
+        r=requests.get(urls,headers={"User-Agent":"XY"})
+        data=str(r.text)
+        return data
+@app.route("/reverseEquals/<string>/<language>/<string2>")
+def reverseEquals(string,language,string2):
+    #urls="https://indic-wp.thisisjava.com/api/reverseEquals.php?input1="+string+"&input2="+language+"&input3="+string2
+        urls="http://localhost/indic-wp/api/reverseEquals.php?input1="+string+"&input2="+language+"&input3="+string2
+        r=requests.get(urls,headers={"User-Agent":"XY"})
+        data=str(r.text)
+        return data
+@app.route("/splitInto15Chunks/<string>/<language>")
+def splitInto15Chunks(string,language):
+    #urls="https://indic-wp.thisisjava.com/api/splitInto15Chunks.php?input1="+string+"&input2="+language
+        urls="http://localhost/indic-wp/api/splitInto15Chunks.php?input1="+string+"&input2="+language
+        r=requests.get(urls,headers={"User-Agent":"XY"})
+        data=str(r.text)
+        return data
+
+@app.route("/splitWord/<string>/<language>/<string2>")
+def splitWord(string,language,string2):
+    #urls="https://indic-wp.thisisjava.com/api/splitWord.php?input1="+string+"&input2="+language+"&input3="+string2
+        urls="http://localhost/indic-wp/api/splitWord.php?input1="+string+"&input2="+language+"&input3="+string2
+        r=requests.get(urls,headers={"User-Agent":"XY"})
+        data=str(r.text)
+        return data
+
+@app.route("/startsWith/<string>/<language>/<string2>")
+def startsWith(string,language,string2):
+    #urls="https://indic-wp.thisisjava.com/api/startsWith.php?input1="+string+"&input2="+language+"&input3="+string2
+        urls="http://localhost/indic-wp/api/startsWith.php?input1="+string+"&input2="+language+"&input3="+string2
+        r=requests.get(urls,headers={"User-Agent":"XY"})
+        data=str(r.text)
+        return data
