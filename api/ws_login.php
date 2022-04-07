@@ -43,6 +43,7 @@ else if (isset($email) && empty($email)) {
 }
 else if (isset($password) && empty($password)) {
     invalidResponse("Invalid or Empty password");
+
 }
 else {
     invalidResponse("Invalid Request");
