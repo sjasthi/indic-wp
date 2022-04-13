@@ -709,7 +709,7 @@ $root = 'http://' . $_SERVER['HTTP_HOST'] . '/indic-wp/';
   <body>
     <h4>get Base Characters :</h4>
     <p>
-    Still Have to figure out what Base Characters does
+    Gets the Base Characters oF Telugu letters.
       <br>
     <a href="https://indic-wp.thisisjava.com/api/getBaseCharacters.php?input1=ABCDEFGHIJKLMNOP&input2=English">Link to API: https://indic-wp.thisisjava.com/api/getaBaseCharacters.php?input1=ABCDEFGHIJKLMNOP&input2=English</a>
  
@@ -759,6 +759,56 @@ $root = 'http://' . $_SERVER['HTTP_HOST'] . '/indic-wp/';
  
     </p>
 </div>
+
+
+<div class="APIDescription" id="userExist">
+  <body>
+    <h4>User Exist :</h4>
+    <p>
+     This API takes in one input. The input being an email. It will check if the email exist in the indic_WP database.
+      <br>
+    <a href="http://localhost/indic-wp/api/UserExists.php?email=ics499@gmail.com">Link to API: http://localhost/indic-wp/api/UserExists.php?email=ics499@gmail.com</a>
+ 
+    </p>
+</div>
+<div class="APIDescription" id="ws_login">
+  <body>
+    <h4>ws_Login :</h4>
+    <p>
+     This API takes in two inputs. The first input being an email and the second being a password. It will check if the email exist in the indic_WP database and then see if the passwords match
+      <br>
+    <a href="http://localhost/indic-wp/api/ws_login.php?email=ics499@gmail.com&password=spring22">http://localhost/indic-wp/api/ws_login.php?email=ics499@gmail.com&password=spring22</a>
+ 
+    </p>
+</div>
+
+
+<div class="APIDescription" id="getRole">
+  <body>
+    <h4>Get Role :</h4>
+    <p>
+      This API takes in a single input. The input being an email. If the email exists in the indic_Wp database it will return that users role.
+      <br>
+    <a href="http://localhost/indic-wp/api/getRole.php?email=ics499@gmail.com">http://localhost/indic-wp/api/getRole.php?email=ics499@gmail.com</a>
+ 
+    </p>
+</div>
+
+
+
+<div class="APIDescription" id="getLangForString">
+  <body>
+    <h4>Get Language For String :</h4>
+    <p>
+This Api Takes a single input. The input being a string. The Api Will figure out if the string is English or Telugu. 
+If the whole string is in telugu than it will return telugu. If the entire string is in english it wil return english
+Other wise it will return other.      <br>
+    <a href="http://localhost/indic-wp/api/getLangForString.php?input1=hello">http://localhost/indic-wp/api/getLangForString.php?input1=hello</a>
+ 
+    </p>
+</div>
+
+
 
 
 
