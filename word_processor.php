@@ -1415,6 +1415,40 @@ class wordProcessor
 			return "Not valid Langugage";
 		} 
 	}
+	function getLangForString(){
+        $specialChars='1234567890-=[]\';.,/!@#$%^&*(){}":><?_+|';
+        $myString= $this->getLogicalChars();
+        $this->setWord($specialChars);
+        $specArray=$this->getLogicalChars();
+        $isTelugu=True;
+        $isEnglish=TRUE;
+       
+       
+        foreach($myString as $char){
+            if(in_array($char,$specArray)){
+                return "other";
+            }
+            if((strcmp('\u0c00',$char)<0 )and (strcmp($char,'\u0c7f')>0)){
+                $isTelugu=False;
+            }
+ 
+ 
+            if(!ctype_alpha($char)){
+                $isEnglish=False;
+            }
+           
+        }
+ 
+        if($isTelugu == true and $isEnglish==false){
+            return "Telugu";
+        }
+        else if($isTelugu==false and $isEnglish==true){
+            return "English";
+        }
+        else{
+            return "other";
+        }
+	}
 
 	
 }

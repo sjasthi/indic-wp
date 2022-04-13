@@ -393,15 +393,31 @@ def startsWith(string,language,string2):
 
 @app.route("/userExists/<email>")
 def userExists(email):
-    #urls="https://indic-wp.thisisjava.com/api/startsWith.php?input1="+string+"&input2="+language+"&input3="+string2
+    #urls="https://indic-wp.thisisjava.com/api/userExists.php?input1="+email
         urls="http://localhost/indic-wp/api/userExists.php?input1="+email
         r=requests.get(urls,headers={"User-Agent":"XY"})
         data=str(r.text)
         return data
 @app.route("/ws_login/<email>/<password>")
 def ws_login(email,password):
-    #urls="https://indic-wp.thisisjava.com/api/startsWith.php?input1="+string+"&input2="+language+"&input3="+string2
+    #urls="https://indic-wp.thisisjava.com/api/ws_login.php?input1="+email+"&input2="+password
         urls="http://localhost/indic-wp/api/ws_login.php?input1="+email+"&input2="+password
+        r=requests.get(urls,headers={"User-Agent":"XY"})
+        data=str(r.text)
+        return data
+
+@app.route("/getRole/<email>")
+def getRole(email):
+    #urls="https://indic-wp.thisisjava.com/api/getRole.php?input1="+email
+        urls="http://localhost/indic-wp/api/getRole.php?input1="+email
+        r=requests.get(urls,headers={"User-Agent":"XY"})
+        data=str(r.text)
+        return data
+
+@app.route("/getLangForString/<string>")
+def getLangForString(string):
+    # urls="https://indic-wp.thisisjava.com/api/getLangForString.php?input1="+string
+        urls="http://localhost/indic-wp/api/getLangForString.php?input1="+string
         r=requests.get(urls,headers={"User-Agent":"XY"})
         data=str(r.text)
         return data

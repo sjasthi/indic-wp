@@ -19,10 +19,13 @@ if(!empty($email)) {
     // $result= $db->query($sql)
     $result= mysqli_query($db,$sql);
     if(mysqli_num_rows($result)){
-        response(200, "email Exists.", $email, true);
+        $row=mysqli_fetch_array($result);
+        $role=$row["role"];
+
+        response(200, "get Role.", $email, $row["role"]);
     }
     else{
-        response(200, "email Exists.", $email, false);
+        response(200, "get Role.", $email, "None");
     }
 
     mysqli_close($db);
