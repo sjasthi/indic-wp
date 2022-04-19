@@ -11,7 +11,7 @@
             "request": "launch",
             "module": "flask",
             "env": {
-                "FLASK_APP": "app.py",
+                "FLASK_APP": "Indic_Wp_Wrapper.py",
                 "FLASK_ENV": "development"
             },
             "args": [
