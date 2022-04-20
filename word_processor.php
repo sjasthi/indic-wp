@@ -1417,23 +1417,32 @@ class wordProcessor
 	}
 	function getLangForString(){
         $specialChars='1234567890-=[]\';.,/!@#$%^&*(){}":><?_+|';
-        $myString= $this->getLogicalChars();
+		$teluguUniCodes=["u0c00"];
+        $myString= $this->getBaseCharacters();
+
+		
         $this->setWord($specialChars);
         $specArray=$this->getLogicalChars();
         $isTelugu=True;
         $isEnglish=TRUE;
+       $iteration=count($myString);
        
-       
-        foreach($myString as $char){
-            if(in_array($char,$specArray)){
+        for($count=0;$count<$iteration;$count++){
+			$lower=strcmp($myString[$count],"\u0c00");
+			
+			$higher=strcmp($myString[$count],"\u0c7f");
+            if(in_array($myString[$count],$specArray)){
                 return "other";
             }
-            if((strcmp('\u0c00',$char)<0 )and (strcmp($char,'\u0c7f')>0)){
-                $isTelugu=False;
+            if($lower>0){
+				if($higher >0){
+					$isTelugu=False;
+				}
+                
             }
  
  
-            if(!ctype_alpha($char)){
+            if(!ctype_alpha($myString[$count])){
                 $isEnglish=False;
             }
            
@@ -1446,9 +1455,59 @@ class wordProcessor
             return "English";
         }
         else{
-            return "other";
+            return "other hereds";
         }
 	}
+	function getRandomLogicalChars($n){
+        $langLower=strtolower($this->language);
+        $int_val=(int) $n;
+   
+        if($int_val <= 0){
+            return "invalid Input please enter a number > 0 and no strings allowed";
+        }
+        if($langLower=="english"){
+            $myArray=array();
+            
+           if(!$fh=fopen("../english.txt","r") ){
+			   return "File not found";
+		   }
+		   else{
+            if ($fh){
+                while (!feof($fh)){
+                   
+                     $this->setWord(fgets($fh));
+                    $myArray=array_merge($myArray,$this->getLogicalChars2());
+                    shuffle($myArray);
+                }
+            }
+            if($int_val > count($myArray)){
+                return "Not enough Logical characters in file. Lower N";
+            }
+            return array_slice($myArray,0,$int_val);
+        }
+	}
+        elseif($langLower=="telugu"){
+            $teluguArray=array();
+            if(!($fh=fopen("../telugu.txt","r") or die("Unable to open File"))){
+				return "File not found";
+			};
+            if ($fh){
+                while (!feof($fh)){
+                    $this->setWord(fgets($fh));
+                    $teluguArray=array_merge($teluguArray,$this->getLogicalChars2());
+                    shuffle($teluguArray);
+                }
+            }
+            if($int_val > count($teluguArray)){
+                return "Not enough characters. Lower N";
+            }
+            return array_slice($teluguArray,0,$int_val);
+        }
+        else{
+            return "Language has not yet been implemented";
+        }
+       
+    }
 
 	
 }

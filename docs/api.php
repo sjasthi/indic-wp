@@ -809,6 +809,18 @@ Other wise it will return other.      <br>
 </div>
 
 
+<div class="APIDescription" id="getRandomLogicalChars">
+  <body>
+    <h4>Get Random Logical Chars :</h4>
+    <p>
+This Api Takes a two inputs. The first input being an int(N) and the second one a string(language). The API will return a random set of logical Chars
+based on the N value. If input1=4 and language=english. It will return 4 random logical chars.     <br>
+    <a href="http://localhost/indic-wp/api/getRandomLogicalChars.php?input1=4&input2=english">http://localhost/indic-wp/api/getRandomLogicalChars.php?input1=4&input2=english</a>
+ 
+    </p>
+</div>
+
+
 
 
 

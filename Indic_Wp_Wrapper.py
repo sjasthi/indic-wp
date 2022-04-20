@@ -421,3 +421,12 @@ def getLangForString(string):
         r=requests.get(urls,headers={"User-Agent":"XY"})
         data=str(r.text)
         return data
+
+
+@app.route("/getRandomLogicalChars/<n>/<language>")
+def getRandomLogicalChars(n,language):
+    # urls="http://localhost/indic-wp/api/getRandomLogicalChars.php?input1="+n+"&input2="+language
+        urls="http://localhost/indic-wp/api/getRandomLogicalChars.php?input1="+n+"&input2="+language
+        r=requests.get(urls,headers={"User-Agent":"XY"})
+        data=str(r.text)
+        return data
