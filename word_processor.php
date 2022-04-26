@@ -1419,17 +1419,13 @@ class wordProcessor
         $specialChars='1234567890-=[]\';.,/!@#$%^&*(){}":><?_+|';
 		$teluguUniCodes=["u0c00"];
         $myString= $this->getBaseCharacters();
-
-		
         $this->setWord($specialChars);
         $specArray=$this->getLogicalChars();
         $isTelugu=True;
         $isEnglish=TRUE;
        $iteration=count($myString);
-       
         for($count=0;$count<$iteration;$count++){
 			$lower=strcmp($myString[$count],"\u0c00");
-			
 			$higher=strcmp($myString[$count],"\u0c7f");
             if(in_array($myString[$count],$specArray)){
                 return "other";
@@ -1438,7 +1434,6 @@ class wordProcessor
 				if($higher >0){
 					$isTelugu=False;
 				}
-                
             }
  
  
@@ -1474,7 +1469,6 @@ class wordProcessor
 		   else{
             if ($fh){
                 while (!feof($fh)){
-                   
                      $this->setWord(fgets($fh));
                     $myArray=array_merge($myArray,$this->getLogicalChars2());
                     shuffle($myArray);
@@ -1487,10 +1481,10 @@ class wordProcessor
         }
 	}
         elseif($langLower=="telugu"){
-            $teluguArray=array();
-            if(!($fh=fopen("../telugu.txt","r") or die("Unable to open File"))){
+            $teluguArray=array("");
+            if(!$fh=fopen("../telugu.txt","r")){
 				return "File not found";
-			};
+			}
             if ($fh){
                 while (!feof($fh)){
                     $this->setWord(fgets($fh));
@@ -1501,6 +1495,8 @@ class wordProcessor
             if($int_val > count($teluguArray)){
                 return "Not enough characters. Lower N";
             }
+			$deleteRN=["r","n"];
+			$teluguArray=array_diff($teluguArray,$deleteRN);
             return array_slice($teluguArray,0,$int_val);
         }
         else{

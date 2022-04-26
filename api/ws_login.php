@@ -13,6 +13,7 @@ else if(isset($_GET['input1']) && isset($_GET['input2'])) {
 if(!empty($email) && !empty($password)) {
     // $processor = new wordProcessor($string, $language);
     // $baseCharacters = $processor->getBaseCharacters();
+    try{
     $user='root';
     $pass='';
     $db='indic_wp_db';
@@ -37,6 +38,10 @@ if(!empty($email) && !empty($password)) {
     }
     mysqli_close($db);
     
+}
+catch(Exception $e){
+    response(200, "password Authorized", $email,$password, "Cannot Connect To database");
+}
 }
 else if (isset($email) && empty($email)) {
     invalidResponse("Invalid or Empty email");
