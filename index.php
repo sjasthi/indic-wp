@@ -35,6 +35,7 @@
                     <a class="dropdown-item text-white" href="https://github.com/NathanAlkurdi" target="_blank">Nathan Al-Kurdi - GitHub</a>
                     <a class="dropdown-item text-white" href="https://github.com/duvickcedu" target="_blank">Christian Duvick - GitHub</a>
                     <a class="dropdown-item text-white" href="https://github.com/EricDMunoz" target="_blank">Eric Munoz - GitHub</a>
+                    <a class="dropdown-item text-white" href="https://github.com/Andrew-LeXiong" target="_blank">Andrew Le-Xiong - GitHub</a>
                     <div class="dropdown-divider"></div>
                     <a class="dropdown-item text-white" href="https://github.com/sjasthi/indic-wp" target="_blank">sjasthi (Master Repo)</a>
                 </div>
@@ -92,8 +93,8 @@
                     <tbody id="apiTable">
                         <?php
                         $output = '';
-                        $singleInputAPIs = array("getCodePointLength", "getCodePoints", "getLength", "getLogicalChars", "getWordStrength", "getWordWeight", "isPalindrome", "reverse", "containsSpace", "getWordLevel", "getLengthNoSpaces", "getLengthNoSpacesNoCommas", "parseToLogicalChars", "parseToLogicalCharacters","getBaseCharacters","splitInto15Chunks","getLength2","getLogicalChars2");
-                        $doubleInputAPIs = array("isAnagram", "startsWith", "endsWith", "containsString", "containsChar", "containsLogicalChars", "containsAllLogicalChars", "containsLogicalCharSequence", "canMakeWord", "canMakeAllWords", "addCharacterAtEnd", "isIntersecting", "getIntersectingRank", "getUniqueIntersectingRank", "compareTo", "compareToIgnoreCase", "splitWord", "equals", "reverseEquals", "logicalCharAt", "getUniqueIntersectingLogicalChars", "indexOf", "areLadderWords", "areHeadAndTailWords", "baseConsonants","charConstant","charVowel","getMatchIdString");
+                        $singleInputAPIs = array("getCodePointLength", "getCodePoints", "getLength", "getLogicalChars", "getWordStrength", "getWordWeight", "isPalindrome", "reverse", "containsSpace", "getWordLevel", "getLengthNoSpaces", "getLengthNoSpacesNoCommas", "parseToLogicalChars", "parseToLogicalCharacters");
+                        $doubleInputAPIs = array("isAnagram", "startsWith", "endsWith", "containsString", "containsChar", "containsLogicalChars", "containsAllLogicalChars", "containsLogicalCharSequence", "canMakeWord", "canMakeAllWords", "addCharacterAtEnd", "isIntersecting", "getIntersectingRank", "getUniqueIntersectingRank", "compareTo", "compareToIgnoreCase", "splitWord", "equals", "reverseEquals", "logicalCharAt", "getUniqueIntersectingLogicalChars", "indexOf", "areLadderWords", "areHeadAndTailWords", "baseConsonants");
                         $tripleInputAPIs = array("addCharacterAt", "replace");
                         $getFillerChars = array("getFillerCharacters");
 

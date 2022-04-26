@@ -37,6 +37,7 @@ $root = 'http://' . $_SERVER['HTTP_HOST'] . '/indic-wp/';
                     <a class="dropdown-item" href="https://github.com/NathanAlkurdi" target="_blank">Nathan Al-Kurdi - GitHub</a>
                     <a class="dropdown-item" href="https://github.com/duvickcedu" target="_blank">Christian Duvick - GitHub</a>
                     <a class="dropdown-item" href="https://github.com/EricDMunoz" target="_blank">Eric Munoz - GitHub</a>
+                    <a class="dropdown-item" href="https://github.com/Andrew-LeXiong" target="_blank">Andrew Le-Xiong - GitHub</a>
                     <div class="dropdown-divider"></div>
                     <a class="dropdown-item" href="https://github.com/sjasthi/indic-wp" target="_blank">sjasthi (Master Repo)</a>
                 </div>

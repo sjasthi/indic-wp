@@ -5,7 +5,8 @@ app = Flask(__name__)
 
 @app.route("/")
 def hello_world():
-    return "<p>Hello, World! From Indic WP Seeing SomeEdits Hello</p>"
+    
+    return "<p>Welcome to Indic Wp API Python Wrapper. Start with /getlogicalCharacters/string/english</p>"
 
 @app.route("/getLogicalCharacters/<string>/<language>",methods=["GET"])
 def getLogicalCharacters(string,language):

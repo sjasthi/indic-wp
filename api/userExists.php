@@ -14,6 +14,7 @@ if(!empty($email)) {
     $pass='';
     $db='indic_wp_db';
     $sql= "Select * from users where email='$email';";
+    try{
     $db= mysqli_connect('localhost',$user,$pass,$db);
     //$db= new mysqli('localhost',$user,$pass,$db) or die ("Unable to Connect");
     // $result= $db->query($sql)
@@ -26,10 +27,10 @@ if(!empty($email)) {
     }
 
     mysqli_close($db);
-    // $processor = new wordProcessor($string, $language);
-    // $baseCharacters = $processor->getBaseCharacters();
-
-    // response(200, "Base characters processed.", $string, $baseCharacters);
+}
+catch(exception $e){
+    response(200,"email Exists",$email,"Cannot connect to database");
+}
 }
 else if (isset($email) && empty($email)) {
     invalidResponse("Invalid or Empty Word");

@@ -14,6 +14,7 @@ if(!empty($email)) {
     $pass='';
     $db='indic_wp_db';
     $sql= "Select * from users where email='$email';";
+    try{
     $db= mysqli_connect('localhost',$user,$pass,$db);
     //$db= new mysqli('localhost',$user,$pass,$db) or die ("Unable to Connect");
     // $result= $db->query($sql)
@@ -29,6 +30,10 @@ if(!empty($email)) {
     }
 
     mysqli_close($db);
+}
+catch(Exception $e){
+    response(200,"getRole",$email,"Cannot connect to database");
+}
     // $processor = new wordProcessor($string, $language);
     // $baseCharacters = $processor->getBaseCharacters();
 
