@@ -5,9 +5,10 @@ Supported Languages.
 
 - Telugu
 - English
-- Hindi  (WIP)
-- Malayalam   (WIP)
-- Gujarathi   (WIP)
+- Hindi  (TBD))
+- Malayalam   (TBD)
+- Gujarathi   (TBD)
+- Kannada (TBD)
 
 ## Launching the application
 
@@ -23,9 +24,5 @@ Supported Languages.
 - See test.php for examples
 
 ## Using in other applications
-- Download the contents and include indic-wp as a sub-directory in your application
-
-## future enhancements
-- Converting this to a web service / REST API
-- Consumers can call the APIs to get the JSON responses
-
+- Not need to download
+- You can use the REST APIs to process the Indic strings
