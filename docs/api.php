@@ -1,14 +1,14 @@
 <!DOCTYPE html>
 <html lang="en">
 <?php
-$root = 'http://' . $_SERVER['HTTP_HOST'] . '/indic-wp/';
+$root = 'http://' . $_SERVER['HTTP_HOST'] . '/wpapi/';
 ?>
 
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Indic-WP - Group Bears - ICS499</title>
+    <title>Indic Language Word Processor APIs</title>
 
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.0/dist/css/bootstrap.min.css" integrity="sha384-B0vP5xmATw1+K9KRQjQERJvTumQW0nPEzvF6L/Z6nronJ3oUOFUFpCjEUQouq2+l" crossorigin="anonymous">
     <script src="https://code.jquery.com/jquery-3.1.1.min.js"></script>
@@ -26,48 +26,32 @@ $root = 'http://' . $_SERVER['HTTP_HOST'] . '/indic-wp/';
     <div class="collapse navbar-collapse" id="navbarSupportedContent">
         <ul class="navbar-nav mr-auto">
             <li class="nav-item">
-                <a class="nav-link" href="https://trello.com/b/BhYKwqBf/indic-wp-499su21" target="_blank">Trello Board <span class="sr-only">(current)</span></a>
-            </li>
-            <li class="nav-item dropdown">
-                <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                    GitHub
-                </a>
-                <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-                    <a class="dropdown-item" href="https://github.com/tonynguyen-metrostate" target="_blank">Tony Nguyen (Scrum Master)</a>
-                    <a class="dropdown-item" href="https://github.com/NathanAlkurdi" target="_blank">Nathan Al-Kurdi - GitHub</a>
-                    <a class="dropdown-item" href="https://github.com/duvickcedu" target="_blank">Christian Duvick - GitHub</a>
-                    <a class="dropdown-item" href="https://github.com/EricDMunoz" target="_blank">Eric Munoz - GitHub</a>
-                    <div class="dropdown-divider"></div>
-                    <a class="dropdown-item" href="https://github.com/sjasthi/indic-wp" target="_blank">sjasthi (Master Repo)</a>
-                </div>
-            </li>
-            <li class="nav-item">
                 <a class="nav-link" href="api.php">API Docs</a>
             </li>
             <li class="nav-item">
               <a class="nav-link" href="<?= $root ?>parser.php">Parser</a>
             </li>
         </ul>
-        <span class="navbar-brand mb-0 h1">Indic-WP WebServices</span>
-        <a class="btn btn-dark" href="../indic_classic.php">Classic Indic-WP</a>
+        <span class="navbar-brand mb-0 h1">wpapi WebServices</span>
+        <a class="btn btn-dark" href="../indic_classic.php">Classic wpapi</a>
         <button class="btn btn-light" value="light" onclick="changeTheme(this)" id="theme">Light Mode</button>
     </div>
 </nav>
 
 <div class="APIDescriptionTop" ="top">
-    <h2>Getting Started with the Indic-WP API </h2>
+    <h2>Getting Started with the WPAPI </h2>
         <p>
-        How to use the Indic-WP API and what to expect.
+        How to use the WPAPIs @ telugupuzzles?.
         </p>
         <p>
-        We currently have 51 API's
+        We currently have 51 APIs to process Telugu strings to enable prorammers to develop puzzle applications.
         </p>
     <h3>How to use the API URLs</h3>
         <p>
         The URL for any API is </p>
         <div class="codeBlock">
             <!-- Will need to update with actual link once service is posted.  -->
-            https://indic-wp.thisisjava.com/api/SERVICENAME.PHP?input1='hello'&input2='English' 
+            https://wpapi.telugupuzzles.com/api/SERVICENAME.PHP?input1='hello'&input2='English' 
         </div>
         <p>
         where the service name is the actual service name (getLength), input 1 is the string that is 
@@ -109,7 +93,7 @@ $root = 'http://' . $_SERVER['HTTP_HOST'] . '/indic-wp/';
     parameter and returns an integer value. For example, sending a 
     the word 'Mississippi' would return an integer value of 11.
     <br>
-    <a href="https://indic-wp.thisisjava.com/api/getLength.php?string=hello&language=English">Link to API: https://indic-wp.thisisjava.com/api/getLength.php?string=hello&language=English</a>
+    <a href="https://wpapi.telugupuzzles.com/api/getLength.php?string=hello&language=English">Link to API: https://wpapi.telugupuzzles.com/api/getLength.php?string=hello&language=English</a>
     </p>
   </body>
 </div>
@@ -122,7 +106,7 @@ $root = 'http://' . $_SERVER['HTTP_HOST'] . '/indic-wp/';
     the reverse of the input string. For example, entering racecar would
     return racecar :) . Also, entering moon would return noom. 
     <br>
-    <a href="https://indic-wp.thisisjava.com/api/reverse.php?string=hello&language=English">Link to API: https://indic-wp.thisisjava.com/api/reverse.php?string=hello&language=English</a>
+    <a href="https://wpapi.telugupuzzles.com/api/reverse.php?string=hello&language=English">Link to API: https://wpapi.telugupuzzles.com/api/reverse.php?string=hello&language=English</a>
     
     </p>
   </body>
@@ -138,7 +122,7 @@ $root = 'http://' . $_SERVER['HTTP_HOST'] . '/indic-wp/';
     return 5 as the value for the code point length. Entering అమెరికాఆస్ట్రేలియా would result in 
     a return value of 18.
     <br>
-    <a href="https://indic-wp.thisisjava.com/api/getCodePointLength.php?string=hello&language=English">Link to API: https://indic-wp.thisisjava.com/api/getCodePointLength.php?string=hello&language=English</a>
+    <a href="https://wpapi.telugupuzzles.com/api/getCodePointLength.php?string=hello&language=English">Link to API: https://wpapi.telugupuzzles.com/api/getCodePointLength.php?string=hello&language=English</a>
 
     </p>
   </body>
@@ -152,7 +136,7 @@ $root = 'http://' . $_SERVER['HTTP_HOST'] . '/indic-wp/';
     code points of the characters in the string. For example, if hello is enetered
     the return array is [[104], [101], [108], [108], [111]]
     <br>
-    <a href="https://indic-wp.thisisjava.com/api/getCodePoints.php?string=hello&language=English">Link to API: https://indic-wp.thisisjava.com/api/getCodePoints.php?string=hello&language=English</a>
+    <a href="https://wpapi.telugupuzzles.com/api/getCodePoints.php?string=hello&language=English">Link to API: https://wpapi.telugupuzzles.com/api/getCodePoints.php?string=hello&language=English</a>
 
 
     </p>
@@ -168,7 +152,7 @@ $root = 'http://' . $_SERVER['HTTP_HOST'] . '/indic-wp/';
     as an integer value. For example, entering the word 'hello' would return the value 
     5 as the word level. 
     <br>
-    <a href="https://indic-wp.thisisjava.com/api/getWordLevel.php?string=hello&language=English">Link to API: https://indic-wp.thisisjava.com/api/getWordLevel.php?string=hello&language=English</a>
+    <a href="https://wpapi.telugupuzzles.com/api/getWordLevel.php?string=hello&language=English">Link to API: https://wpapi.telugupuzzles.com/api/getWordLevel.php?string=hello&language=English</a>
 
     </p>
   </body>
@@ -182,7 +166,7 @@ $root = 'http://' . $_SERVER['HTTP_HOST'] . '/indic-wp/';
     array of the logical characters from the string. For example, if the word 'hello'
     is entered, ['h', 'e', 'l', 'l', 'o'] is returned.
     <br>
-    <a href="https://indic-wp.thisisjava.com/api/getLogicalChars.php?string=hello&language=English">Link to API: https://indic-wp.thisisjava.com/api/getLogicalChars.php?string=hello&language=English</a>
+    <a href="https://wpapi.telugupuzzles.com/api/getLogicalChars.php?string=hello&language=English">Link to API: https://wpapi.telugupuzzles.com/api/getLogicalChars.php?string=hello&language=English</a>
 
     </p>
   </body>
@@ -197,7 +181,7 @@ $root = 'http://' . $_SERVER['HTTP_HOST'] . '/indic-wp/';
     representing the value of the word strength. For example, submitting the word 
     'hello' will return a value of 5.
     <br>
-    <a href="https://indic-wp.thisisjava.com/api/getWordStrength.php?string=hello&language=English">Link to API: https://indic-wp.thisisjava.com/api/getWordStrength.php?string=hello&language=English</a>
+    <a href="https://wpapi.telugupuzzles.com/api/getWordStrength.php?string=hello&language=English">Link to API: https://wpapi.telugupuzzles.com/api/getWordStrength.php?string=hello&language=English</a>
 
     </p>
   </body>
@@ -211,7 +195,7 @@ $root = 'http://' . $_SERVER['HTTP_HOST'] . '/indic-wp/';
     representing the value of the word weight. For example, submitting the word 
     'hello' will return a value of 5.
     <br>
-    <a href="https://indic-wp.thisisjava.com/api/getWordWeight.php?string=hello&language=English">Link to API: https://indic-wp.thisisjava.com/api/getWordWeight.php?string=hello&language=English</a>
+    <a href="https://wpapi.telugupuzzles.com/api/getWordWeight.php?string=hello&language=English">Link to API: https://wpapi.telugupuzzles.com/api/getWordWeight.php?string=hello&language=English</a>
 
     </p>
   </body>
@@ -225,7 +209,7 @@ $root = 'http://' . $_SERVER['HTTP_HOST'] . '/indic-wp/';
     For example, if the string 'racecar' is enetered True will be returned. If 'hello'
     is entered False will be returned. 
     <br>
-    <a href="https://indic-wp.thisisjava.com/api/isPalindrome.php?string=hello&language=English">Link to API: https://indic-wp.thisisjava.com/api/isPalindrome.php?string=hello&language=English</a>
+    <a href="https://wpapi.telugupuzzles.com/api/isPalindrome.php?string=hello&language=English">Link to API: https://wpapi.telugupuzzles.com/api/isPalindrome.php?string=hello&language=English</a>
 
     </p>
   </body>
@@ -238,7 +222,7 @@ $root = 'http://' . $_SERVER['HTTP_HOST'] . '/indic-wp/';
     The randomize API takes a string and randomizes the order of the string and returns
     that new string. For example, if 'hello' is entered 'elhol' could be returned.
     <br>
-    <a href="https://indic-wp.thisisjava.com/api/randomize.php?string=hello&language=English">Link to API: https://indic-wp.thisisjava.com/api/randomize.php?string=hello&language=English</a>
+    <a href="https://wpapi.telugupuzzles.com/api/randomize.php?string=hello&language=English">Link to API: https://wpapi.telugupuzzles.com/api/randomize.php?string=hello&language=English</a>
 
     </p>
   </body>
@@ -251,7 +235,7 @@ $root = 'http://' . $_SERVER['HTTP_HOST'] . '/indic-wp/';
     The word level API takes a string and returns an integer value as the word level.
     For example, if 'hello' is enetered 5 is returned as the word level value. 
     <br>
-    <a href="https://indic-wp.thisisjava.com/api/getWordLevel.php?string=hello&language=English">Link to API: https://indic-wp.thisisjava.com/api/getWordLevel.php?string=hello&language=English</a>
+    <a href="https://wpapi.telugupuzzles.com/api/getWordLevel.php?string=hello&language=English">Link to API: https://wpapi.telugupuzzles.com/api/getWordLevel.php?string=hello&language=English</a>
 
     </p>
   </body>
@@ -264,7 +248,7 @@ $root = 'http://' . $_SERVER['HTTP_HOST'] . '/indic-wp/';
     The contains space API takes a string and determines if the string has a space or not. 
     If a space is detected the response is True else, it is False. 
     <br>
-    <a href="https://indic-wp.thisisjava.com/api/containsSpace.php?string=hello&language=English">Link to API: https://indic-wp.thisisjava.com/api/containsSpace.php?string=hello&language=English</a>
+    <a href="https://wpapi.telugupuzzles.com/api/containsSpace.php?string=hello&language=English">Link to API: https://wpapi.telugupuzzles.com/api/containsSpace.php?string=hello&language=English</a>
 
     </p>
   </body>
@@ -277,7 +261,7 @@ $root = 'http://' . $_SERVER['HTTP_HOST'] . '/indic-wp/';
     The get length no spaces API takes a string as input and determines it that string has a space. If the string 
     does have a space it returns True else, it returns False. 
     <br>
-    <a href="https://indic-wp.thisisjava.com/api/getLengthNoSpaces.php?string=hello&language=English">Link to API: https://indic-wp.thisisjava.com/api/getLengthNoSpaces.php?string=hello&language=English</a>
+    <a href="https://wpapi.telugupuzzles.com/api/getLengthNoSpaces.php?string=hello&language=English">Link to API: https://wpapi.telugupuzzles.com/api/getLengthNoSpaces.php?string=hello&language=English</a>
 
     </p>
   </body>
@@ -290,7 +274,7 @@ $root = 'http://' . $_SERVER['HTTP_HOST'] . '/indic-wp/';
     The parse to logical characters API takes a string and returns an array of logical characters. 
     For example, if 'hello' is entered ['h', 'e', 'l', 'l', 'o'] is returned.
     <br>
-    <a href="https://indic-wp.thisisjava.com/api/parseToLogicalCharacters.php?string=hello&language=English">Link to API: https://indic-wp.thisisjava.com/api/parseToLogicalCharacters.php?string=hello&language=English</a>
+    <a href="https://wpapi.telugupuzzles.com/api/parseToLogicalCharacters.php?string=hello&language=English">Link to API: https://wpapi.telugupuzzles.com/api/parseToLogicalCharacters.php?string=hello&language=English</a>
 
     </p>
   </body>
@@ -304,7 +288,7 @@ $root = 'http://' . $_SERVER['HTTP_HOST'] . '/indic-wp/';
     of the second string. For example, input 1 is 'cat' and second string is 'tac'. This API returns true 
     if the strings meet the anagram definition, otherwise it returns false. 
     <br>
-    <a href="https://indic-wp.thisisjava.com/api/isAnagram.php?input1=cat&input2=English&input3=tac">Link to API: https://indic-wp.thisisjava.com/api/isAnagram.php?input1=cat&input2=English&input3=tac</a>
+    <a href="https://wpapi.telugupuzzles.com/api/isAnagram.php?input1=cat&input2=English&input3=tac">Link to API: https://wpapi.telugupuzzles.com/api/isAnagram.php?input1=cat&input2=English&input3=tac</a>
 
     </p>
   </body>
@@ -317,7 +301,7 @@ $root = 'http://' . $_SERVER['HTTP_HOST'] . '/indic-wp/';
     The starts with API takes a string and a character as input. The service checks if the string begins with the character that is
     supplied. For example, if 'hello' and 'h' are supplied the service will return true. </p>
     <br>
-    <a href="https://indic-wp.thisisjava.com/api/startswith.php?input1=hello&input2=English&input3=h">Link to API: https://indic-wp.thisisjava.com/api/startswith.php?input1=hello&input2=English&input3=h</a>
+    <a href="https://wpapi.telugupuzzles.com/api/startswith.php?input1=hello&input2=English&input3=h">Link to API: https://wpapi.telugupuzzles.com/api/startswith.php?input1=hello&input2=English&input3=h</a>
 
   </body>
 </div>
@@ -329,7 +313,7 @@ $root = 'http://' . $_SERVER['HTTP_HOST'] . '/indic-wp/';
     The ends with API takes a string and a character as input. The service checks if the string ends with the character that is
     supplied. For example, if 'hello' and 'o' are supplied the service will return true. </p>
     <br>
-    <a href="https://indic-wp.thisisjava.com/api/endswith.php?input1=hello&input2=English&input3=o">Link to API: https://indic-wp.thisisjava.com/api/endswith.php?input1=hello&input2=English&input3=o</a>
+    <a href="https://wpapi.telugupuzzles.com/api/endswith.php?input1=hello&input2=English&input3=o">Link to API: https://wpapi.telugupuzzles.com/api/endswith.php?input1=hello&input2=English&input3=o</a>
 
   </body>
 </div>
@@ -342,7 +326,7 @@ $root = 'http://' . $_SERVER['HTTP_HOST'] . '/indic-wp/';
     The contains string API takes two strings. The service checks if the second string is in the first string. 
     For example, if the first input was 'Hello, World' and the second input was 'Hello' the service would return true. </p>
     <br>
-    <a href="https://indic-wp.thisisjava.com/api/containsString.php?input1=hello&input2=English&input3=hello">Link to API: https://indic-wp.thisisjava.com/api/containsString.php?input1=hello&input2=English&input3=hello</a>
+    <a href="https://wpapi.telugupuzzles.com/api/containsString.php?input1=hello&input2=English&input3=hello">Link to API: https://wpapi.telugupuzzles.com/api/containsString.php?input1=hello&input2=English&input3=hello</a>
 
   </body>
 </div>
@@ -354,7 +338,7 @@ $root = 'http://' . $_SERVER['HTTP_HOST'] . '/indic-wp/';
     The contains char API takes a string and a character as input. The service checks if the character is in the string supplied. 
     For example, if the first input is 'hello' and the second input is 'e' the service returns true. 
     <br>
-    <a href="https://indic-wp.thisisjava.com/api/containsChar.php?input1=hello&input2=English&input3=e">Link to API: https://indic-wp.thisisjava.com/api/containsChar.php?input1=hello&input2=English&input3=e</a>
+    <a href="https://wpapi.telugupuzzles.com/api/containsChar.php?input1=hello&input2=English&input3=e">Link to API: https://wpapi.telugupuzzles.com/api/containsChar.php?input1=hello&input2=English&input3=e</a>
 
   </p>
   </body>
@@ -369,7 +353,7 @@ $root = 'http://' . $_SERVER['HTTP_HOST'] . '/indic-wp/';
     For example if the first input is 'hello' and the second input is ['l', 'o'] the service will
     return true. 
     <br>
-    <a href="https://indic-wp.thisisjava.com/api/containsLogicalChars.php?input1=hello&input2=English&input3=l,o">Link to API: https://indic-wp.thisisjava.com/api/containsLogicalChars.php?input1=hello&input2=English&input3=l,o</a>
+    <a href="https://wpapi.telugupuzzles.com/api/containsLogicalChars.php?input1=hello&input2=English&input3=l,o">Link to API: https://wpapi.telugupuzzles.com/api/containsLogicalChars.php?input1=hello&input2=English&input3=l,o</a>
 
   </p>
   </body>
@@ -384,7 +368,7 @@ $root = 'http://' . $_SERVER['HTTP_HOST'] . '/indic-wp/';
     For example if the first input is 'hello' and the second input is ['l', 'o'] the service will
     return true. 
     <br>
-    <a href="https://indic-wp.thisisjava.com/api/containsAllLogicalChars.php?input1=hello&input2=English&input3=l,o">Link to API: https://indic-wp.thisisjava.com/api/containsAllLogicalChars.php?input1=hello&input2=English&input3=l,o</a>
+    <a href="https://wpapi.telugupuzzles.com/api/containsAllLogicalChars.php?input1=hello&input2=English&input3=l,o">Link to API: https://wpapi.telugupuzzles.com/api/containsAllLogicalChars.php?input1=hello&input2=English&input3=l,o</a>
 
   </p>
   </body>
@@ -397,7 +381,7 @@ $root = 'http://' . $_SERVER['HTTP_HOST'] . '/indic-wp/';
     The contains logical char sequence API takes two strings as input. The service checks to see if the second input is a sub string 
     of the first input. For example, if 'hello' and 'lo' are submitted the service will return true.
     <br>
-    <a href="https://indic-wp.thisisjava.com/api/containsLogicalCharsequence.php?input1=hello&input2=English&input3=lo">Link to API: https://indic-wp.thisisjava.com/api/containsLogicalCharsequence.php?input1=hello&input2=English&input3=lo</a>
+    <a href="https://wpapi.telugupuzzles.com/api/containsLogicalCharsequence.php?input1=hello&input2=English&input3=lo">Link to API: https://wpapi.telugupuzzles.com/api/containsLogicalCharsequence.php?input1=hello&input2=English&input3=lo</a>
 
    </p>
   </body>
@@ -411,7 +395,7 @@ $root = 'http://' . $_SERVER['HTTP_HOST'] . '/indic-wp/';
     The can make word API takes two strings as input. The service checks if the second string submitted can be made from the first string.
     For example, if 'hello' and 'lo' are submitted the service will return true. 
     <br>
-    <a href="https://indic-wp.thisisjava.com/api/canmakeword.php?input1=hello&input2=English&input3=lo">Link to API: https://indic-wp.thisisjava.com/api/canmakeword.php?input1=hello&input2=English&input3=lo</a>
+    <a href="https://wpapi.telugupuzzles.com/api/canmakeword.php?input1=hello&input2=English&input3=lo">Link to API: https://wpapi.telugupuzzles.com/api/canmakeword.php?input1=hello&input2=English&input3=lo</a>
 
   </p>
   </body>
@@ -424,7 +408,7 @@ $root = 'http://' . $_SERVER['HTTP_HOST'] . '/indic-wp/';
     The can make word API takes a string and a list of strings as input. It behaves similar to the can make word API except it will 
     iterate through a list of words. 
     <br>
-    <a href="https://indic-wp.thisisjava.com/api/canmakeallwords.php?input1=hello&input2=English&input3=lo">Link to API: https://indic-wp.thisisjava.com/api/canmakeallwords.php?input1=hello&input2=English&input3=lo</a>
+    <a href="https://wpapi.telugupuzzles.com/api/canmakeallwords.php?input1=hello&input2=English&input3=lo">Link to API: https://wpapi.telugupuzzles.com/api/canmakeallwords.php?input1=hello&input2=English&input3=lo</a>
 
   </p>
   </body>
@@ -437,7 +421,7 @@ $root = 'http://' . $_SERVER['HTTP_HOST'] . '/indic-wp/';
     The add character at end API takes a string and a character as input. The service then appends the string with the provided character.
     For example, if 'hello' and 'a' is submitted the result will be 'helloa'.
     <br>
-    <a href="https://indic-wp.thisisjava.com/api/addCharacterAtEnd.php?input1=hello&input2=English&input3=a">Link to API: https://indic-wp.thisisjava.com/api/addCharacterAtEnd.php?input1=hello&input2=English&input3=a</a>
+    <a href="https://wpapi.telugupuzzles.com/api/addCharacterAtEnd.php?input1=hello&input2=English&input3=a">Link to API: https://wpapi.telugupuzzles.com/api/addCharacterAtEnd.php?input1=hello&input2=English&input3=a</a>
 
   </p>
   </body>
@@ -450,7 +434,7 @@ $root = 'http://' . $_SERVER['HTTP_HOST'] . '/indic-wp/';
     The is intersecting API takes two strings as input. It then checks if the second string intersects with the first string. 
     For example, if 'hello' and 'el' are submitted the service returns true. </p>
     <br>
-    <a href="https://indic-wp.thisisjava.com/api/addCharacterAtEnd.php?input1=hello&input2=English&input3=a">Link to API: https://indic-wp.thisisjava.com/api/addCharacterAtEnd.php?input1=hello&input2=English&input3=a</a>
+    <a href="https://wpapi.telugupuzzles.com/api/addCharacterAtEnd.php?input1=hello&input2=English&input3=a">Link to API: https://wpapi.telugupuzzles.com/api/addCharacterAtEnd.php?input1=hello&input2=English&input3=a</a>
     
   </body>
 </div>
@@ -462,7 +446,7 @@ $root = 'http://' . $_SERVER['HTTP_HOST'] . '/indic-wp/';
     The get intersecting rank API take two strings as input. The service returns the rank as an integer value for the rank. 
     For example, if 'hello' and 'el' are submitted the service will return 3.
     <br>
-    <a href="https://indic-wp.thisisjava.com/api/getIntersectingRank.php?input1=hello&input2=English&input3=el">Link to API: https://indic-wp.thisisjava.com/api/getIntersectingRank.php?input1=hello&input2=English&input3=el</a>
+    <a href="https://wpapi.telugupuzzles.com/api/getIntersectingRank.php?input1=hello&input2=English&input3=el">Link to API: https://wpapi.telugupuzzles.com/api/getIntersectingRank.php?input1=hello&input2=English&input3=el</a>
 
   </p> 
 </div>
@@ -474,7 +458,7 @@ $root = 'http://' . $_SERVER['HTTP_HOST'] . '/indic-wp/';
     The get unique intersecting rank API take two strings as input. The service returns the rank as an integer value for the rank. 
     For example, if 'hello' and 'eli' are submitted the service will return 2. 
     <br>
-    <a href="https://indic-wp.thisisjava.com/api/getUniqueIntersectingRank.php?input1=hello&input2=English&input3[0]=e&input3[1]=l&input3[2]=i">Link to API: https://indic-wp.thisisjava.com/api/getUniqueIntersectingRank.php?input1=hello&input2=English&input3[0]=e&input3[1]=l&input3[2]=i</a>
+    <a href="https://wpapi.telugupuzzles.com/api/getUniqueIntersectingRank.php?input1=hello&input2=English&input3[0]=e&input3[1]=l&input3[2]=i">Link to API: https://wpapi.telugupuzzles.com/api/getUniqueIntersectingRank.php?input1=hello&input2=English&input3[0]=e&input3[1]=l&input3[2]=i</a>
 
             </p>
 </div>
@@ -486,7 +470,7 @@ $root = 'http://' . $_SERVER['HTTP_HOST'] . '/indic-wp/';
     The compare to API takes two strings as input. The service compares the strings and if the strings are equal the service will 
     return 0. For example, if 'hello' and 'hello' are entered the service will return 0. 
     <br>
-    <a href="https://indic-wp.thisisjava.com/api/compareTo.php?input1=hello&input2=English&input3=hello">Link to API: https://indic-wp.thisisjava.com/api/compareTo.php?input1=hello&input2=English&input3=hello</a>
+    <a href="https://wpapi.telugupuzzles.com/api/compareTo.php?input1=hello&input2=English&input3=hello">Link to API: https://wpapi.telugupuzzles.com/api/compareTo.php?input1=hello&input2=English&input3=hello</a>
 
   </p>
 </div>
@@ -500,7 +484,7 @@ $root = 'http://' . $_SERVER['HTTP_HOST'] . '/indic-wp/';
     that was provided. For example, if 'hello!' and 2 is entered the 
     service will return: {'0': ['h', 'e'], '2': ['l', 'l'], '4': ['o', '!']}
     <br>
-    <a href="https://indic-wp.thisisjava.com/api/splitword.php?input1=hello!&input2=English&input3=2">Link to API: https://indic-wp.thisisjava.com/api/splitword.php?input1=hello!&input2=English&input3=2</a>
+    <a href="https://wpapi.telugupuzzles.com/api/splitword.php?input1=hello!&input2=English&input3=2">Link to API: https://wpapi.telugupuzzles.com/api/splitword.php?input1=hello!&input2=English&input3=2</a>
 
   </p>
 </div>
@@ -512,7 +496,7 @@ $root = 'http://' . $_SERVER['HTTP_HOST'] . '/indic-wp/';
     The equals API takes two strings as input. The service will compare the strings and if they are equal the service will 
     return true. For example, if 'hello!' and 'hello!' are entered the service will return true. 
     <br>
-    <a href="https://indic-wp.thisisjava.com/api/equals.php?input1=hello&input2=English&input3=hello">Link to API: https://indic-wp.thisisjava.com/api/equals.php?input1=hello&input2=English&input3=hello</a>
+    <a href="https://wpapi.telugupuzzles.com/api/equals.php?input1=hello&input2=English&input3=hello">Link to API: https://wpapi.telugupuzzles.com/api/equals.php?input1=hello&input2=English&input3=hello</a>
 
   </p>
 </div>
@@ -525,7 +509,7 @@ $root = 'http://' . $_SERVER['HTTP_HOST'] . '/indic-wp/';
     The reverse equals API takes two strings as input. The service checks if the second string is equal to the reverse of the first string. 
     For example, if 'hello!' and '!olleh' are entered the service returns true.
     <br>
-    <a href="https://indic-wp.thisisjava.com/api/reverseequals.php?input1=hello!&input2=English&input3=!olleh">Link to API: https://indic-wp.thisisjava.com/api/reverseequals.php?input1=hello!&input2=English&input3=!olleh</a>
+    <a href="https://wpapi.telugupuzzles.com/api/reverseequals.php?input1=hello!&input2=English&input3=!olleh">Link to API: https://wpapi.telugupuzzles.com/api/reverseequals.php?input1=hello!&input2=English&input3=!olleh</a>
 
   </p>
 </div>
@@ -537,7 +521,7 @@ $root = 'http://' . $_SERVER['HTTP_HOST'] . '/indic-wp/';
     The logical char at API takes a string and an integer value as input. The service checks if the string contains a logical 
     char at the position specified. For example, if 'hello!' and 3 are entered the service returns the item at the index. 
     <br>
-    <a href="https://indic-wp.thisisjava.com/api/logicalCharAt.php?input1=hello!&input2=English&input3=3">Link to API: https://indic-wp.thisisjava.com/api/logicalCharAt.php?input1=hello!&input2=English&input3=3</a>
+    <a href="https://wpapi.telugupuzzles.com/api/logicalCharAt.php?input1=hello!&input2=English&input3=3">Link to API: https://wpapi.telugupuzzles.com/api/logicalCharAt.php?input1=hello!&input2=English&input3=3</a>
 
   </p>
 </div>
@@ -549,7 +533,7 @@ $root = 'http://' . $_SERVER['HTTP_HOST'] . '/indic-wp/';
     The get unique Intersecting Logical Chars takes a string and a list of characters as input. The service will return a value for the unique 
     intersecting rank. For example if 'hello!' and ['l', 'l'] are entered the service will return 2.
     <br>
-    <a href="https://indic-wp.thisisjava.com/api/getUniqueIntersectingLogicalChars.php?input1=hello!&input2=English&input3[0]=l&input3[1]=l">Link to API: https://indic-wp.thisisjava.com/api/getUniqueIntersectingLogicalChars.php?input1=hello!&input2=English&input3[0]=l&input3[1]=l</a>
+    <a href="https://wpapi.telugupuzzles.com/api/getUniqueIntersectingLogicalChars.php?input1=hello!&input2=English&input3[0]=l&input3[1]=l">Link to API: https://wpapi.telugupuzzles.com/api/getUniqueIntersectingLogicalChars.php?input1=hello!&input2=English&input3[0]=l&input3[1]=l</a>
 
   </p>
 </div>
@@ -561,7 +545,7 @@ $root = 'http://' . $_SERVER['HTTP_HOST'] . '/indic-wp/';
     The indx of API will takes a string and a character as input. The service returns an integer value for the index of the character. 
     For example, if 'hello!' and 'l' are entered the service will return 2. This API uses zero based indexing. 
     <br>
-    <a href="https://indic-wp.thisisjava.com/api/indexof.php?input1=hello!&input2=English&input3=l">Link to API: https://indic-wp.thisisjava.com/api/indexof.php?input1=hello!&input2=English&input3=l</a>
+    <a href="https://wpapi.telugupuzzles.com/api/indexof.php?input1=hello!&input2=English&input3=l">Link to API: https://wpapi.telugupuzzles.com/api/indexof.php?input1=hello!&input2=English&input3=l</a>
 
   </p>
 </div>
@@ -573,7 +557,7 @@ $root = 'http://' . $_SERVER['HTTP_HOST'] . '/indic-wp/';
     The add character at API takes a string, an integer, and a character as input. The service will insert the character into the string at 
     the specified location. For example, if 'hello!', 1, and 'e' are entered the service will return 'heelo!'. 
     <br>
-    <a href="https://indic-wp.thisisjava.com/api/addCharacterAt.php?input1=hello!&input2=English&input3=1&input4=e">Link to API: https://indic-wp.thisisjava.com/api/addCharacterAt.php?input1=hello!&input2=English&input3=1&input4=e</a>
+    <a href="https://wpapi.telugupuzzles.com/api/addCharacterAt.php?input1=hello!&input2=English&input3=1&input4=e">Link to API: https://wpapi.telugupuzzles.com/api/addCharacterAt.php?input1=hello!&input2=English&input3=1&input4=e</a>
 
   </p>
 </div>
@@ -585,7 +569,7 @@ $root = 'http://' . $_SERVER['HTTP_HOST'] . '/indic-wp/';
     The replace API takes a string and 3 strings as input. The service will replace the 2nd string that is found in the first string with the 3rd string. 
     For example, if 'hello!', 'ell', 'i' are entered the service returns 'hio!'. 
     <br>
-    <a href="https://indic-wp.thisisjava.com/api/replace.php?input1=hello!&input2=English&input3=ell&input4=i">Link to API: https://indic-wp.thisisjava.com/api/replace.php?input1=hello!&input2=English&input3=ell&input4=i</a>
+    <a href="https://wpapi.telugupuzzles.com/api/replace.php?input1=hello!&input2=English&input3=ell&input4=i">Link to API: https://wpapi.telugupuzzles.com/api/replace.php?input1=hello!&input2=English&input3=ell&input4=i</a>
 
   </p>
 </div>
@@ -597,7 +581,7 @@ $root = 'http://' . $_SERVER['HTTP_HOST'] . '/indic-wp/';
       to see if the strings contain the same consonants and have the same length. For example,
       if moon and maan are entered, the service will return true.
       <br>
-    <a href="https://indic-wp.thisisjava.com/api/baseConsonants.php?input1=moon&input2=English&input3=maan">Link to API: https://indic-wp.thisisjava.com/api/baseConsonants.php?input1=moon&input2=English&input3=moan</a>
+    <a href="https://wpapi.telugupuzzles.com/api/baseConsonants.php?input1=moon&input2=English&input3=maan">Link to API: https://wpapi.telugupuzzles.com/api/baseConsonants.php?input1=moon&input2=English&input3=moan</a>
 
       
     </p>
@@ -611,7 +595,7 @@ $root = 'http://' . $_SERVER['HTTP_HOST'] . '/indic-wp/';
       strings are equal in length and if they differ by 1 logical Character. For example, 
       if input 1 is Cold and input 2 is Cord the service returns true. 
       <br>
-    <a href="https://indic-wp.thisisjava.com/api/areLadderWords.php?input1=Cold&input2=English&input3=Cord">Link to API: https://indic-wp.thisisjava.com/api/areLadderWords.php?input1=Cold&input2=English&input3=Cord</a>
+    <a href="https://wpapi.telugupuzzles.com/api/areLadderWords.php?input1=Cold&input2=English&input3=Cord">Link to API: https://wpapi.telugupuzzles.com/api/areLadderWords.php?input1=Cold&input2=English&input3=Cord</a>
 
 
     </p>
@@ -625,7 +609,7 @@ $root = 'http://' . $_SERVER['HTTP_HOST'] . '/indic-wp/';
       last character of the first word is the same as the first character of the second word. 
       For example, if cat and tin are entered the service returns true. 
       <br>
-    <a href="https://indic-wp.thisisjava.com/api/areHeadAndTailWords.php?input1=cat&input2=English&input3=tin">Link to API: https://indic-wp.thisisjava.com/api/areHeadAndTailWords.php?input1=cat&input2=English&input3=tin</a>
+    <a href="https://wpapi.telugupuzzles.com/api/areHeadAndTailWords.php?input1=cat&input2=English&input3=tin">Link to API: https://wpapi.telugupuzzles.com/api/areHeadAndTailWords.php?input1=cat&input2=English&input3=tin</a>
  
     </p>
 </div>
@@ -637,7 +621,7 @@ $root = 'http://' . $_SERVER['HTTP_HOST'] . '/indic-wp/';
       The get filler API takes a character count to and the type of character (vowel or consonant) and returns the type and count of those vowels. For example,
       If 10 and vowel are entered, the service returns 10 random vowels.   
       <br>
-    <a href="https://indic-wp.thisisjava.com/api/getFillerCharacters.php?input1=10&input2=English&input3=vowel">Link to API: https://indic-wp.thisisjava.com/api/getFillerCharacters.php?input1=10&input2=English&input3=vowel</a>
+    <a href="https://wpapi.telugupuzzles.com/api/getFillerCharacters.php?input1=10&input2=English&input3=vowel">Link to API: https://wpapi.telugupuzzles.com/api/getFillerCharacters.php?input1=10&input2=English&input3=vowel</a>
  
     </p>
 </div>
@@ -649,7 +633,7 @@ $root = 'http://' . $_SERVER['HTTP_HOST'] . '/indic-wp/';
       The Compare to Ignore Case API takes two Strings and compares them to one another. This API is not case senstive, meaning if 
       a lowercase letter will be equal to its uppercase counterpart.   
       <br>
-    <a href="https://indic-wp.thisisjava.com/api/compareToIgnoreCase.php?input1=HELLO&input2=English&input3=Denver">Link to API: https://indic-wp.thisisjava.com/api/compareToIgnoreCase.php?input1=HELLO&input2=English&input3=DENVER</a>
+    <a href="https://wpapi.telugupuzzles.com/api/compareToIgnoreCase.php?input1=HELLO&input2=English&input3=Denver">Link to API: https://wpapi.telugupuzzles.com/api/compareToIgnoreCase.php?input1=HELLO&input2=English&input3=DENVER</a>
  
     </p>
 </div>
@@ -662,7 +646,7 @@ $root = 'http://' . $_SERVER['HTTP_HOST'] . '/indic-wp/';
       The get length API takes a two parameters the first input is a string and the second input is the Language.
       This API returns the length of the string. If you have the word Colorado it returns 8.  
       <br>
-    <a href="https://indic-wp.thisisjava.com/api/getLength2.php?input1=Colorado&input2=English">Link to API: https://indic-wp.thisisjava.com/api/getLength2.php?input1=Colorado&input2=English</a>
+    <a href="https://wpapi.telugupuzzles.com/api/getLength2.php?input1=Colorado&input2=English">Link to API: https://wpapi.telugupuzzles.com/api/getLength2.php?input1=Colorado&input2=English</a>
  
     </p>
 </div>
@@ -674,7 +658,7 @@ $root = 'http://' . $_SERVER['HTTP_HOST'] . '/indic-wp/';
     The get length API takes a two parameters the first input is a string and the second input is the Language. It ignores all commas. 
       and spaces This API returns the length of the string. If you have the string I love Colorado, it returns 13.  
       <br>
-    <a href="https://indic-wp.thisisjava.com/api/getLengthNoSpacesNoCommas.php?input1=I love, Colorado&input2=English">Link to API: https://indic-wp.thisisjava.com/api/getLengthNoSpacesNoCommas.php?input1=I love, Colorado&input2=English</a>
+    <a href="https://wpapi.telugupuzzles.com/api/getLengthNoSpacesNoCommas.php?input1=I love, Colorado&input2=English">Link to API: https://wpapi.telugupuzzles.com/api/getLengthNoSpacesNoCommas.php?input1=I love, Colorado&input2=English</a>
  
     </p>
 </div>
@@ -688,7 +672,7 @@ $root = 'http://' . $_SERVER['HTTP_HOST'] . '/indic-wp/';
     array of the logical characters from the string.It removes a set of special characters For example, if the word 'hello'
     is entered, ['h', 'e', 'l', 'l', 'o'] is returned.
       <br>
-    <a href="https://indic-wp.thisisjava.com/api/getLogicalChars2.php?input1=hello&input2=English">Link to API: https://indic-wp.thisisjava.com/api/getLogicalChars2.php?input1=hello&input2=English</a>
+    <a href="https://wpapi.telugupuzzles.com/api/getLogicalChars2.php?input1=hello&input2=English">Link to API: https://wpapi.telugupuzzles.com/api/getLogicalChars2.php?input1=hello&input2=English</a>
  
     </p>
 </div>
@@ -700,7 +684,7 @@ $root = 'http://' . $_SERVER['HTTP_HOST'] . '/indic-wp/';
     The Split Into 15 chunks API takes two inputs. The first is a string and the second is the language
     After Which it will break that string into 15 pieces randomly. But will retain its order. If you have ABCDEFGHIJKLMNOP
       <br>
-    <a href="http://localhost/indic-wp/api/splitInto15Chunks.php?input1=ABCDEFGHIJKLMNOP&input2=english">Link to API: http://localhost/indic-wp/api/splitInto15Chunks.php?input1=ABCDEFGHIJKLMNOP&input2=english</a>
+    <a href="https://wpapi.telugupuzzles.com/api/splitInto15Chunks.php?input1=ABCDEFGHIJKLMNOP&input2=english">Link to API: https://wpapi.telugupuzzles.com/api/splitInto15Chunks.php?input1=ABCDEFGHIJKLMNOP&input2=english</a>
  
     </p>
 </div>
@@ -711,7 +695,7 @@ $root = 'http://' . $_SERVER['HTTP_HOST'] . '/indic-wp/';
     <p>
     Gets the Base Characters oF Telugu letters.
       <br>
-    <a href="https://indic-wp.thisisjava.com/api/getBaseCharacters.php?input1=ABCDEFGHIJKLMNOP&input2=English">Link to API: https://indic-wp.thisisjava.com/api/getaBaseCharacters.php?input1=ABCDEFGHIJKLMNOP&input2=English</a>
+    <a href="https://wpapi.telugupuzzles.com/api/getBaseCharacters.php?input1=ABCDEFGHIJKLMNOP&input2=English">Link to API: https://wpapi.telugupuzzles.com/api/getaBaseCharacters.php?input1=ABCDEFGHIJKLMNOP&input2=English</a>
  
     </p>
 </div>
@@ -725,7 +709,7 @@ $root = 'http://' . $_SERVER['HTTP_HOST'] . '/indic-wp/';
     This API takes two parameters. The first Parameter being a single Char, and the other other a language.
     It will then check if the char is a consonant or not and return true if it is, false if it is not.
       <br>
-    <a href="https://indic-wp.thisisjava.com/api/isCharConsonant.php?input1=A&input2=English">Link to API: https://indic-wp.thisisjava.com/api/isCharConsonant.php?input1=A&input2=English</a>
+    <a href="https://wpapi.telugupuzzles.com/api/isCharConsonant.php?input1=A&input2=English">Link to API: https://wpapi.telugupuzzles.com/api/isCharConsonant.php?input1=A&input2=English</a>
  
     </p>
 </div>
@@ -738,7 +722,7 @@ $root = 'http://' . $_SERVER['HTTP_HOST'] . '/indic-wp/';
     This API takes two parameters. The first Parameter being a single Char, and the other other a language.
     It will then check if the char is a Vowel or not and return true if it is, false if it is not.
       <br>
-    <a href="https://indic-wp.thisisjava.com/api/isCharVowel.php?input1=A&input2=English">Link to API: https://indic-wp.thisisjava.com/api/isCharVowel.php?input1=A&input2=English</a>
+    <a href="https://wpapi.telugupuzzles.com/api/isCharVowel.php?input1=A&input2=English">Link to API: https://wpapi.telugupuzzles.com/api/isCharVowel.php?input1=A&input2=English</a>
  
     </p>
 </div>
@@ -755,7 +739,7 @@ $root = 'http://' . $_SERVER['HTTP_HOST'] . '/indic-wp/';
     and string 2=hello than it'll return 11111 because the characters in string two are the same and in the same position.
     If string 1= hello and string 2= elloh than that returns 21222. And If string 1= Hello and string 2=SamSu. Then itll return 5555
       <br>
-    <a href="http://localhost/indic-wp/api/get_match_id_string.php?input1=Hello&input2=english&input3=Hello">Link to API: http://localhost/indic-wp/api/get_match_id_string.php?input1=Hello&input2=english&input3=Hello</a>
+    <a href="https://wpapi.telugupuzzles.com/api/get_match_id_string.php?input1=Hello&input2=english&input3=Hello">Link to API: https://wpapi.telugupuzzles.com/api/get_match_id_string.php?input1=Hello&input2=english&input3=Hello</a>
  
     </p>
 </div>
@@ -767,7 +751,7 @@ $root = 'http://' . $_SERVER['HTTP_HOST'] . '/indic-wp/';
     <p>
      This API takes in one input. The input being an email. It will check if the email exist in the indic_WP database.
       <br>
-    <a href="http://localhost/indic-wp/api/UserExists.php?email=ics499@gmail.com">Link to API: http://localhost/indic-wp/api/UserExists.php?email=ics499@gmail.com</a>
+    <a href="https://wpapi.telugupuzzles.com/api/UserExists.php?email=ics499@gmail.com">Link to API: https://wpapi.telugupuzzles.com/api/UserExists.php?email=ics499@gmail.com</a>
  
     </p>
 </div>
@@ -777,7 +761,7 @@ $root = 'http://' . $_SERVER['HTTP_HOST'] . '/indic-wp/';
     <p>
      This API takes in two inputs. The first input being an email and the second being a password. It will check if the email exist in the indic_WP database and then see if the passwords match
       <br>
-    <a href="http://localhost/indic-wp/api/ws_login.php?email=ics499@gmail.com&password=spring22">http://localhost/indic-wp/api/ws_login.php?email=ics499@gmail.com&password=spring22</a>
+    <a href="https://wpapi.telugupuzzles.com/api/ws_login.php?email=ics499@gmail.com&password=spring22">https://wpapi.telugupuzzles.com/api/ws_login.php?email=ics499@gmail.com&password=spring22</a>
  
     </p>
 </div>
@@ -789,7 +773,7 @@ $root = 'http://' . $_SERVER['HTTP_HOST'] . '/indic-wp/';
     <p>
       This API takes in a single input. The input being an email. If the email exists in the indic_Wp database it will return that users role.
       <br>
-    <a href="http://localhost/indic-wp/api/getRole.php?email=ics499@gmail.com">http://localhost/indic-wp/api/getRole.php?email=ics499@gmail.com</a>
+    <a href="https://wpapi.telugupuzzles.com/api/getRole.php?email=ics499@gmail.com">https://wpapi.telugupuzzles.com/api/getRole.php?email=ics499@gmail.com</a>
  
     </p>
 </div>
@@ -803,7 +787,7 @@ $root = 'http://' . $_SERVER['HTTP_HOST'] . '/indic-wp/';
 This Api Takes a single input. The input being a string. The Api Will figure out if the string is English or Telugu. 
 If the whole string is in telugu than it will return telugu. If the entire string is in english it wil return english
 Other wise it will return other.      <br>
-    <a href="http://localhost/indic-wp/api/getLangForString.php?input1=hello">http://localhost/indic-wp/api/getLangForString.php?input1=hello</a>
+    <a href="https://wpapi.telugupuzzles.com/api/getLangForString.php?input1=hello">https://wpapi.telugupuzzles.com/api/getLangForString.php?input1=hello</a>
  
     </p>
 </div>
@@ -815,7 +799,7 @@ Other wise it will return other.      <br>
     <p>
 This Api Takes a two inputs. The first input being an int(N) and the second one a string(language). The API will return a random set of logical Chars
 based on the N value. If input1=4 and language=english. It will return 4 random logical chars.     <br>
-    <a href="http://localhost/indic-wp/api/getRandomLogicalChars.php?input1=4&input2=english">http://localhost/indic-wp/api/getRandomLogicalChars.php?input1=4&input2=english</a>
+    <a href="https://wpapi.telugupuzzles.com/api/getRandomLogicalChars.php?input1=4&input2=english">https://wpapi.telugupuzzles.com/api/getRandomLogicalChars.php?input1=4&input2=english</a>
  
     </p>
 </div>
@@ -824,6 +808,6 @@ based on the N value. If input1=4 and language=english. It will return 4 random 
 
 
 
-<link rel="stylesheet" href="../../indic-wp/css/style.css">
+<link rel="stylesheet" href="../../wpapi/css/style.css">
 
 </html>
