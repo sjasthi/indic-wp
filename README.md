@@ -6,6 +6,7 @@ Supported Languages.
 - Telugu
 - English
 - Hindi  (TBD))
+- Tamil (TBD)
 - Malayalam   (TBD)
 - Gujarathi   (TBD)
 - Kannada (TBD)
